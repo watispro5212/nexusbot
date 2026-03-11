@@ -4,7 +4,7 @@ const path = require('path');
 const DATA_DIR = path.join(__dirname, '..', '..', 'data');
 const ECONOMY_FILE = path.join(DATA_DIR, 'economy.json');
 
-// Ensure data directory and file exist
+// ensure data directory and file exist
 if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
 }
@@ -50,7 +50,7 @@ class EconomyManager {
             };
             this._saveData();
         } else {
-            // Hot-patch existing users with new Phase 5 fields
+            // hot-patch existing users with new phase 5 fields
             let needsSave = false;
             if (this.cache[userId].xp === undefined) { this.cache[userId].xp = 0; needsSave = true; }
             if (this.cache[userId].level === undefined) { this.cache[userId].level = 1; needsSave = true; }
