@@ -1,39 +1,34 @@
 # NexusBot Deployment & Webhook Setup
 
-Since your GitHub Pages dashboard is static, it cannot handle Discord's webhook verification (which requires a `POST` response). To fix this, we've added a backend server to the bot itself.
+We have now automated the webhook verification using the **ngrok Node.js SDK**. You no longer need to download or run the ngrok CLI manually.
 
-Follow these steps to get your Webhooks verified:
+Follow these simple steps:
 
-## 1. Install Dependencies
-Run this in your bot's folder:
-```bash
-npm install express
+## 1. Get an ngrok Authtoken
+1. Sign up/Login at [ngrok.com](https://dashboard.ngrok.com/get-started/your-authtoken).
+2. Copy your **Your Authtoken**.
+
+## 2. Update your .env
+Add your authtoken to the `.env` file in your bot's folder:
+```env
+NGROK_AUTHTOKEN=your_authtoken_here
 ```
 
-## 2. Start the Bot
+## 3. Start the Bot
 Run your bot as usual:
 ```bash
-node src/index.js
+npm run dev
 ```
-You should see: `[SERVER] Web server listening at http://localhost:3000`
 
-## 3. Expose the Server (ngrok)
-Discord cannot talk to `localhost`. You need a public URL.
+## 4. Verification
+On startup, the bot will log its public URL:
+`[NGROK] Tunnel established! Public URL: https://abcd-1234.ngrok-free.app`
 
-1.  **Download ngrok**: [ngrok.com](https://ngrok.com/download)
-2.  **Run ngrok**: Open a terminal and run:
-    ```bash
-    ngrok http 3000
-    ```
-3.  **Copy the Forwarding URL**: It will look like `https://a1b2-c3d4.ngrok.io`.
-
-## 4. Discord Developer Portal
-1.  Go to your **Discord App Settings** > **General Information**.
-2.  Find **Interactions Endpoint URL** (or your Webhook URL field).
-3.  Combine your ngrok URL with `/webhook`:
-    - Example: `https://a1b2-c3d4.ngrok.io/webhook`
-4.  Click **Save Changes**. Discord will now send a test request to your bot, which will reply with `200 OK` and verify successfully!
+1. Copy that URL and add `/webhook` to the end.
+   - Example: `https://abcd-1234.ngrok-free.app/webhook`
+2. Paste this into the **Interactions Endpoint URL** (or Webhook URL field) in the Discord Developer Portal.
+3. Click **Save Changes**. Success!
 
 ---
 > [!TIP]
-> **Production Tip**: For 24/7 uptime, consider hosting the bot on a VPS (like Oracle Cloud, AWS, or DigitalOcean) instead of your local machine.
+> **Static Dashboard**: Your GitHub Pages dashboard remains the face of your bot, while this backend handles the "behind the scenes" communication with Discord.
