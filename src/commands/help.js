@@ -96,13 +96,13 @@ const CATEGORIES = {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('help')
-        .setDescription('Shows all available commands categorized.'),
+        .setDescription('Interface access. Browse the Nexus command modules.'),
     async execute(interaction) {
         
         // Build the dropdown menu
         const selectMenu = new StringSelectMenuBuilder()
             .setCustomId('help_category_select')
-            .setPlaceholder('Select a command category...')
+            .setPlaceholder('Select a system module...')
             .addOptions(
                 Object.entries(CATEGORIES).map(([id, data]) => 
                     new StringSelectMenuOptionBuilder()
@@ -117,10 +117,10 @@ module.exports = {
 
         // Initial embed
         const initialEmbed = createEmbed({
-            title: '📚 Command Help Menu',
-            description: 'Please select a category from the dropdown menu below to view its commands.',
-            color: '#5865F2',
-            footer: 'This menu expires in 3 minutes.'
+            title: '💿 Nexus Interface | Directory',
+            description: 'Select a command module from the dropdown below to view available functions.',
+            color: '#00FFCC',
+            footer: 'Module interface active for 3 minutes.'
         });
 
         const response = await interaction.reply({ 
@@ -138,7 +138,7 @@ module.exports = {
         collector.on('collect', async i => {
             // Only allow the original unvoker to use the dropdown
             if (i.user.id !== interaction.user.id) {
-                return i.reply({ content: 'This menu is not for you!', ephemeral: true });
+                return i.reply({ content: 'Unauthorized access. This interface is locked to the original user.', ephemeral: true });
             }
 
             const categoryId = i.values[0];

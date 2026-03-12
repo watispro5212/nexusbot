@@ -4,14 +4,14 @@ const { createEmbed } = require('../utils/embed');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ping')
-        .setDescription('Checks the bot\'s network status and latency metrics.'),
+        .setDescription('Check the connection pulse of the Nexus.'),
     async execute(interaction) {
         const sent = await interaction.reply({ 
             embeds: [
                 createEmbed({
-                    title: '📶 Checking Connection...',
-                    description: 'Measuring latency packets...',
-                    color: '#5865F2'
+                    title: '🛰️ Pinging...',
+                    description: 'Tapping into the data streams...',
+                    color: '#00FFCC'
                 })
             ], 
             fetchReply: true 
@@ -20,25 +20,25 @@ module.exports = {
         const roundtripLatency = sent.createdTimestamp - interaction.createdTimestamp;
         const wsLatency = Math.round(interaction.client.ws.ping);
 
-        let color = '#57F287'; // Green
-        let status = 'Excellent 🟢';
+        let color = '#00FFCC'; // Nexus Cyan
+        let status = 'Stable 🟢';
 
         if (roundtripLatency > 400 || wsLatency > 200) {
-            color = '#FEE75C'; // Yellow
-            status = 'Moderate 🟡';
+            color = '#FFCC00'; // Amber
+            status = 'Turbulent 🟡';
         }
         if (roundtripLatency > 1000 || wsLatency > 500) {
-            color = '#ED4245'; // Red
-            status = 'Poor 🔴';
+            color = '#FF4B2B'; // Nexus Red
+            status = 'Critical 🔴';
         }
 
         const embed = createEmbed({
-            title: '🏓 Pong!',
+            title: '📡 Signal Return',
             color: color,
             fields: [
-                { name: 'WebSocket Heartbeat', value: `\`${wsLatency}ms\``, inline: true },
-                { name: 'Roundtrip Latency', value: `\`${roundtripLatency}ms\``, inline: true },
-                { name: 'Network Health', value: status, inline: false }
+                { name: 'Heartbeat', value: `\`${wsLatency}ms\``, inline: true },
+                { name: 'Roundtrip', value: `\`${roundtripLatency}ms\``, inline: true },
+                { name: 'Pulse Status', value: status, inline: false }
             ]
         });
 

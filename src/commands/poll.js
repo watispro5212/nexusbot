@@ -4,14 +4,14 @@ const { createEmbed } = require('../utils/embed');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('poll')
-        .setDescription('Create a simple reaction-based poll.')
+        .setDescription('Fire up a quick community vote.')
         .addStringOption(option => 
             option.setName('question')
-                .setDescription('The question to ask in the poll.')
+                .setDescription('The topic of the vote.')
                 .setRequired(true))
         .addStringOption(option => 
             option.setName('options')
-                .setDescription('Up to 10 options separated by commas.')
+                .setDescription('Separate options with commas (max 10).')
                 .setRequired(true))
         .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages),
     async execute(interaction) {
@@ -19,11 +19,11 @@ module.exports = {
         const optionsList = interaction.options.getString('options').split(',').map(opt => opt.trim()).filter(opt => opt.length > 0);
 
         if (optionsList.length < 2) {
-            return interaction.reply({ content: 'Please provide at least 2 options for a poll.', ephemeral: true });
+            return interaction.reply({ content: 'I need at least 2 options to start a vote.', ephemeral: true });
         }
 
         if (optionsList.length > 10) {
-            return interaction.reply({ content: 'Maximum of 10 options allowed.', ephemeral: true });
+            return interaction.reply({ content: 'Hold on, 10 options is the max limit.', ephemeral: true });
         }
 
         const emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
@@ -36,8 +36,8 @@ module.exports = {
         const embed = createEmbed({
             title: `📊 ${question}`,
             description: description,
-            color: '#3498DB'
-        }).setFooter({ text: `Poll by ${interaction.user.tag}` });
+            color: '#00FFCC'
+        }).setFooter({ text: `Oracle: ${interaction.user.tag}` });
 
         const message = await interaction.reply({ embeds: [embed], fetchReply: true });
 
