@@ -85,6 +85,7 @@ nav {
     width: 100%;
     padding: 1.5rem 0;
     z-index: 1000;
+    -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border);
     transition: all 0.4s ease;
@@ -389,6 +390,11 @@ nav.scrolled {
     overflow-x: auto;
     padding-bottom: 10px;
     scrollbar-width: none;
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.tab-nav::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
 }
 
 .tab-btn {
@@ -487,6 +493,28 @@ footer {
     color: var(--primary);
 }
 
+.footer-tagline {
+    margin-top: 1rem; 
+    color: var(--text-dim);
+}
+
+.footer-bottom {
+    text-align: center; 
+    margin-top: 3rem; 
+    color: rgba(255,255,255,0.1); 
+    font-size: 0.8rem;
+}
+
+.shard-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+}
+
 /* Legal Containers */
 .legal-box {
     background: var(--card-bg);
@@ -497,6 +525,7 @@ footer {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
+    -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
 }
 
