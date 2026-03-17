@@ -14,7 +14,7 @@ module.exports = {
         }));
 
         const description = shardInfo.map(s => {
-            const status = s.ping < 150 ? '🟢 STABLE' : (s.ping < 300 ? '🟡 DEGRADED' : '🔴 CRITICAL');
+            const status = s.ping < 250 ? '🟢 STABLE' : (s.ping < 500 ? '🟡 DEGRADED' : '🔴 CRITICAL');
             return `**Shard ${s.id}** [${status}]\n\`Latency: ${s.ping}ms | Nodes: ${s.guilds} | Uptime: ${(s.uptime / 3600000).toFixed(2)}h\``;
         }).join('\n\n');
 

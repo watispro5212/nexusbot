@@ -5,7 +5,7 @@ const GuildConfig = require('../models/GuildConfig');
 
 // Anti-spam cooldown (1 minute for XP)
 const cooldowns = new Set();
-const COOLDOWN_MS = 60000;
+const COOLDOWN_MS = 30000;
 
 // Spam tracker (5 messages in 5 seconds)
 const spamTracker = new Map();
