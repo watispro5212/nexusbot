@@ -184,7 +184,7 @@ module.exports = {
 
             if (winnings > 0) {
                 data.wallet += winnings;
-                economy.saveUser(userId, data);
+                await data.save();
             }
 
             const finalEmbed = buildEmbed(resultMsg, color);

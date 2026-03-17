@@ -83,7 +83,7 @@ module.exports = {
         setTimeout(() => cooldowns.delete(userId), COOLDOWN_MS);
 
         // Fetch user data
-        const data = economy.getUser(userId);
+        const data = await economy.getUser(userId, guildId);
 
         // Grant 15 to 25 XP
         const xpGained = Math.floor(Math.random() * 11) + 15;
@@ -114,6 +114,6 @@ module.exports = {
         }
 
         // Save
-        economy.saveUser(userId, data);
+        await data.save();
     },
 };

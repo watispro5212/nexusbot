@@ -9,7 +9,7 @@ module.exports = {
     async execute(interaction) {
         
         await interaction.deferReply();
-        const lb = economy.getLeaderboard();
+        const lb = await economy.getLeaderboard(interaction.guild.id);
 
         if (lb.length === 0) {
             return interaction.editReply({ 

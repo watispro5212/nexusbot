@@ -61,7 +61,7 @@ module.exports = {
             data.inventory.push(item.id);
         }
 
-        economy.saveUser(userId, data);
+        await data.save();
 
         const embed = createEmbed({
             title: '🛍️ Purchase Successful!',

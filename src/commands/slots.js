@@ -39,7 +39,7 @@ module.exports = {
 
         // Deduct bet and save to prevent backing out
         data.wallet -= bet;
-        economy.saveUser(userId, data);
+        await data.save();
 
         // Define slot icons and weights
         const icons = ['🍒', '🍋', '🍉', '🍇', '🔔', '💎', '🎰'];
@@ -84,7 +84,7 @@ module.exports = {
         // Payout
         if (winnings > 0) {
             data.wallet += winnings;
-            economy.saveUser(userId, data);
+            await data.save();
         }
 
         const slotMachineStr = `[ ${results.join(' | ')} ]`;

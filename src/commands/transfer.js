@@ -54,8 +54,8 @@ module.exports = {
         senderData.wallet -= amount;
         targetData.wallet += amount;
 
-        economy.saveUser(senderId, senderData);
-        economy.saveUser(targetId, targetData);
+        await senderData.save();
+        await targetData.save();
 
         const embed = createEmbed({
             title: '💸 Transfer Successful',
