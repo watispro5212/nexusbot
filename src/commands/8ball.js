@@ -2,61 +2,67 @@ const { SlashCommandBuilder } = require('discord.js');
 const { createEmbed } = require('../utils/embed');
 
 const RESPONSES = [
-    "It is certain.",
-    "It is decidedly so.",
-    "Without a doubt.",
-    "Yes - definitely.",
-    "You may rely on it.",
-    "As I see it, yes.",
-    "Most likely.",
-    "Outlook good.",
-    "Yes.",
-    "Signs point to yes.",
-    "Reply hazy, try again.",
-    "Ask again later.",
-    "Better not tell you now.",
-    "Cannot predict now.",
-    "Concentrate and ask again.",
-    "Don't count on it.",
-    "My reply is no.",
-    "My sources say no.",
-    "Outlook not so good.",
-    "Very doubtful."
+    // POSITIVE (The Light Cycle)
+    "PROTOCOL: AFFIRMATIVE. THE DATA STREAMS ALIGN.",
+    "SCAN COMPLETE. EXECUTION RECOMMENDED.",
+    "THE ORACLE PREDICTS A 99.8% SUCCESS RATE.",
+    "WITHOUT A DOUBT. THE GRID HAS SPOKEN.",
+    "ACCESS GRANTED. THE FUTURE IS SECURED.",
+    "THE ALGORITHM YIELDS A POSITIVE SUM.",
+    "SYSTEMS GO. PROCEED WITH INITIALIZATION.",
+    "HIGH PROBABILITY. LIKELY OUTCOME: SUCCESS.",
+    // NEUTRAL (The Signal Haze)
+    "SIGNAL TURBULENCE. RETRANSMIT YOUR QUERY LATER.",
+    "DATA PACKETS LOST. UNABLE TO DECRYPT THE FUTURE.",
+    "PROTOCOL ERROR: RE-SCAN REQUIRED BY THE OPERATOR.",
+    "OUTCOME UNCERTAIN. THE VOID REMAINS UNREAD.",
+    "STATIC DETECTED. CONCENTRATE YOUR PULSE AND TRY AGAIN.",
+    // NEGATIVE (The System Crash)
+    "ACCESS DENIED. THE STREAMS RUN COLD.",
+    "PROTOCOL: NEGATIVE. HIGH RISK OF FAILURE DETECTED.",
+    "MY SOURCES REPORT A BINARY COLLAPSE.",
+    "THE GRID REJECTS THIS PATHWAY.",
+    "VERY DOUBTFUL. SYSTEM STABILITY UNREACHABLE."
 ];
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('8ball')
-        .setDescription('Ask the Magic 8-Ball a yes/no question.')
+        .setDescription('Queries the Nexus Oracle for a glimpse into the future.')
         .addStringOption(option => 
             option.setName('question')
-                .setDescription('The question you want to ask.')
+                .setDescription('The inquiry to be processed by the Oracle.')
                 .setRequired(true)),
     async execute(interaction) {
         const question = interaction.options.getString('question');
         const response = RESPONSES[Math.floor(Math.random() * RESPONSES.length)];
 
-        let color = '#00FFCC'; // Base Blurple
-        
-        // Color code based on typical 8-ball answers (positive/neutral/negative)
-        const lowerRes = response.toLowerCase();
-        if (lowerRes.includes('yes') || lowerRes.includes('certain') || lowerRes.includes('good') || lowerRes.includes('doubt')) {
-            color = '#00FFCC'; // Green
-        } else if (lowerRes.includes('no') || lowerRes.includes('doubtful') || lowerRes.includes('not')) {
-            color = '#FF4B2B'; // Red
-        } else {
-            color = '#FFCC00'; // Yellow (neutral/try again)
+        await interaction.reply({
+            embeds: [createEmbed({
+                title: '🎱 Consulting the Oracle...',
+                description: `\`[SYSTEM]\` Processing query: *" ${question} "*\n\`[SYSTEM]\` Tapping into the neural link...`,
+                color: '#FFCC00'
+            })]
+        });
+
+        let color = '#00FFCC'; 
+        if (response.includes('NEGATIVE') || response.includes('DENIED') || response.includes('REJECTS') || response.includes('DOUBTFUL')) {
+            color = '#FF4B2B'; 
+        } else if (response.includes('UNCERTAIN') || response.includes('ERROR') || response.includes('STATIC')) {
+            color = '#FFCC00'; 
         }
 
         const embed = createEmbed({
-            title: '🎱 Magic 8-Ball',
+            title: '👁️ Oracle Visualization',
             fields: [
-                { name: 'Question', value: question, inline: false },
-                { name: 'Answer', value: `**${response}**`, inline: false }
+                { name: '📥 Input Query', value: `\`${question}\``, inline: false },
+                { name: '📤 Oracle Response', value: `**${response}**`, inline: false }
             ],
             color: color
         });
 
-        await interaction.reply({ embeds: [embed] });
+        setTimeout(async () => {
+            await interaction.editReply({ embeds: [embed] });
+        }, 2000);
     },
 };

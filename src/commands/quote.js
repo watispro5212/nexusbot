@@ -11,20 +11,36 @@ const QUOTES = [
     "The mind is everything. What you think you become. – Buddha",
     "An unexamined life is not worth living. – Socrates",
     "Your time is limited, so don't waste it living someone else's life. – Steve Jobs",
-    "Stay hungry, stay foolish. – Steve Jobs"
+    "Stay hungry, stay foolish. – Steve Jobs",
+    "The grid is the limit of our imagination. – Nexus Core",
+    "Information is the currency of the future. – anonymous"
 ];
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('quote')
-        .setDescription('Get an inspirational random quote!'),
+        .setDescription('Extracts a wisdom fragment from the great thinkers of the Grid.'),
     async execute(interaction) {
-        const quote = QUOTES[Math.floor(Math.random() * QUOTES.length)];
-        const embed = createEmbed({
-            title: '📜 Random Quote',
-            description: `*"${quote.split(' – ')[0]}"*\n\n— **${quote.split(' – ')[1]}**`,
-            color: '#00FFCC'
+        await interaction.reply({
+            embeds: [createEmbed({
+                title: '📜 Retreiving Wisdom...',
+                description: '`[SEARCHING]` history archives for relevant data strings...',
+                color: '#00FFCC'
+            })]
         });
-        await interaction.reply({ embeds: [embed] });
+
+        const quote = QUOTES[Math.floor(Math.random() * QUOTES.length)];
+        const [text, author] = quote.split(' – ');
+
+        const embed = createEmbed({
+            title: '✨ Wisdom Visualization',
+            description: `*"${text}"*\n\n— **${author || 'The Grid'}**`,
+            color: '#00FFCC',
+            footer: 'Nexus Philosophical Engine v2.0'
+        });
+
+        setTimeout(async () => {
+            await interaction.editReply({ embeds: [embed] });
+        }, 1500);
     },
 };

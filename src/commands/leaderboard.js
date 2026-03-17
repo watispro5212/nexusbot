@@ -5,48 +5,43 @@ const economy = require('../utils/EconomyManager');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('leaderboard')
-        .setDescription('Displays the top 10 richest users based on net worth.'),
+        .setDescription('Visualizes the elite high-worth entities of the Nexus.'),
     async execute(interaction) {
-        
         await interaction.deferReply();
-        const lb = economy.getLeaderboard();
+        const lb = await economy.getLeaderboard(interaction.guild.id);
 
         if (lb.length === 0) {
             return interaction.editReply({ 
                 embeds: [createEmbed({
                     title: '🏆 Economy Leaderboard',
-                    description: 'No one has any money yet!',
+                    description: 'No validated financial data found for this sector.',
                     color: '#00FFCC'
                 })]
             });
         }
 
-        // Fetch Discord usernames for the top IDs
-        // We do this concurrently to make it fast
         const promises = lb.map(async (entry, index) => {
-            let tag = 'Unknown User';
+            let tag = 'Unknown Entity';
             try {
-                // Check cache first, then fetch
                 const user = interaction.client.users.cache.get(entry.id) || await interaction.client.users.fetch(entry.id);
                 tag = user.username;
-            } catch (err) {
-                // If they deleted their account or left and API fails
-            }
+            } catch (err) {}
             
-            let medal = '🏅';
-            if (index === 0) medal = '🥇';
-            if (index === 1) medal = '🥈';
-            if (index === 2) medal = '🥉';
+            let prefix = `\`#${index + 1}\``;
+            if (index === 0) prefix = '🥇';
+            if (index === 1) prefix = '🥈';
+            if (index === 2) prefix = '🥉';
 
-            return `${medal} **${tag}** — \`${entry.net.toLocaleString()} Credits\``;
+            return `${prefix} **${tag}**\n╚══ \`${entry.net.toLocaleString()}\` **CR**`;
         });
 
         const lines = await Promise.all(promises);
 
         const embed = createEmbed({
-            title: '🏆 Economy Net Worth Leaderboard',
+            title: '🏆 Nexus High-Worth Index',
             description: lines.join('\n\n'),
-            color: '#F1C40F'
+            color: '#F1C40F',
+            footer: `Top ${lb.length} Shareholders | SEC-ID: nexus-idx-1`
         });
 
         await interaction.editReply({ embeds: [embed] });

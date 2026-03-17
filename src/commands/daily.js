@@ -8,7 +8,7 @@ const COOLDOWN_MS = 24 * 60 * 60 * 1000;
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('daily')
-        .setDescription('Receive your daily Nexus Credit allocation.'),
+        .setDescription('Requests a daily credit allocation from the Nexus Treasury.'),
     async execute(interaction) {
         const userId = interaction.user.id;
         const data = await economy.getUser(userId, interaction.guild.id);
@@ -18,41 +18,42 @@ module.exports = {
         const diff = now - last;
 
         if (diff < COOLDOWN_MS) {
-            const remaining = COOLDOWN_MS - diff;
-            const hours = Math.floor(remaining / 3600000);
-            const minutes = Math.floor((remaining % 3600000) / 60000);
-
+            const nextDrop = new Date(last + COOLDOWN_MS);
             return interaction.reply({ 
                 embeds: [createEmbed({
                     title: '⏳ Allocation Pending',
-                    description: `Your daily Nexus allocation has already been dispersed.\nNext drop available in **${hours}h ${minutes}m**.`,
+                    description: `\`[TREASURY]\` Daily allotment already dispersed. \nNext sync available: <t:${Math.floor(nextDrop.getTime() / 1000)}:R>`,
                     color: '#FF4B2B'
                 })],
                 flags: 64 
             });
         }
 
-        // Apply reward
+        await interaction.reply({
+            embeds: [createEmbed({
+                title: '🎁 Processing Allotment...',
+                description: '`[AUTHORIZING]` biometric scan... Accessing Treasury reserves.',
+                color: '#FFCC00'
+            })]
+        });
+
         data.wallet += DAILY_REWARD;
         data.lastDaily = now;
-        data.dailyStreak = (data.dailyStreak || 0) + 1;
-        
-        // Streak logic (reset if they waited longer than 48 hours)
-        if (diff > COOLDOWN_MS * 2) {
-            data.dailyStreak = 1;
-        }
-
+        data.dailyStreak = (diff > COOLDOWN_MS * 2) ? 1 : (data.dailyStreak || 0) + 1;
         await data.save();
 
         const embed = createEmbed({
-            title: '🎁 Allocation Confirmed',
-            description: `You received **${DAILY_REWARD.toLocaleString()} Credits** from the Nexus.\nCurrent Local Wallet: **${data.wallet.toLocaleString()} Credits**.`,
+            title: '✅ Allotment Successful',
+            description: `You have received **${DAILY_REWARD.toLocaleString()} Credits**.\nCurrent Liquid Balance: **${data.wallet.toLocaleString()} CR**.`,
             fields: [
-                { name: '🔥 System Streak', value: `${data.dailyStreak} consecutive cycle(s)`, inline: true }
+                { name: '🔥 Sync Streak', value: `\`${data.dailyStreak}\` consecutive cycles`, inline: true }
             ],
-            color: '#00FFCC'
+            color: '#00FFCC',
+            footer: 'Nexus Treasury | Allocation Protocol: Secure'
         });
 
-        await interaction.reply({ embeds: [embed] });
+        setTimeout(async () => {
+            await interaction.editReply({ embeds: [embed] });
+        }, 2000);
     },
 };

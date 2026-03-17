@@ -11,20 +11,34 @@ const FACTS = [
     "Dead people can get goosebumps.",
     "The inventor of the Pringles can is now buried in one.",
     "Wombat poop is cube-shaped.",
-    "The total weight of all the ants on Earth is about the same as all the humans."
+    "The total weight of all the ants on Earth is about the same as all the humans.",
+    "A single bolt of lightning contains enough energy to toast 100,000 slices of bread."
 ];
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('fact')
-        .setDescription('Get a random interesting fact!'),
+        .setDescription('Fetches a rare data point from the planetary mainframe.'),
     async execute(interaction) {
-        const fact = FACTS[Math.floor(Math.random() * FACTS.length)];
-        const embed = createEmbed({
-            title: '💡 Random Fact',
-            description: fact,
-            color: '#10b981'
+        await interaction.reply({
+            embeds: [createEmbed({
+                title: '💡 Querying Mainframe...',
+                description: '`[SCANNING]` physical reality for statistical anomalies...',
+                color: '#10b981'
+            })]
         });
-        await interaction.reply({ embeds: [embed] });
+
+        const fact = FACTS[Math.floor(Math.random() * FACTS.length)];
+        
+        const embed = createEmbed({
+            title: '💎 Validated Data Point',
+            description: `\`\`\`\n${fact}\n\`\`\``,
+            color: '#10b981',
+            footer: 'Nexus Knowledge Base v4.1'
+        });
+
+        setTimeout(async () => {
+            await interaction.editReply({ embeds: [embed] });
+        }, 1300);
     },
 };

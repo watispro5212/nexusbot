@@ -4,33 +4,39 @@ const { createEmbed } = require('../utils/embed');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('meme')
-        .setDescription('Fetches a random top meme.'),
+        .setDescription('Initiates a meme-packet retrieval from the dankest sectors of the Grid.'),
     async execute(interaction) {
-        await interaction.deferReply();
+        await interaction.reply({
+            embeds: [createEmbed({
+                title: '🖼️ Accessing Dank Core...',
+                description: '`[RETRIEVING]` high-occupancy humor files...',
+                color: '#D800FF'
+            })]
+        });
 
         try {
-            // Using meme-api which scrapes r/memes and r/dankmemes
             const res = await fetch('https://meme-api.com/gimme');
             if (!res.ok) throw new Error('API failed');
             
             const data = await res.json();
 
-            // SFW check just in case, though the API generally returns sfw by default
             if (data.nsfw) {
-                return interaction.editReply('I found a meme, but it was marked NSFW. Try again!');
+                return interaction.editReply({ content: '`[FILTERED]` Data packet contains NSFW content. Safety protocols engaged.', embeds: [] });
             }
 
             const embed = createEmbed({
-                title: data.title,
+                title: `✨ ${data.title}`,
                 url: data.postLink,
                 color: '#D800FF'
             }).setImage(data.url)
-              .setFooter({ text: `👍 ${data.ups} | r/${data.subreddit}` });
+              .setFooter({ text: `👍 ${data.ups} | Sector: r/${data.subreddit}` });
 
-            await interaction.editReply({ embeds: [embed] });
+            setTimeout(async () => {
+                await interaction.editReply({ embeds: [embed] });
+            }, 1000);
 
         } catch (error) {
-            await interaction.editReply('Could not fetch a meme at this time.');
+            await interaction.editReply({ content: '`[ERROR]` Link to the meme-vault timed out. Try again later.', embeds: [] });
         }
     },
 };
