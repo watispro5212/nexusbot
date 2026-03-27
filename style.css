@@ -1,15 +1,17 @@
 :root {
-    --primary: #00FFCC;
-    --primary-glow: rgba(0, 255, 204, 0.4);
-    --secondary: #BC13FE;
+    --primary: #00FFEA;
+    --primary-glow: rgba(0, 255, 234, 0.6);
+    --secondary: #9D00FF;
+    --secondary-glow: rgba(157, 0, 255, 0.6);
     --accent: #FF0055;
-    --background: #020205;
-    --surface: #0A0A0F;
-    --card-bg: rgba(15, 15, 25, 0.6);
-    --text: #F0F0F5;
-    --text-dim: #888899;
+    --background: #030308;
+    --surface: #0B0B14;
+    --card-bg: rgba(15, 15, 25, 0.5);
+    --text: #F8F8FF;
+    --text-dim: #9999AA;
     --border: rgba(255, 255, 255, 0.08);
-    --glass-border: rgba(0, 255, 204, 0.2);
+    --glass-border: rgba(0, 255, 234, 0.3);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 255, 234, 0.1);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@500&display=swap');
@@ -27,6 +29,59 @@ body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     overflow-x: hidden;
     line-height: 1.6;
+    cursor: none; /* Custom cursor */
+}
+
+/* Custom Cursor Elements */
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+    transition: opacity 0.2s ease;
+}
+
+.cursor-trail {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--primary-glow);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, border-color 0.2s;
+}
+
+body:hover .cursor-dot, body:hover .cursor-trail {
+    opacity: 1;
+}
+
+.clickable-hover .cursor-trail {
+    width: 50px;
+    height: 50px;
+    border-color: var(--primary);
+    background-color: rgba(0, 255, 234, 0.05);
+}
+
+#network-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    pointer-events: none;
+    opacity: 0.5;
 }
 
 /* --- Premium Background --- */
@@ -382,11 +437,12 @@ nav.scrolled {
     border: 1px solid var(--border);
     padding: 2.5rem;
     border-radius: 24px;
-    transition: all 0.4s ease;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     position: relative;
     overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
 }
 
 .card::before {

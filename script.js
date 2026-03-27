@@ -315,4 +315,134 @@ document.addEventListener('DOMContentLoaded', () => {
     if (commandList) {
         renderCommands();
     }
+
+    // --- Custom Cursor ---
+    const cursorDot = document.createElement('div');
+    cursorDot.className = 'cursor-dot';
+    const cursorTrail = document.createElement('div');
+    cursorTrail.className = 'cursor-trail';
+    document.body.appendChild(cursorDot);
+    document.body.appendChild(cursorTrail);
+
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let dotX = mouseX, dotY = mouseY;
+    let trailX = mouseX, trailY = mouseY;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    const updateCursor = () => {
+        dotX += (mouseX - dotX) * 0.2;
+        dotY += (mouseY - dotY) * 0.2;
+        trailX += (mouseX - trailX) * 0.1;
+        trailY += (mouseY - trailY) * 0.1;
+
+        cursorDot.style.left = `${dotX}px`;
+        cursorDot.style.top = `${dotY}px`;
+        cursorTrail.style.left = `${trailX}px`;
+        cursorTrail.style.top = `${trailY}px`;
+
+        requestAnimationFrame(updateCursor);
+    };
+    updateCursor();
+
+    const addHoverClass = () => document.body.classList.add('clickable-hover');
+    const removeHoverClass = () => document.body.classList.remove('clickable-hover');
+
+    const attachHoverToInteractive = () => {
+        document.querySelectorAll('a, button, .cmd-item, .card').forEach(el => {
+            el.addEventListener('mouseenter', addHoverClass);
+            el.addEventListener('mouseleave', removeHoverClass);
+        });
+    };
+    attachHoverToInteractive();
+    // Re-attach hover when commands are re-rendered
+    if (tabContainer || searchInput) {
+        const originalRender = renderCommands;
+        renderCommands = (filter) => {
+            originalRender(filter);
+            setTimeout(attachHoverToInteractive, 50);
+        };
+        // Run once manually to catch initial render
+        setTimeout(attachHoverToInteractive, 50);
+    }
+
+    // --- Particle Network Canvas ---
+    const canvas = document.getElementById('network-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        
+        const resizeCanvas = () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        };
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 1.5 + 0.5;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 255, 234, 0.5)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+        const animateParticles = () => {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                // Draw lines between nearby particles
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 255, 234, ${0.2 - dist/600})`;
+                        ctx.stroke();
+                    }
+                }
+                
+                // Interactive distance to mouse
+                const mdx = particles[i].x - mouseX;
+                const mdy = particles[i].y - mouseY;
+                const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+                if (mDist < 150) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(mouseX, mouseY);
+                    ctx.strokeStyle = `rgba(157, 0, 255, ${0.4 - mDist/375})`;
+                    ctx.stroke();
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        };
+        animateParticles();
+    }
 });
