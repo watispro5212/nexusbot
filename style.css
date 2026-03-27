@@ -766,13 +766,13 @@ nav.scrolled {
 
 /* --- Added Styles for Image Avatar and Scroll to Top --- */
 .image-avatar {
-    width: 100px;
-    height: 100px;
+    width: 64px;
+    height: 64px;
     margin: 0 auto 1rem auto;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid var(--primary);
-    box-shadow: 0 0 15px var(--primary-glow);
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 10px var(--primary-glow);
     display: flex;
     justify-content: center;
     align-items: center;
