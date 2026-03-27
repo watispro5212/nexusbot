@@ -3,6 +3,22 @@ const { createEmbed } = require('../utils/embed');
 const economy = require('../utils/EconomyManager');
 const GuildConfig = require('../models/GuildConfig');
 
+// --- GUILD CONFIG CACHE ---
+const configCache = new Map();
+const CACHE_TTL = 300000;
+
+async function getCachedConfig(guildId) {
+    if (configCache.has(guildId)) {
+        const entry = configCache.get(guildId);
+        if (Date.now() - entry.timestamp < CACHE_TTL) {
+            return entry.data;
+        }
+    }
+    const data = await GuildConfig.findOne({ guildId });
+    configCache.set(guildId, { data, timestamp: Date.now() });
+    return data;
+}
+
 // Anti-spam cooldown (1 minute for XP)
 const cooldowns = new Set();
 const COOLDOWN_MS = 30000;
@@ -23,6 +39,10 @@ setInterval(() => {
             spamTracker.set(userId, recent);
         }
     }
+    // Deep prune config cache globally to protect memory
+    for (const [guildId, entry] of configCache.entries()) {
+        if (now - entry.timestamp > CACHE_TTL) configCache.delete(guildId);
+    }
 }, 60000);
 
 // XP required = 100 * (level ^ 1.5)
@@ -39,8 +59,8 @@ module.exports = {
         const userId = message.author.id;
         const guildId = message.guild.id;
 
-        // Fetch Guild Config
-        let config = await GuildConfig.findOne({ guildId });
+        // Fetch Guild Config using memory cache
+        let config = await getCachedConfig(guildId);
         if (!config) config = { levelingEnabled: true, antiSpam: false, badWords: [] }; // Fallback
 
         // --- AUTO-MODERATION: BAD WORDS ---

@@ -3,6 +3,23 @@ const { createEmbed } = require('../utils/embed');
 const logger = require('../utils/logger');
 const cooldownManager = require('../utils/cooldownManager');
 const { isOwner } = require('../utils/ownerGate');
+const GuildConfig = require('../models/GuildConfig');
+
+// --- GUILD CONFIG CACHE ---
+const configCache = new Map();
+const CACHE_TTL = 300000; // 5 minutes
+
+async function getCachedConfig(guildId) {
+    if (configCache.has(guildId)) {
+        const entry = configCache.get(guildId);
+        if (Date.now() - entry.timestamp < CACHE_TTL) {
+            return entry.data;
+        }
+    }
+    const data = await GuildConfig.findOne({ guildId });
+    configCache.set(guildId, { data, timestamp: Date.now() });
+    return data;
+}
 
 // Default cooldown durations (ms) per category
 const COOLDOWN_DURATIONS = {
@@ -145,6 +162,7 @@ module.exports = {
         }
 
         // --- COMMAND HANDLING ---
+        if (interaction.isAutocomplete()) return; // Prevent crashes when typing
         if (!interaction.isChatInputCommand()) return;
 
         const command = client.commands.get(interaction.commandName);
@@ -217,8 +235,7 @@ module.exports = {
         }
 
         // --- DASHBOARD MODULE TOGGLES ---
-        const GuildConfig = require('../models/GuildConfig');
-        const config = await GuildConfig.findOne({ guildId: interaction.guild.id });
+        const config = await getCachedConfig(interaction.guild.id);
         
         if (config) {
             const economyCmds = ['balance', 'daily', 'work', 'buy', 'inventory', 'shop', 'transfer'];
@@ -267,7 +284,7 @@ module.exports = {
             const errorEmbed = createEmbed({
                 title: '❌ Execution Error',
                 description: 'A critical error occurred while processing this protocol.\nThe incident has been logged for analysis.',
-                color: 0xED4245,
+                color: '#ED4245',
                 timestamp: false
             });
 
