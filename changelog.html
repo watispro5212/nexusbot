@@ -56,6 +56,22 @@
 
             <div class="changelog-timeline">
                 <div class="changelog-entry reveal">
+                    <div class="changelog-version" style="color: var(--primary); text-shadow: 0 0 10px var(--primary-glow);">v4.2.0 — SITE STABILIZATION</div>
+                    <div class="changelog-date">March 28, 2026</div>
+                    <div class="changelog-body" style="border-color: var(--primary);">
+                        <ul>
+                            <li class="fixed"><strong>Site script:</strong> Removed duplicate hover listeners that stacked on every command re-render; cursor trail now uses a single delegated hover handler.</li>
+                            <li class="fixed"><strong>Particle canvas:</strong> Dynamic background injection now runs the same initializer so the network animation works if the canvas is added after load.</li>
+                            <li class="fixed"><strong>Pointer &amp; cursor:</strong> Default cursor restored on touch/coarse devices; custom cursor and <code>cursor: none</code> only on fine-pointer desktops.</li>
+                            <li class="fixed"><strong>Mobile nav:</strong> Added hamburger + <code>aria-expanded</code> to the dashboard; tap-outside and Escape close the drawer.</li>
+                            <li class="added"><strong>Layout:</strong> Shared <code>.container</code> styles for pages like Features; aligned Features nav with the rest of the site (Staff, Premium, Changelog, Network, Initialize).</li>
+                            <li class="fixed"><strong>Commands page:</strong> Clipboard copy failures (non-HTTPS contexts) no longer leave a stuck UI state.</li>
+                            <li class="fixed"><strong>Anchor links:</strong> Ignored bare <code>href="#"</code> so in-page scroll handlers do not call <code>querySelector</code> with an invalid selector.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="changelog-entry reveal">
                     <div class="changelog-version" style="color: var(--primary); text-shadow: 0 0 10px var(--primary-glow);">v4.1.0 — THE NEURAL OVERHAUL</div>
                     <div class="changelog-date">March 27, 2026</div>
                     <div class="changelog-body" style="border-color: var(--primary);">

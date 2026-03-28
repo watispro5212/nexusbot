@@ -29,7 +29,12 @@ body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     overflow-x: hidden;
     line-height: 1.6;
-    cursor: none; /* Custom cursor */
+    cursor: auto;
+}
+
+/* Hide system cursor only when the JS-driven cursor is active (fine pointer devices) */
+body.custom-cursor-enabled {
+    cursor: none;
 }
 
 /* Custom Cursor Elements */
@@ -1093,6 +1098,13 @@ footer {
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* --- Page shell (Features, etc.) --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 /* --- Responsive --- */

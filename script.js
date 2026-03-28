@@ -84,22 +84,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
     
     let activeCategory = 'utility';
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    function closeMobileNav() {
+        if (!hamburger || !navLinks) return;
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+    }
 
     // --- Hamburger Menu ---
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const open = !navLinks.classList.contains('open');
+            hamburger.classList.toggle('active', open);
+            navLinks.classList.toggle('open', open);
+            hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
         });
 
-        // Close menu when clicking a link
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('open');
-            });
+            link.addEventListener('click', () => closeMobileNav());
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!navLinks.classList.contains('open')) return;
+            if (hamburger.contains(e.target) || navLinks.contains(e.target)) return;
+            closeMobileNav();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMobileNav();
         });
     }
+
+    // Pointer position (particles + parallax + custom cursor)
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        const x = (e.clientX / window.innerWidth - 0.5) * 20;
+        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+        const grid = document.querySelector('.grid-overlay');
+        if (grid) {
+            grid.style.transform = `perspective(1000px) rotateX(60deg) translate(${x}px, ${y}px)`;
+        }
+        const hero = document.querySelector('.hero-title');
+        if (hero) {
+            hero.style.transform = `translate(${x * -0.2}px, ${y * -0.2}px)`;
+        }
+    });
 
     // --- Navbar scroll effect ---
     window.addEventListener('scroll', () => {
@@ -113,7 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Smooth scroll for anchor links ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            const target = document.querySelector(this.getAttribute('href'));
+            const href = this.getAttribute('href');
+            if (!href || href === '#') return;
+            const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -169,6 +206,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             copySpan.innerText = 'COPY';
                             copySpan.style.color = 'inherit';
                         }, 2000);
+                    }
+                }).catch(() => {
+                    const copySpan = div.querySelector('.cmd-copy');
+                    if (copySpan) {
+                        copySpan.innerText = 'COPY';
                     }
                 });
             };
@@ -299,87 +341,19 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', reveal);
     reveal();
 
-    // --- Parallax Effect ---
-    document.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 20;
-        const y = (e.clientY / window.innerHeight - 0.5) * 20;
-        
-        const grid = document.querySelector('.grid-overlay');
-        if (grid) {
-            grid.style.transform = `perspective(1000px) rotateX(60deg) translate(${x}px, ${y}px)`;
-        }
-
-        const hero = document.querySelector('.hero-title');
-        if (hero) {
-            hero.style.transform = `translate(${x * -0.2}px, ${y * -0.2}px)`;
-        }
-    });
-
     // Initial render
     if (commandList) {
         renderCommands();
     }
 
-    // --- Custom Cursor ---
-    const cursorDot = document.createElement('div');
-    cursorDot.className = 'cursor-dot';
-    const cursorTrail = document.createElement('div');
-    cursorTrail.className = 'cursor-trail';
-    document.body.appendChild(cursorDot);
-    document.body.appendChild(cursorTrail);
-
-    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-    let dotX = mouseX, dotY = mouseY;
-    let trailX = mouseX, trailY = mouseY;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    const updateCursor = () => {
-        dotX += (mouseX - dotX) * 0.2;
-        dotY += (mouseY - dotY) * 0.2;
-        trailX += (mouseX - trailX) * 0.1;
-        trailY += (mouseY - trailY) * 0.1;
-
-        cursorDot.style.left = `${dotX}px`;
-        cursorDot.style.top = `${dotY}px`;
-        cursorTrail.style.left = `${trailX}px`;
-        cursorTrail.style.top = `${trailY}px`;
-
-        requestAnimationFrame(updateCursor);
-    };
-    updateCursor();
-
-    const addHoverClass = () => document.body.classList.add('clickable-hover');
-    const removeHoverClass = () => document.body.classList.remove('clickable-hover');
-
-    const attachHoverToInteractive = () => {
-        document.querySelectorAll('a, button, .cmd-item, .card').forEach(el => {
-            el.addEventListener('mouseenter', addHoverClass);
-            el.addEventListener('mouseleave', removeHoverClass);
-        });
-    };
-    attachHoverToInteractive();
-    // Re-attach hover when commands are re-rendered
-    if (tabContainer || searchInput) {
-        const originalRender = renderCommands;
-        renderCommands = (filter) => {
-            originalRender(filter);
-            setTimeout(attachHoverToInteractive, 50);
-        };
-        // Run once manually to catch initial render
-        setTimeout(attachHoverToInteractive, 50);
-    }
-
-    // --- Particle Network Canvas ---
-    const canvas = document.getElementById('network-canvas');
-    if (canvas) {
+    function initNetworkCanvas(canvas) {
+        if (!canvas || canvas.dataset.nexusInit === '1') return;
+        canvas.dataset.nexusInit = '1';
         const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
-        
+        let width;
+        let height;
+        const particles = [];
+
         const resizeCanvas = () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
@@ -416,17 +390,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const animateParticles = () => {
             ctx.clearRect(0, 0, width, height);
-            
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
                 particles[i].draw();
-                
-                // Draw lines between nearby particles
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-                    
                     if (dist < 120) {
                         const alpha = Math.max(0, 0.2 - dist / 600);
                         const useViolet = (i + j) % 3 === 0;
@@ -439,8 +409,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         ctx.stroke();
                     }
                 }
-                
-                // Interactive distance to mouse
                 const mdx = particles[i].x - mouseX;
                 const mdy = particles[i].y - mouseY;
                 const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
@@ -448,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(mouseX, mouseY);
-                    ctx.strokeStyle = `rgba(157, 0, 255, ${0.4 - mDist/375})`;
+                    ctx.strokeStyle = `rgba(157, 0, 255, ${0.4 - mDist / 375})`;
                     ctx.stroke();
                 }
             }
@@ -457,7 +425,8 @@ document.addEventListener('DOMContentLoaded', () => {
         animateParticles();
     }
 
-    // --- Dynamic Network Background Injection (If missing) ---
+    initNetworkCanvas(document.getElementById('network-canvas'));
+
     if (!document.getElementById('network-canvas')) {
         const bgContainer = document.createElement('div');
         bgContainer.className = 'nexus-bg';
@@ -469,10 +438,49 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="orb orb-2"></div>
         `;
         document.body.prepend(bgContainer);
-        // Reload location to trigger the canvas script initialized above (requires small refactor or just run it inline, easier to just reload if needed)
-        // Actually, since we already missed the initialization above, let's just use CSS background if we don't want to re-execute. 
-        // We will just leave it as is or the user will need to refresh.
+        initNetworkCanvas(document.getElementById('network-canvas'));
     }
+
+    const useFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (useFinePointer) {
+        document.body.classList.add('custom-cursor-enabled');
+        const cursorDot = document.createElement('div');
+        cursorDot.className = 'cursor-dot';
+        const cursorTrail = document.createElement('div');
+        cursorTrail.className = 'cursor-trail';
+        document.body.appendChild(cursorDot);
+        document.body.appendChild(cursorTrail);
+
+        let dotX = mouseX;
+        let dotY = mouseY;
+        let trailX = mouseX;
+        let trailY = mouseY;
+
+        const updateCursor = () => {
+            dotX += (mouseX - dotX) * 0.2;
+            dotY += (mouseY - dotY) * 0.2;
+            trailX += (mouseX - trailX) * 0.1;
+            trailY += (mouseY - trailY) * 0.1;
+            cursorDot.style.left = `${dotX}px`;
+            cursorDot.style.top = `${dotY}px`;
+            cursorTrail.style.left = `${trailX}px`;
+            cursorTrail.style.top = `${trailY}px`;
+            requestAnimationFrame(updateCursor);
+        };
+        updateCursor();
+    }
+
+    document.addEventListener('mouseover', (e) => {
+        const el = e.target.closest?.('a, button, .cmd-item, .card, .explore-card, .nav-item, .protocol-strip a, .scroll-to-top, .toggle-switch');
+        if (el) document.body.classList.add('clickable-hover');
+    });
+    document.addEventListener('mouseout', (e) => {
+        const el = e.target.closest?.('a, button, .cmd-item, .card, .explore-card, .nav-item, .protocol-strip a, .scroll-to-top, .toggle-switch');
+        const rel = e.relatedTarget;
+        if (el && (!rel || !el.contains(rel))) {
+            document.body.classList.remove('clickable-hover');
+        }
+    });
 
     // --- Dynamic Scroll-to-Top Button ---
     const scrollTopBtn = document.createElement('button');
