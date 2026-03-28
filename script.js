@@ -483,4 +483,55 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollTopBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // --- FAQ Accordions ---
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.closest('.faq-item');
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+
+    // --- Live Bot Stats Integration ---
+    fetch('http://localhost:3000/api/stats')
+        .then(res => {
+            if (!res.ok) throw new Error('API Offline');
+            return res.json();
+        })
+        .then(data => {
+            console.log('[NEXUS] Received Live Telemetry:', data);
+            
+            // 1. Update Homepage Counters (if any)
+            const counters = document.querySelectorAll('.stat-number');
+            if (counters.length >= 4) {
+                counters[0].dataset.target = data.guilds; // Servers
+                // Only update data target before animation runs. If it ran, just text content.
+                if (counters[0].dataset.done) counters[0].textContent = data.guilds + '+';
+                else counters[0].dataset.target = data.guilds;
+            }
+
+            // 2. Update Status Page (status.html)
+            const networkPings = document.querySelectorAll('.terminal-body span');
+            networkPings.forEach(span => {
+                if (span.innerText === '24ms') span.innerText = `${data.ping || 0}ms`;
+                if (span.innerText === '001 / 001') span.innerText = `${data.shards || 1} / ${data.shards || 1}`;
+            });
+
+            // 3. Update active shard counter in dashboard/status visual
+            const shardHealth = document.querySelector('.shard-item');
+            if (shardHealth) {
+                shardHealth.innerHTML = `
+                    <span style="color: var(--primary); font-family: 'JetBrains Mono'; font-size: 0.8rem;">SHARD_ACTIVE (${data.shards || 1})</span>
+                    <div style="font-size: 0.6rem; color: var(--text-dim);">UPLINK: ACTIVE | LATENCY: ${data.ping}ms</div>
+                `;
+            }
+        })
+        .catch(err => {
+            console.warn('[NEXUS] Falling back to offline simulator.', err);
+        });
 });

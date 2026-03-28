@@ -26,6 +26,7 @@
                 <a href="index.html">Home</a>
                 <a href="commands.html">Commands</a>
                 <a href="wiki.html">Wiki</a>
+                <a href="faq.html">FAQ</a>
                 <a href="staff.html">Staff</a>
                 <a href="premium.html">Premium</a>
                 <a href="changelog.html">Changelog</a>
@@ -44,7 +45,7 @@
             </div>
 
             <div class="grid-container reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
-                <div class="terminal-container" style="border-color: var(--primary-glow);">
+                <div class="terminal-container glass-panel" style="border-color: var(--primary-glow);">
                     <div class="terminal-header" style="background: rgba(0, 255, 204, 0.05);">
                         <div style="font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--primary);">SHARD_HEALTH_MATRIX</div>
                     </div>
@@ -58,17 +59,17 @@
                             <span style="color: var(--primary);">24ms</span>
                         </div>
                         <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                            <span>Uptime</span>
+                            <span>System Uptime</span>
                             <span style="color: var(--primary);">99.98%</span>
                         </div>
                         <div style="display: flex; justify-content: space-between;">
-                            <span>Status</span>
+                            <span>Protocol Status</span>
                             <span style="color: #00FF88;">NOMINAL</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="terminal-container" style="border-color: var(--secondary-glow);">
+                <div class="terminal-container glass-panel" style="border-color: var(--secondary-glow);">
                     <div class="terminal-header" style="background: rgba(188, 19, 254, 0.05);">
                         <div style="font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--secondary);">RESOURCE_DISTRIBUTION</div>
                     </div>
@@ -82,7 +83,7 @@
                             <span style="color: var(--secondary);">412MB / 2048MB</span>
                         </div>
                         <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                            <span>Thread Count</span>
+                            <span>Gateway Threads</span>
                             <span style="color: var(--secondary);">4 Active</span>
                         </div>
                         <div style="display: flex; justify-content: space-between;">
@@ -99,17 +100,18 @@
                 <span class="section-label">Live Feed</span>
                 <h2 class="section-title">Global Pulse</h2>
             </div>
-            <div class="terminal-container reveal">
+            <div class="terminal-container glass-panel reveal">
                 <div class="terminal-header">
                     <div style="font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--primary);">COMMAND_LOG_STREAM // REAL_TIME</div>
                 </div>
+                <!-- We apply ops-feed here so the typing animation works if we enable it for status too! Currently static fallback -->
                 <div class="terminal-body" style="height: 300px; overflow-y: hidden; font-family: 'JetBrains Mono'; font-size: 0.8rem; padding: 1.5rem; color: var(--text-dim);">
                     <div style="margin-bottom: 0.5rem;"><span style="color: var(--secondary);">[20:44:01]</span> <span style="color: var(--primary);">SHARD_0</span>: Incoming command payload from GUILD_8829...</div>
                     <div style="margin-bottom: 0.5rem;"><span style="color: var(--secondary);">[20:44:03]</span> <span style="color: var(--primary);">SHARD_0</span>: Executing protocol /HELP... Success.</div>
                     <div style="margin-bottom: 0.5rem;"><span style="color: var(--secondary);">[20:44:12]</span> <span style="color: var(--primary);">SHARD_0</span>: Neural levels calibrated for user 0092...</div>
                     <div style="margin-bottom: 0.5rem;"><span style="color: var(--secondary);">[20:44:15]</span> <span style="color: var(--primary);">SHARD_0</span>: Mass data purge initiated by ADMIN_USER...</div>
                     <div style="margin-bottom: 0.5rem;"><span style="color: var(--secondary);">[20:44:20]</span> <span style="color: var(--primary);">CORE</span>: Heartbeat pulse detected. All sectors stable.</div>
-                    <div style="margin-top: 1rem; color: var(--primary); animation: blink 1s infinite;">_ LOADING_ADDITIONAL_PACKETS...</div>
+                    <div style="margin-top: 1rem; color: var(--primary); animation: blink 1s infinite;">_ LISTENING_FOR_TRAFFIC...</div>
                 </div>
             </div>
         </section>
@@ -130,6 +132,7 @@
                     <a href="index.html">Home</a>
                     <a href="commands.html">Commands</a>
                     <a href="wiki.html">Wiki</a>
+                    <a href="faq.html">FAQ</a>
                     <a href="staff.html">Staff</a>
                     <a href="premium.html">Premium</a>
                     <a href="status.html">Network</a>

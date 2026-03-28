@@ -11,6 +11,10 @@ manager.on('shardCreate', shard => {
     console.log(`[SHARD] Launched shard ${shard.id}`);
 });
 
-manager.spawn().catch(err => {
+const { initWebServer } = require('./web/server');
+
+manager.spawn().then(() => {
+    initWebServer(manager);
+}).catch(err => {
     console.error('[SHARD] Failed to spawn shards:', err);
 });
