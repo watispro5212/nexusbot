@@ -6,6 +6,6 @@ const blacklistSchema = new mongoose.Schema({
     reason: { type: String, default: '' },
 }, { timestamps: true });
 
-blacklistSchema.index({ userId: 1 });
+
 
 module.exports = mongoose.model('BlacklistEntry', blacklistSchema);
