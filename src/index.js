@@ -21,10 +21,8 @@ manager.on('shardError', (error, shardId) => {
     console.error(`[SHARD ${shardId}] Error:`, error);
 });
 
-const { initWebServer } = require('./web/server');
-
 manager.spawn().then(() => {
-    initWebServer(manager);
+    console.log('[SHARD] All shards spawned successfully.');
 }).catch(err => {
     console.error('[SHARD] Failed to spawn shards:', err);
 });
