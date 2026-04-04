@@ -1,310 +1,247 @@
-# NexusBot — Support Server Blueprint
+# 🌐 NexusBot — Complete Discord Server Blueprint
 
-Use this file as a **checklist** while you click through Discord. Work **top to bottom** — skipping steps (especially **role order** and **bot role height**) breaks tickets, verification, and moderation.
+Welcome to the **NexusBot Support Server Blueprint**. Use this comprehensive guide as a checklist to build and structure your Discord server perfectly from scratch. Avoid skipping steps—**especially role hierarchy positioning**—to ensure that tickets, verification, and moderation systems function correctly.
 
 ---
 
-## How to read this
+## 📖 How to read this guide
 
-| Symbol | Meaning |
+| Syntax | Meaning |
 |--------|---------|
-| **Do this** | Concrete action in Discord (or your bot). |
-| **Pick one** | Choose option A *or* B — don’t mix unless you know why. |
-| `@everyone` | Discord’s base role — not a role you create. |
-
-**Discord UI paths** use arrows: `Server name (top left) → Server Settings → …`
-
----
-
-## TL;DR — build order
-
-1. Create the **server** and set **Server Settings → Community** (optional) / verification level.  
-2. Create **roles** in **Server Settings → Roles** — **exact order matters** (see §2). Drag roles so **Architect** is at the **top** of the list.  
-3. Create **categories** first (empty), then **channels** inside each category (§3).  
-4. Set **category permissions** (§4), then **channel overrides** only where something differs.  
-5. Invite **Nexus bot** with `applications.commands`; **drag `🤖 Nexus Bot` role above** `✅ Verified` and any role the bot assigns.  
-6. Configure **Welcome** / **Membership Screening** (§5).  
-7. Paste **start-here** and **rules** text (§6–7). Run **`/ticket-setup`** and **`/verify-setup`** in your server (§8).
+| **Take Action** | Concrete action to perform in your server settings. |
+| **Pick one** | Choose option A *or* B — don’t mix unless you have a specific use case. |
+| `@everyone` | The default Discord base role — not a custom role. |
+| `⚙️` | Settings navigation, e.g. `Server name (top left) → Server Settings → …` |
 
 ---
 
-## 1. Server basics — first 10 minutes
+## 🏗️ TL;DR — Quick Build Order
 
-Do these in **Server Settings** (gear icon next to server name).
-
-| Step | Where to click | What to choose |
-|------|----------------|----------------|
-| 1 | `Overview` | **Server name** — e.g. `Nexus Protocol` or `NexusBot · Support`. |
-| 2 | `Overview` | **Icon** — match your site branding. |
-| 3 | `Overview` | **Description** — one line, e.g. *Official Nexus bot · help · docs · self-hosting*. |
-| 4 | `Safety Setup` or `Moderation` | **Verification level** — **Medium** recommended for public invite links; **High** if you get raids. |
-| 5 | `Default notification settings` | **Only @mentions** — stops new members from getting pinged by every message. |
-| 6 | `Privacy` (user) | Remind mods: enable **2FA** on their Discord account for mod actions. |
-| 7 | `Roles` | See §2 next — **before** creating many channels. |
-
-**Optional — Community features:**  
-`Server Settings → Enable Community` gives you **Rules/Guidelines** screening and **Welcome** screens. Use it if you want Discord’s native “agree to rules” flow (§5).
+1. **Initialize Server:** Create the server and set `Server Settings → Community` (optional) / verification level.  
+2. **Setup Roles:** Create roles in `Server Settings → Roles`. **Exact order is critical** (see Section 2). Drag powerful roles like **Architect** to the top.  
+3. **Draft Categories:** Create empty categories first, then populate them with channels (see Section 3).  
+4. **Configure Category Permissions:** Set **permissions directly on the categories** (see Section 4). Then click "Sync Permissions" on channels inside them.
+5. **Invite Bots:** Invite **Nexus bot** and any other utility bots. Ensure their roles are dragged above the users they interact with.  
+6. **Screening & Welcome:** Configure **Welcome** / **Membership Screening** features (see Section 5).  
+7. **Populate Content:** Paste the **start-here** and **rules** text (see Sections 6 & 7). Run setup commands like `/ticket-setup` and `/verify-setup` (see Section 8).
 
 ---
 
-## 2. Roles — create in this order (top = highest power)
+## 1. ⚙️ Server Basics — First 10 Minutes
 
-### 2.1 Why order matters
+Navigate to **Server Settings** (click the gear icon or server name drop-down).
 
-- Users **only receive permissions** from roles **below** conflicting roles in the list (Discord compares highest role first).  
-- **Bots** only apply roles **below the bot’s own role**. Put **`🤖 Nexus Bot` above** every role it must assign (e.g. `✅ Verified`).
+| Step | Navigation | Action Requirements |
+|------|------------|---------------------|
+| 1 | `Overview` | **Server name:** Choose a clean name, e.g., `Nexus Protocol` or `NexusBot · Support`. |
+| 2 | `Overview` | **Icon:** Upload a high-quality icon matching your branding. |
+| 3 | `Overview` | **Description:** Summarize your server. |
+| 4 | `Safety Setup` | **Verification level:** Set to **Medium** or **High** to stop spammers. |
+| 5 | `Notifications`| **Default Setting:** Set to **Only @mentions** so new members aren't spammed. |
+| 6 | `Privacy` | **Moderation:** Enforce **2FA** on moderation actions for extra security. |
 
-### 2.2 Create each role
+---
+
+## 2. 🎭 Role Hierarchy & Global Permissions
+
+### ⚠️ Why order is crucial
+
+- Users **only receive permissions** depending on their position in the role hierarchy. A role cannot moderate or assign a role higher than its own.
+- **Bots** can only interact with or assign roles **below their own highest role**. Put **Bots above** levels, verified flags, and regular members.
+
+### 🗂️ Create Roles (Top to Bottom)
 
 **Path:** `Server Settings → Roles → Create Role`
 
-Create **one at a time**, then **drag** to match this order (**top of list = row 1**):
+Create **one by one** and drag to match this exact order (Row 1 is highest priority). This includes staff ranks, integrations, fun roles, and leveling roles:
 
-| # | Role name (copy-paste) | Color (hex) | Who gets it |
-|---|------------------------|-------------|-------------|
-| 1 | `👑 Nexus Architect` | `#FF4444` | You / owners only |
-| 2 | `⚙️ Core Team` | `#9D00FF` | Leads: full server management |
-| 3 | `🛡️ Moderator` | `#00FFEA` | Moderation + tickets |
-| 4 | `💠 Support Staff` | `#5CE1E6` | Help desk + tickets (no server structure) |
-| 5 | `✨ Contributor` | `#8899AA` | Optional helpers / docs |
-| 6 | `🤖 Nexus Bot` | *(default)* | **The bot account** — assign this role **to the bot** after invite |
-| 7 | `📡 Booster` | *(auto)* | Optional — use Server Boost settings |
-| 8 | `✅ Verified` | `#57F287` | Members who passed rules / verification |
+| # | Role Name | Hex Color | Who gets it |
+|---|-----------|-----------|-------------|
+| 1 | `👑 Nexus Architect` | `#FF4444` | Server Owner & Founders |
+| 2 | `📈 Administrator` | `#FF0055` | Senior Staff / Co-Owners |
+| 3 | `⚙️ Core Team` | `#9D00FF` | Lead Devs & Management |
+| 4 | `🛡️ Moderator` | `#00FFEA` | Moderation & Enforcement Staff |
+| 5 | `🔨 Trial Mod` | `#20B2AA` | Mods in training |
+| 6 | `💠 Support Staff` | `#5CE1E6` | Help desk agents & Ticket handlers |
+| 7 | `🤝 Partner` | `#00FF00` | Partnered Server Representatives |
+| 8 | `🎥 Content Creator` | `#FF33CC` | YouTubers / Streamers |
+| 9 | `💎 Donator / VIP` | `#FFD700` | Financial supporters or premium users |
+| 10 | `👾 Beta Tester` | `#FF9900` | Users designated for alpha/beta testing |
+| 11 | `🤖 Nexus Bot` | *(bot preset)* | **Main Bot Application** |
+| 12 | `🛠️ Utility Bots` | *(bot preset)* | Other bots (Music bots, Logging bots, Economy) |
+| 13 | `👑 Level 50 · Legend` | `#E6E6FA` | Max active chatter rank |
+| 14 | `🏆 Level 30 · Master` | `#DDA0DD` | High active chatter rank |
+| 15 | `🌟 Level 10 · Adept` | `#BA55D3` | Mid active chatter rank |
+| 16 | `✨ Level 5 · Novice` | `#8A2BE2` | Base active chatter rank |
+| 17 | `📡 Server Booster` | *(auto)* | Discord Nitro Boosters |
+| 18 | `✅ Verified` | `#57F287` | Users who passed the rule-screening |
+| 19 | `👤 Member` | *(default)* | General authenticated members |
+| 20 | `🔊 Muted` | `#111111` | For custom manual muting (Deny Send Msgs) |
 
-**Do not** give `Administrator` to everyone. Prefer **Core Team** with: *Manage Server, Manage Roles, Manage Channels, Manage Webhooks, View Audit Log* — add only what you need.
+### 🔐 Global Permissions per Role
 
-### 2.3 Permission presets (Server Settings → Roles → [role] → Permissions)
+Configure these checkboxes in `Server Settings → Roles`.
 
-| Permission | Architect | Core | Mod | Support | Verified |
-|------------|-----------|------|-----|---------|----------|
-| Administrator | ✓ or use granular* | optional | ✗ | ✗ | ✗ |
-| Manage Server | ✓ | ✓ | ✗ | ✗ | ✗ |
-| Manage Roles | ✓ | ✓ | ✗* | ✗ | ✗ |
-| Manage Channels | ✓ | ✓ | ✗* | ✗ | ✗ |
-| Kick Members | ✓ | ✓ | ✓ | optional | ✗ |
-| Ban Members | ✓ | ✓ | ✓ | ✗ | ✗ |
-| Moderate Members (timeout) | ✓ | ✓ | ✓ | ✓ | ✗ |
-| Manage Messages | ✓ | ✓ | ✓ | ✓ | ✗ |
-| Manage Threads | ✓ | ✓ | ✓ | ✓ | ✗ |
-| Read Message History | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Send Messages | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Embed Links / Attach Files | ✓ | ✓ | ✓ | ✓ | ✓ |
-
-\*If Mod shouldn’t change server layout, leave **Manage Channels / Roles** off at server level; use **per-channel** overrides for tickets only.
-
-**`✅ Verified`:** Turn **off** every permission except what `@everyone` has — it’s a **tag**, not a power role, unless you use it to **unlock** channels (§4).
-
----
-
-## 3. Categories and channels — build list
-
-**Path:** Right-click server → `Create Category` → name it exactly as below. Then **right-click category → Create Channel** for each row.
-
-Use the **`┃`** character between emoji and name (optional) — it keeps names aligned in the sidebar.
-
-### 3.1 `📌 INFORMATION`
-
-| # | Channel name | Type | Slowmode | Purpose |
-|---|--------------|------|----------|---------|
-| 1 | `📢┃announcements` | Text | Off | Staff-only posts; ping `@everyone` only for big news |
-| 2 | `📜┃rules` | Text | Off | One pinned rules message + link to site Terms |
-| 3 | `🚀┃start-here` | Text | Off | **Onboarding** — paste text from §6 |
-| 4 | `🔗┃links` | Text | Off | Bot invite, website, GitHub, status URL |
-| 5 | `📊┃status` | Text | Off | Optional: manual status or webhook |
-
-### 3.2 `💬 COMMUNITY`
-
-| # | Channel name | Slowmode |
-|---|--------------|----------|
-| 1 | `💬┃general` | 5 seconds |
-| 2 | `🎨┃showcase` | 30 seconds |
-| 3 | `💡┃suggestions` | 1 minute (or use **Forum** channel type) |
-
-### 3.3 `🆘 SUPPORT`
-
-| # | Channel name | Slowmode |
-|---|--------------|----------|
-| 1 | `❓┃faq` | Off |
-| 2 | `🧰┃help` | 10 seconds |
-| 3 | `🐛┃bug-reports` | 30 seconds |
-| 4 | `🔧┃self-hosting` | 30 seconds |
-
-**Optional:** Replace these with one **Forum** channel `🆘┃support` with tags: `question`, `bug`, `self-host`, `api`.
-
-### 3.4 `🎫 TICKETS`
-
-| # | Channel name | Notes |
-|---|--------------|--------|
-| 1 | `📩┃open-a-ticket` | Text + **button** from Nexus `/ticket-setup` (see §8) |
-| *(auto)* | `ticket-username` | **Created by bot** — not created by hand |
-
-### 3.5 `📚 DOCS & DEV`
-
-| # | Channel name |
-|---|--------------|
-| 1 | `📖┃wiki-links` |
-| 2 | `🔌┃api` |
-| 3 | `🧪┃bot-sandbox` | *(optional — mute spam)* |
-
-### 3.6 `🔒 STAFF` (private)
-
-| # | Channel name |
-|---|--------------|
-| 1 | `📋┃staff-chat` |
-| 2 | `📌┃staff-notes` |
-| 3 | `⚠️┃mod-log` | *(optional webhooks)* |
-
-### 3.7 `🔊 VOICE` *(optional)*
-
-| # | Channel name |
-|---|--------------|
-| 1 | `🔊┃Lounge` |
-| 2 | `🎙️┃Support Desk` |
+| Role | Admin | Manage Server | Manage Roles/Channels | Kick/Ban | Timeout | Manage Messages | Send / View / Connect |
+|------|-------|---------------|-----------------------|----------|---------|-----------------|-----------------------|
+| Architect | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Administrator| ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Core Team | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Moderator | ✗ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ |
+| Trial Mod | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✓ |
+| Support Staff| ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ |
+| Partner/Creator| ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ |
+| Donator/VIP | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ |
+| Beta Tester | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ |
+| Nexus Bot | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Utility Bots | ✗ | ✗ | ✓ | ✗ | ✗ | ✓ | ✓ |
+| Levels 5-50 | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ |
+| Booster | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ |
+| Verified | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ |
+| Member | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ |
+| Muted | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | **✗ (Deny Send)** |
 
 ---
 
-## 4. Permissions — two clear setups
+## 3. 📂 Categories & Channels Structure
 
-**Pick A or B** for your whole server. B is stricter (better against spam bots).
+**Path:** Right-click server layout → `Create Category`. Then `Create Channel` inside. Use the vertical bar **`┃`** separator.
 
-### Setup A — Open support (simplest)
+**Do NOT set individual channel permissions unless specifically instructed. Let them "Sync" automatically from the category.**
 
-- `@everyone` can **View** and **Send** in **COMMUNITY**, **SUPPORT**, and **DOCS** (not STAFF, not TICKETS category).  
-- **INFORMATION:** `@everyone` can **View** all channels; **Send** only where you want chat (often: **only** `💬┃general` and support channels — **not** `📢┃announcements` or `📜┃rules`).
-
-**How to set “read-only” info channels:**
-
-1. Open `📢┃announcements` → **Edit Channel** (gear) → **Permissions**.  
-2. Add `@everyone` → **View Channel: Allow**, **Send Messages: Deny**.  
-3. Add `⚙️ Core Team` (and Mod if needed) → **Send Messages: Allow**.  
-4. Repeat for `📜┃rules`, `🚀┃start-here`, `🔗┃links`, `📊┃status` if they should be read-only.
-
-### Setup B — Verified gate (recommended for public listing)
-
-- **Before** someone gets `✅ Verified`, they only see **INFORMATION** + maybe `🚀┃start-here`.  
-- After **Verified**, they see **COMMUNITY**, **SUPPORT**, **DOCS**.
-
-**Steps:**
-
-1. **Server Settings → Safety → Membership Screening** — enable and paste short rules (§7).  
-2. For **COMMUNITY** category: **Edit Category → Permissions** → `@everyone` → **View Channel: Deny** → Add `✅ Verified` → **View: Allow**, **Send: Allow**.  
-3. Same for **SUPPORT** and **DOCS** if you want them gated.  
-4. **INFORMATION** stays **View: Allow** for `@everyone` so they can read rules and links.
-
-### TICKETS category (always)
-
-1. **Edit Category `🎫 TICKETS` → Permissions**.  
-2. `@everyone` → **View Channel: Deny**.  
-3. Add `💠 Support Staff`, `🛡️ Moderator`, `⚙️ Core Team`, `👑 Nexus Architect` → **View: Allow**, **Send: Allow**.  
-4. `🤖 Nexus Bot` → **View: Allow**, **Manage Channels: Allow** *(if your ticket flow creates channels)*.
-
-### STAFF category (always)
-
-1. `@everyone` → **View: Deny**.  
-2. `🛡️ Moderator` and above → **View: Allow** (add Support if they need staff chat).
+| Category | Channel Name | Type | Notes |
+|----------|--------------|------|-------|
+| `📌 INFORMATION`| `📢┃announcements` | Text (📢)| Staff-only posts. |
+| `📌 INFORMATION`| `📰┃updates` | Text | Minor bot, server, or codebase updates. |
+| `📌 INFORMATION`| `📜┃rules` | Text | Hard rules, guidelines. |
+| `📌 INFORMATION`| `🚀┃start-here` | Text | **Onboarding flow.** |
+| `📌 INFORMATION`| `🔗┃links` | Text | Invites, Github, Socials, Status URLs. |
+| `💬 COMMUNITY` | `💬┃general` | 5s | The main hub for conversation. |
+| `💬 COMMUNITY` | `🤖┃bot-commands` | 15s | Spam zone for `/commands` and levels. |
+| `💬 COMMUNITY` | `🎨┃showcase` | 30s | Sharing projects, setups, or artwork. |
+| `💬 COMMUNITY` | `💡┃suggestions`| Forum | Dedicated community feedback forum. |
+| `🆘 SUPPORT` | `❓┃faq` | Text | Read-only frequently asked questions. |
+| `🆘 SUPPORT` | `🧰┃help` | Forum | Community support space. |
+| `🆘 SUPPORT` | `🐛┃bug-reports` | Forum | Structured bug tracking zone. |
+| `🆘 SUPPORT` | `🔧┃self-hosting` | Text | Developer deployment assistance channel. |
+| `🎫 TICKETS` | `📩┃open-a-ticket` | Text | Read-only. Houses your bot ticket button. |
+| `📚 DOCS & DEV` | `📖┃wiki` | Text | Links to external documentation. |
+| `📚 DOCS & DEV` | `🔌┃api-updates` | Text | Specific API/Webhook changelogs. |
+| `📚 DOCS & DEV` | `🧪┃sandbox` | Text | Test zone for beta stuff. |
+| `🔒 STAFF AREA` | `📋┃staff-chat` | Text | General administrative chat. |
+| `🔒 STAFF AREA` | `📌┃staff-notes` | Text | To-do lists, architecture planning. |
+| `🔒 STAFF AREA` | `⚠️┃mod-log` | Text | Auto-logged events. |
 
 ---
 
-## 5. Welcome & join messages
+## 4. 🔏 Category-Level Permissions (Sync Strategy)
 
-### 5.1 System welcome channel
+To make everything cleaner, **set your permissions on the Categories themselves**. The channels inside will automatically sync.
 
-**Path:** `Server Settings → Overview → System Messages Channel`
+**Path:** Right-click Category → `Edit Category` → `Permissions`. Add the specific roles listed under each category below.
 
-- Set to **`🚀┃start-here`** (or create `👋┃welcome` if you prefer).  
-- Turn **off** “Send a random welcome message” if you use a **custom bot** embed instead.
+### `📌 INFORMATION` Category
+These are your global read-only info channels.
+- **`@everyone`**: View Channel (**✓**), Send Messages (**✗**), Read Message History (**✓**)
+- **`Administrators` / `Core Team`**: Send Messages (**✓**)
+- **`🤖 Nexus Bot`**: Send Messages (**✓**)
 
-### 5.2 What new members should see first
+### `💬 COMMUNITY` Category
+Gated chatting zone for people who accepted the rules.
+- **`@everyone`**: View Channel (**✗**) *(Hides chat from random unverified users)*
+- **`✅ Verified`**: View Channel (**✓**), Send Messages (**✓**), Read Message History (**✓**), Attach Files (**✓**), Embed Links (**✓**)
+- **`🔊 Muted`**: Send Messages (**✗**), Add Reactions (**✗**), Create Threads (**✗**), Speak in Voice (**✗**)
 
-In **`🚀┃start-here`**, they must see (in order):
+### `🆘 SUPPORT` Category
+Gated support area.
+- **`@everyone`**: View Channel (**✗**)
+- **`✅ Verified`**: View Channel (**✓**), Send Messages (**✓**)
+- **`🔊 Muted`**: Send Messages (**✗**)
 
-1. What this server is (one sentence).  
-2. Link to **`📜┃rules`**.  
-3. How to get **`✅ Verified`** (reaction, screening, or `/verify`).  
-4. Where to ask for help: **`🧰┃help`** or **`📩┃open-a-ticket`**.  
-5. Link to **`🔗┃links`** for the bot OAuth.
+### `🎫 TICKETS` Category
+Should be mostly invisible except for the open ticket channel.
+- **`@everyone`**: View Channel (**✗**)
+- **`✅ Verified`**: View Channel (**✓**), Send Messages (**✗**) *(Allows them to click the ticket button without chatting)*
+- **`💠 Support Staff` / `🛡️ Moderator`**: View Channel (**✓**), Send Messages (**✓**)
+- **`🤖 Nexus Bot`**: View Channel (**✓**), Send Messages (**✓**), Manage Channels (**✓**) *(Allows bot to create private ticket sub-channels)*
 
-Paste the full template from **§6** below.
+### `📚 DOCS & DEV` Category
+Gated read-only developer resources.
+- **`@everyone`**: View Channel (**✗**)
+- **`✅ Verified`**: View Channel (**✓**), Send Messages (**✗**)
+- **`Administrators` / `Core Team`**: Send Messages (**✓**)
 
-### 5.3 Optional: join log
-
-Create a **private** webhook or bot log to **`📋┃staff-chat`** or **`⚠️┃mod-log`** with: user ID, account age, invite used — helps catch alt abuse.
+### `🔒 STAFF AREA` Category
+Highly restricted.
+- **`@everyone`**: View Channel (**✗**)
+- **`🔨 Trial Mod`**, **`💠 Support Staff`**: View Channel (**✓**)
+- **`🛡️ Moderator`**, **`⚙️ Core Team`**, **`Administrator`**: View Channel (**✓**), Send Messages (**✓**)
+- **`🤖 Nexus Bot`**, **`🛠️ Utility Bots`**: View Channel (**✓**), Send Messages (**✓**) *(For mod-logging and alerts)*
 
 ---
 
-## 6. Onboarding — copy-paste for `🚀┃start-here`
+## 5. 👋 Welcome & Member Screening
 
-Edit channel names if yours differ.
+1. **System Welcome:** Go to `Server Settings → System Messages Channel`. Set it to `🚀┃start-here` or a dedicated `👋┃welcome`.
+2. **Screening:** Enable standard built-in rules screening via the **Community Settings** tab to force users to click "I Agree" before interacting.
+3. **Optional Log:** Send automated welcome logs into your `⚠️┃mod-log` channel to easily catch suspicious account creation dates.
+
+---
+
+## 6. 📝 Onboarding Message Template (Paste in `🚀┃start-here`)
 
 ```markdown
-# Welcome to Nexus Protocol
+# Welcome to the Nexus Protocol Server! 🚀
 
-Thanks for joining. Do this **in order**:
+Thanks for stopping by! Please take a quick moment to orient yourself:
 
-**1.** Read **📜┃rules** — no harassment, no sharing tokens or database passwords in public.  
-**2.** Complete verification (button or reaction below) to get **✅ Verified** if the server uses it.  
-**3.** Add Nexus: open **🔗┃links** and use the bot invite (OAuth).  
-**4.** Need help? Post in **🧰┃help** with your issue (one message, clear steps).  
-**5.** Bug? Use **🐛┃bug-reports** — include bot version and what you tried.  
-**6.** Self-hosting? Use **🔧┃self-hosting** — never paste your `.env` in chat.
+**1.** 📜 Read our rules in <#CHANNEL_ID_HERE>. We strongly prohibit toxicity and sharing sensitive/secret tokens here.
+**2.** ✅ Verify your account by hitting the button below or interacting with the screening popup to gain full server access.
+**3.** 🤖 Looking to add NexusBot? Head straight over to <#CHANNEL_ID_HERE> to find the official invite link.
+**4.** 🆘 Need assistance? Use the community <#CHANNEL_ID_HERE> or open a private ticket over at <#CHANNEL_ID_HERE>.
+**5.** 🐛 Found a bug or glitch? Make a post in <#CHANNEL_ID_HERE> outlining exactly what happened.
 
-**Staff:** **📖┃wiki-links** · **🔌┃api** for HTTP endpoints.
+Have an amazing time here!
+— The Nexus Team
 ```
 
 ---
 
-## 7. Rules text — paste into `📜┃rules` or screening
+## 7. ⚖️ Basic Server Rules Template (Paste in `📜┃rules`)
 
-Short version (expand as needed):
-
-1. **Be respectful** — no hate, harassment, or NSFW.  
-2. **No secrets in public** — never post **bot tokens**, **MongoDB URIs**, passwords, or DMs you didn’t send. Use **tickets** or staff DMs.  
-3. **Support format** — what you did, what you expected, error text, Nexus version (e.g. v6). Screenshots OK.  
-4. **Language** — English (or state your server language) in support channels.  
-5. **Discord** — follow [Community Guidelines](https://discord.com/guidelines) and [Terms](https://discord.com/terms).  
-6. **Enforcement** — mods may warn, timeout, kick, or ban.
-
----
-
-## 8. Nexus bot — setup checklist (run in your server)
-
-Do this **after** roles exist and **Nexus Bot** role is **high enough** on the list.
-
-| Step | Command / action | What to verify |
-|------|------------------|----------------|
-| 1 | Invite bot with **Administrator** or at least: Manage Channels, Send Messages, Embed Links, Use Slash Commands, Manage Roles (if verify) | Bot appears online |
-| 2 | Drag **`🤖 Nexus Bot`** role **above** `✅ Verified` | Bot can assign Verified |
-| 3 | `npm run deploy` (on your machine) + slash commands synced | `/help` works |
-| 4 | `/ticket-setup` in **`📩┃open-a-ticket`** | Button creates private channels |
-| 5 | `/verify-setup` *(optional)* | Matches your Verified role name |
-| 6 | `/log-setup` / `/automod-setup` *(optional)* | Point to **`⚠️┃mod-log`** / `💬┃general` |
-| 7 | `/starboard-setup` *(optional)* | Starboard channel if you use it |
-
-**If tickets fail:** Almost always **bot role too low** or **missing Manage Channels**. Fix role order first.
+```markdown
+1. **Be Respectful:** No hate speech, organized harassment, or NSFW content. Keep things PG-13.
+2. **Protect Your Data (No Secrets in Public):** Never post Bot Tokens, MongoDB URLs, Passwords, or exact `.env` files in public. Staff will never DM you for a password.
+3. **High-Quality Support Format:** When asking for help, explain what you did, what you expected, the exact error provided, and your Nexus version. Include screenshots if possible.
+4. **Use Appropriate Channels:** Keep spam command execution in the `🤖┃bot-commands` channel. 
+5. **Follow Discord Guidelines:** See the official [Discord Guidelines](https://discord.com/guidelines).
+6. **Enforcement:** Moderators have the final say and may timeout, kick, or ban users who intentionally disrupt the server.
+```
 
 ---
 
-## 9. Emoji reference (Unicode)
+## 8. 🛠️ Final Setup: Bot Commands
 
-| Area | Emojis |
-|------|--------|
-| Info | 📌 📢 📜 🚀 🔗 📊 |
-| Community | 💬 🎨 💡 |
-| Support | 🆘 ❓ 🧰 🐛 🔧 |
-| Tickets | 🎫 📩 |
-| Staff | 🔒 📋 ⚠️ |
-| Voice | 🔊 🎙️ |
+Execute these slash commands when the server layout is fully polished:
 
----
-
-## 10. Maintenance (monthly)
-
-- [ ] Archive or delete old **ticket** channels.  
-- [ ] Check **slowmode** on busy channels.  
-- [ ] Update **`📊┃status`** when you deploy.  
-- [ ] Remove unused **roles** and stale **permissions**.  
-- [ ] Confirm **bot invite** link in **`🔗┃links`** still uses correct `client_id` and scopes.
+| Step | Command / Action | Result |
+|------|------------------|--------|
+| 1 | Invite Bot & ensure highest placement | Resolves hierarchy-related permission errors. |
+| 2 | `/ticket-setup` in `📩┃open-a-ticket` | Creates the core interactive ticket UI. |
+| 3 | `/verify-setup` in `🚀┃start-here` | Maps your customized `✅ Verified` role. |
+| 4 | `/log-setup` pointing to `⚠️┃mod-log` | Routes automated moderation logging. |
+| 5 | `/automod-setup` | Configures automated anti-spam and word filters. |
+| 6 | `/starboard-setup` | Engages the fun starboard module! |
 
 ---
 
-*This file documents only Discord server layout. It does not change the Nexus codebase. Adjust names and strictness to your team size and threat model.*
+## 9. 🧽 Regular Maintenance (Monthly)
+
+- [ ] Clear out or archive ancient, dead support tickets.
+- [ ] Evaluate and update channel slowmode timings.
+- [ ] Ensure **`📊┃status`** reflects the latest version numbers.
+- [ ] Cull unused or empty permission roles.
+- [ ] Re-test your **bot invite link** to make sure OAuth permissions are still optimal.
+
+---
+*Generated by the Nexus Team. Tailor specific channel names or moderation strictness strictly based on your personal community metrics.*
