@@ -24,15 +24,15 @@ module.exports = {
         );
 
         const embed = createEmbed({
-            title: '🛠️ Support Matrix Uplink',
-            description: `Required assistance within **${interaction.guild.name}**?\n\nExecute the button below to initialize a high-security encrypted line with the Administrators.`,
-            color: '#00FFCC',
+            title: 'Support Matrix Uplink',
+            description: `**[ ENCRYPTED SIGNAL ACQUIRED ]**\n\nRequire architect assistance within **${interaction.guild.name}**? \n\nExecute the \`Initialize Uplink\` terminal below to establish a private, high-security bridge directly to the server moderation layer. Do not transmit sensitive parameters prior to connection.`,
+            color: '#BC13FE',
             thumbnail: interaction.guild.iconURL(),
-            footer: 'Nexus Support System | ENCRYPTED-LINE'
+            footer: 'Nexus Core | SECURE-TICKET-NODE'
         });
 
         await interaction.channel.send({ embeds: [embed], components: [row] });
 
-        await interaction.editReply({ content: '\`[SUCCESS]\` Support Matrix Uplink successfully deployed.' });
+        await interaction.editReply({ content: '\`[SUCCESS]\` High-Value Support Uplink successfully deployed.' });
     },
 };

@@ -1,5 +1,6 @@
-const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, ChannelType } = require('discord.js');
 const GuildConfig = require('../models/GuildConfig');
+const { createEmbed } = require('../utils/embed');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -30,10 +31,12 @@ module.exports = {
         config.starboardCount = count;
         await config.save();
         
-        const embed = new EmbedBuilder()
-            .setTitle('⭐ Starboard Configured')
-            .setDescription(`Starboard channel set to <#${channel.id}> requiring **${count}** star(s).`)
-            .setColor('#FEE75C');
+        const embed = createEmbed({
+            title: 'Starboard Matrix Initialized',
+            description: `> ⭐ **ARCHIVE NODE:** <#${channel.id}>\n> 📈 **THRESHOLD:** **${count}** Reaction(s)\n\nHigh-value data packets reaching the reaction threshold will now be automatically indexed and preserved indefinitely.`,
+            color: '#FEE75C',
+            footer: 'Nexus Memory | HALL-OF-FAME'
+        });
         return interaction.reply({ embeds: [embed] });
     }
 };

@@ -1,5 +1,6 @@
-const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 const GuildConfig = require('../models/GuildConfig');
+const { createEmbed } = require('../utils/embed');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -24,14 +25,20 @@ module.exports = {
         const subcmd = interaction.options.getSubcommand();
         const enabled = interaction.options.getBoolean('enabled');
 
+        const statusText = enabled ? '🟢 **ONLINE**' : '🔴 **OFFLINE**';
+        const colorHex = enabled ? '#00FFEA' : '#FF0055';
+
         if (subcmd === 'anti-spam') {
             config.antiSpam = enabled;
             await config.save();
             
-            const embed = new EmbedBuilder()
-                .setTitle('🛡️ Auto-Mod: Anti-Spam')
-                .setDescription(`Anti-Spam protection has been **${enabled ? 'ENABLED' : 'DISABLED'}**.`)
-                .setColor(enabled ? '#00FFEA' : '#FF0055');
+            const embed = createEmbed({
+                title: 'Auto-Mod: Heuristic Anti-Spam',
+                description: `> 🛡️ **FIREWALL STATUS:** ${statusText}\n\nThe Nexus flood-control protocol has been updated. Spam matrices and rapid-transmission filters are adjusted accordingly.`,
+                color: colorHex,
+                type: enabled ? 'success' : 'error',
+                footer: 'Nexus Security | FLOOD-DEFENSE'
+            });
             return interaction.reply({ embeds: [embed] });
         }
 
@@ -39,10 +46,13 @@ module.exports = {
             config.antiLinks = enabled;
             await config.save();
             
-            const embed = new EmbedBuilder()
-                .setTitle('🛡️ Auto-Mod: Anti-Links')
-                .setDescription(`Anti-Links protection has been **${enabled ? 'ENABLED' : 'DISABLED'}**.`)
-                .setColor(enabled ? '#00FFEA' : '#FF0055');
+            const embed = createEmbed({
+                title: 'Auto-Mod: External Link Filter',
+                description: `> 🔗 **FIREWALL STATUS:** ${statusText}\n\nExternal URL transmission filtering has been updated. Unverified hyperlink packets will be processed accordingly.`,
+                color: colorHex,
+                type: enabled ? 'success' : 'error',
+                footer: 'Nexus Security | LINK-FIREWALL'
+            });
             return interaction.reply({ embeds: [embed] });
         }
     }

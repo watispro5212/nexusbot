@@ -219,31 +219,34 @@ Highly restricted.
 ## 6. 📝 Onboarding Message Template (Paste in `🚀┃start-here`)
 
 ```markdown
-# Welcome to the Nexus Protocol Server! 🚀
+# 🌐 SIGNAL ACQUIRED: Welcome to the Nexus.
 
-Thanks for stopping by! Please take a quick moment to orient yourself:
+You have successfully connected to the **Nexus Protocol Central Hub**. Before you access the full grid, please initialize your session by reviewing the directory below:
 
-**1.** 📜 Read our rules in **#rules**. We strongly prohibit toxicity and sharing sensitive/secret tokens here.
-**2.** ✅ Verify your account by interacting with the screening popup to gain full server access.
-**3.** 🤖 Looking to add NexusBot? Head straight over to **#links** (or your bot invite channel) to find the official invite link.
-**4.** 🆘 Need assistance? Head over to **#open-a-ticket** to open a private ticket with our staff team.
-**5.** 🐛 Found a bug or glitch? Make a post in our **#bug-reports** tracking forum outlining exactly what happened.
+> 🛡️ **[01] SECURITY PROTOCOLS:** Review the system laws in **#rules** to maintain your connection stability.
+> 🧬 **[02] NEURAL SYNC:** Complete the Discord screening verification to bypass the firewall and unlock all public channels.
+> 🤖 **[03] INTEGRATION:** Want to deploy Nexus into your own sector? Extract the invite node located in **#links**.
+> 🆘 **[04] TRANSMIT DISTRESS:** Require architect assistance? Pinging staff is restricted; instead, initiate a private link in **#open-a-ticket**.
+> 🐛 **[05] ANOMALY DETECTION:** Log any system glitches or bot errors in the **#bug-reports** array.
 
-Have an amazing time here!
-— The Nexus Team
+Stay vigilant and enjoy the network.
+— **The Nexus Architects**
 ```
 
 ---
 
-## 7. ⚖️ Basic Server Rules Template (Paste in `📜┃rules`)
+## 7. ⚖️ System Security Guidelines (Paste in `📜┃rules`)
 
 ```markdown
-1. **Be Respectful:** No hate speech, organized harassment, or NSFW content. Keep things PG-13.
-2. **Protect Your Data (No Secrets in Public):** Never post Bot Tokens, MongoDB URLs, Passwords, or exact `.env` files in public. Staff will never DM you for a password.
-3. **High-Quality Support Format:** When asking for help, explain what you did, what you expected, the exact error provided, and your Nexus version. Include screenshots if possible.
-4. **Use Appropriate Channels:** Keep spam command execution in the `🤖┃bot-commands` channel.
-5. **Follow Discord Guidelines:** See the official [Discord Guidelines](https://discord.com/guidelines).
-6. **Enforcement:** Moderators have the final say and may timeout, kick, or ban users who intentionally disrupt the server.
+**[ NEXUS_ENFORCEMENT_PROTOCOL: ACTIVE ]**
+Failure to comply with network standards will result in immediate connection termination (Ban) or temporary isolation (Timeout). 
+
+🔸 **01. NO TOXIC OVERFLOW:** Hostile interactions, harassment, hate speech, and NSFW data packets are strictly prohibited. Maintain a clean signal.
+🔸 **02. SECURE YOUR TOKENS:** NEVER transmit raw bot tokens, MongoDB URIs, or passwords in public arrays. Staff will NEVER request your `.env` credentials in a DM.
+🔸 **03. ERROR REPORTING STANDARDS:** When filing a support request, do not just send "it's broken". Transmit your exact Node.js version, steps to reproduce the error, and console screenshots.
+🔸 **04. CHANNEL DISCIPLINE:** Execute bot strings strictly within **#bot-commands**. Keep general chat channels clear of bot-spam.
+🔸 **05. NETWORK TOS:** All subjects must rigidly adhere to standard [Discord Terms of Service](https://discord.com/terms).
+🔸 **06. ARCHITECT JURISDICTION:** The Moderation Team holds ultimate discretion over rule interpretation. Their directives are final.
 ```
 
 ---
@@ -265,6 +268,33 @@ Configure these inside the forum channel settings:
 - `💻 Code Error`
 - `⚙️ Configuration`
 - `✅ Solved`
+
+### 💡┃suggestions (Tags)
+- `✨ New Feature`
+- `🛠️ Enhancement`
+- `🎨 UI/UX`
+- `✅ Approved`
+- `❌ Declined`
+
+### 📌 Pinned "First Post" Template (For Suggestions Forum)
+Create a new post in the forum, name it **"READ BEFORE POSTING: How to Suggest"**, pin it, and lock it:
+
+```markdown
+**💡 Welcome to the Nexus Suggestions Board!**
+
+We value your ideas for improving the Nexus Protocol. To ensure your suggestion gets reviewed properly, please follow this format:
+
+**1. Keep it Clear and Concise:** 
+Title your post with exactly what you are suggesting (e.g., "Add level-up role rewards" instead of "I have a cool idea").
+
+**2. Explain the 'Why':**
+Don't just tell us *what* to add; explain *why* it would benefit the community or improve the bot.
+
+**3. Search First:**
+Please quickly scroll through recent posts to make sure your idea hasn't already been suggested. Duplicate suggestions will be closed.
+
+Upvote suggestions you agree with to help the Architects prioritize their roadmap!
+```
 
 ### 📌 Pinned "First Post" Template (For Bug Reports/Help Forums)
 Create a new post in the forum, name it **"READ BEFORE POSTING: Formatting Guidelines"**, pin it, and lock it so no one else replies:
@@ -290,18 +320,47 @@ Never upload full `.env` files or paste your raw bot tokens. Posts that leak tok
 
 ---
 
-## 8. 🛠️ Final Setup: Bot Commands
+## 8. 🛠️ Protocol Deployment (Core Slash Commands)
 
-Execute these slash commands when the server layout is fully polished:
+Once the structural architecture of the server is established, it's time to physically deploy the Nexus modules via Discord's slash command interface. 
 
-| Step | Command / Action                      | Result                                           |
-| ---- | ------------------------------------- | ------------------------------------------------ |
-| 1    | Invite Bot & ensure highest placement | Resolves hierarchy-related permission errors.    |
-| 2    | `/ticket-setup` in `📩┃open-a-ticket` | Creates the core interactive ticket UI.          |
-| 3    | `/verify-setup` in `🚀┃start-here`    | Maps your customized `✅ Verified` role.         |
-| 4    | `/log-setup` pointing to `⚠️┃mod-log` | Routes automated moderation logging.             |
-| 5    | `/automod-setup`                      | Configures automated anti-spam and word filters. |
-| 6    | `/starboard-setup`                    | Engages the fun starboard module!                |
+> **⚠️ CRITICAL:** Ensure the `🤖 Nexus Bot` role is positioned securely at the **very top** of your role hierarchy before running these commands, or the bot will lack the authorization to assign roles or isolate targets.
+
+### 🎫 Module 1: `Ticket Infrastructure`
+**Command:** Execute `/ticket-setup` inside your **#open-a-ticket** channel.
+**Function:** Deploys the interactive "Open Ticket" UI panel.
+**Architecture details:** 
+- Generates a sleek embed with a futuristic button that users can click to request staff assistance.
+- When clicked, Nexus dynamically spawns a hidden, private text channel (`ticket-[username]`) bridged only between the user generating the request and the `💠 Support Staff` role.
+- Once the issue is resolved, staff can securely close and archive the logs.
+
+### 🧬 Module 2: `Neural Verification`
+**Command:** Execute `/verify-setup` inside your **#start-here** or welcome channel.
+**Function:** Binds the `✅ Verified` role to the internal verification matrix.
+**Architecture details:**
+- Generates an interactive verification checkpoint interface.
+- Prevents immediate chat-spam from bot-nets by ensuring newly joined accounts click through the verification firewall before unlocking access to `💬 COMMUNITY` channels.
+
+### ⚠️ Module 3: `Action Telemetry`
+**Command:** Execute `/log-setup` inside your hidden **#mod-log** channel.
+**Function:** Synchronizes server telemetry to a dedicated observation channel.
+**Architecture details:**
+- Instructs Nexus to transmit all real-time security events to this channel.
+- Automatically logs deleted messages, edited message diffs, kicked users, assigned timeouts, and banned targets to allow for complete staff oversight.
+
+### 🛡️ Module 4: `Automod Firewall`
+**Command:** Execute `/automod-setup` in any private staff channel.
+**Function:** Engages the real-time heuristic spam and toxicity filters.
+**Architecture details:**
+- Synthesizes rulesets directly into Discord's native AutoMod interface to detect fast-posting spam floods.
+- Isolates known bad actors and flags highly-toxic messages for manual staff review, effectively maintaining system integrity while you sleep.
+
+### ⭐ Module 5: `Starboard System`
+**Command:** Execute `/starboard-setup` in any channel.
+**Function:** Allocates memory for a community hall-of-fame.
+**Architecture details:**
+- Creates a dedicated `#starboard` channel.
+- When community messages reach a designated threshold of ⭐ reactions, Nexus automatically duplicates the message and embeds it into the starboard, creating a permanent archive of high-quality server interactions.
 
 ---
 

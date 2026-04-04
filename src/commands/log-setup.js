@@ -1,5 +1,6 @@
-const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChannelType } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, ChannelType } = require('discord.js');
 const GuildConfig = require('../models/GuildConfig');
+const { createEmbed } = require('../utils/embed');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -22,10 +23,13 @@ module.exports = {
         config.logChannelId = channel.id;
         await config.save();
         
-        const embed = new EmbedBuilder()
-            .setTitle('📝 Audit Logging Configured')
-            .setDescription(`All server logs will now be directed to <#${channel.id}>.`)
-            .setColor('#00FFEA');
+        const embed = createEmbed({
+            title: 'Telemetry Node Synchronized',
+            description: `> 🟢 **STATUS: ONLINE**\n> 📡 **DESTINATION:** <#${channel.id}>\n\nAll real-time network traffic and anomaly detections will now be successfully transmitted to the designated output channel. System oversight is active.`,
+            color: '#00FFEA',
+            type: 'success',
+            footer: 'Nexus Security | EVENT-LOGS'
+        });
         return interaction.reply({ embeds: [embed] });
     }
 };

@@ -24,8 +24,8 @@ module.exports = {
         );
 
         const embed = createEmbed({
-            title: '🛡️ Biometric Verification Node',
-            description: `Welcome to sector **${interaction.guild.name}**.\n\nTo prove your neural authenticity and gain access to secure channels, please click the authentication button below.`,
+            title: 'Biometric Verification Node',
+            description: `**[ AUTHORIZATION REQUIRED ]**\n\nWelcome to sector **${interaction.guild.name}**.\n\nTo prove your neural authenticity and bypass the server's outer firewall, please execute the \`Authenticate Identity\` function below. This will unlock your access to the broader communications grid.`,
             color: '#00FFCC',
             thumbnail: interaction.guild.iconURL(),
             footer: 'Nexus Security | BIO-AUTH-NODE'
