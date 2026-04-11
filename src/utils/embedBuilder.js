@@ -1,31 +1,38 @@
 const { EmbedBuilder } = require('discord.js');
 
 /**
- * Standardized Embed Builder for Nexus Protocol v7
- * @param {object} options - Embed options
- * @param {string} options.title - The title of the embed
- * @param {string} options.description - The description of the embed
- * @param {string} [options.color] - Hex color code (default: #5865F2)
- * @param {object[]} [options.fields] - Array of field objects {name, value, inline}
- * @param {string} [options.thumbnail] - Thumbnail URL
- * @param {string} [options.image] - Image URL
- * @param {string} [options.footer] - Footer text
- * @param {string} [options.author] - Author name
- * @param {string} [options.authorIcon] - Author icon URL
- * @param {string} [options.url] - Title URL
- * @returns {EmbedBuilder}
+ * NEXUS PROTOCOL v8.5 — SINGULARITY EMBED ARCHITECTURE
+ * Standardizes high-fidelity responses with consistent technical branding.
  */
 module.exports = (options) => {
+    // Standard Singularity Palette
+    const THEME = {
+        PRIMARY: '#00F5FF',    // Cyan Glow
+        SECONDARY: '#7000FF',  // Purple Pulse
+        NEUTRAL: '#FFFFFF',    // Pure Signal
+        CRITICAL: '#FF4444',   // Alert Vector
+        SUCCESS: '#00FF88'     // Stable Node
+    };
+
     const embed = new EmbedBuilder()
-        .setColor(options.color || '#5865F2')
+        .setColor(options.color || THEME.PRIMARY)
         .setTimestamp();
 
     const trim = (str, max) => str && str.length > max ? str.slice(0, max - 3) + '...' : str;
 
-    if (options.title) embed.setTitle(trim(options.title, 256));
-    if (options.description) embed.setDescription(trim(options.description, 4096));
+    // High-Fidelity Title
+    if (options.title) {
+        embed.setTitle(trim(options.title, 256));
+    }
+
+    // Technical Description
+    if (options.description) {
+        embed.setDescription(trim(options.description, 4096));
+    }
+
     if (options.url) embed.setURL(options.url);
 
+    // Dynamic Fields
     if (options.fields && options.fields.length > 0) {
         const safeFields = options.fields.slice(0, 25).map(f => ({
             name: trim(f.name, 256),
@@ -45,8 +52,14 @@ module.exports = (options) => {
         });
     }
 
+    // Technical Signature (v8.5 Standard)
+    const versionTag = 'NEXUS PROTOCOL v8.5.0';
+    const sectorTag = options.sector || 'SECTOR_BRAVO';
+    const footerText = trim(options.footer || `${versionTag} // ${sectorTag} // SIGNAL_STABLE`, 2048);
+
     embed.setFooter({
-        text: trim(options.footer || 'Nexus Protocol v7 • Advanced Intelligence', 2048)
+        text: footerText,
+        iconURL: 'https://cdn.discordapp.com/emojis/1210452340753101031.png' // Placeholder for bot icon if desired
     });
 
     return embed;

@@ -35,9 +35,8 @@ manager.on('shardCreate', shard => {
     });
 });
 
-// Launch Companion Web Server
-const webServer = require('./web/server');
-webServer(manager);
+// Launch sequence initiated — no companion web server requested for v8.5
+
 
 manager.spawn().catch(error => {
     logger.error('Failed to spawn shards:', error);
