@@ -9,27 +9,27 @@ module.exports = {
     async execute(interaction, client) {
         await interaction.reply({
             embeds: [embedBuilder({
-                title: 'Nexus v8.7.0 // Singularity Ascension',
-                description: 'A major stabilization and infrastructural expansion of the neural framework.',
+                title: 'Nexus v9.1.0 // Infinitum Patch',
+                description: 'A stability-critical update that resolves portal inconsistencies and expands the command registry.',
                 fields: [
                     { 
-                        name: '🛡️ Shard Stabilization', 
-                        value: 'Rebuilt sharding orchestration with advanced lifecycle telemetry and worker thread mode for 100% uptime.' 
+                        name: '🐛 Portal Stabilization', 
+                        value: 'Resolved duplicated navigation entries and broken HTML structure across the Wiki and Changelog sectors.' 
                     },
                     { 
-                        name: '📜 Grand Directive', 
-                        value: 'Authored an elite 10k-entity scaling blueprint in `server.md` for high-prestige community growth.' 
+                        name: '⚡ New Commands', 
+                        value: 'Added `/snipe`, `/afk`, `/banner`, and `/announce` to the protocol registry.' 
                     },
                     { 
-                        name: '🔍 Neural Retrieval', 
-                        value: 'Implemented a real-time command search protocol on the web portal for immediate directive access.' 
+                        name: '🔐 Permission Matrix', 
+                        value: 'Expanded the server blueprint with a granular role-by-role permission directive for all 11 operational nodes.' 
                     },
                     { 
-                        name: '✨ Portal Refinement', 
-                        value: 'Ascended the visual design system across all 9 informational sectors with glassmorphism and animations.' 
+                        name: '🌌 Visual Engine', 
+                        value: 'Implemented an animated deep-space starfield background across all 9 portal sectors.' 
                     }
                 ],
-                footer: 'Nexus Protocol • Singularity Ascension Archive'
+                footer: 'Nexus Protocol • Infinitum Patch Archive'
             })]
         });
     },

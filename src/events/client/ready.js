@@ -2,7 +2,7 @@ const { Events, ActivityType } = require('discord.js');
 const logger = require('../../utils/logger');
 
 const statuses = [
-    { name: 'the Singularity | v8.7.0', type: ActivityType.Watching },
+    { name: 'the Singularity | v9.1.0', type: ActivityType.Watching },
     { name: '{guilds} operational nodes', type: ActivityType.Watching },
     { name: 'with {members} operatives', type: ActivityType.Playing },
     { name: 'Neural Uplink Status: Optimal', type: ActivityType.Listening },
