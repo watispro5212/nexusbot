@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
 const embedBuilder = require('../../utils/embedBuilder');
-const axios = require('axios');
 require('dotenv').config();
 
 module.exports = {
@@ -26,8 +25,11 @@ module.exports = {
 
         try {
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(location)}&units=metric&appid=${apiKey}`;
-            const response = await axios.get(url);
-            const data = response.data;
+            const response = await fetch(url);
+            
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            
+            const data = await response.json();
 
             const weatherEmbed = embedBuilder({
                 title: `🌍 Atmospheric Scan // ${data.name}, ${data.sys.country}`,

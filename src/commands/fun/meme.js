@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
 const embedBuilder = require('../../utils/embedBuilder');
-const axios = require('axios');
 require('dotenv').config();
 
 module.exports = {
@@ -12,8 +11,11 @@ module.exports = {
 
         try {
             const apiUrl = process.env.MEME_API_URL || 'https://meme-api.com/gimme';
-            const response = await axios.get(apiUrl);
-            const data = response.data;
+            const response = await fetch(apiUrl);
+            
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            
+            const data = await response.json();
 
             const memeEmbed = embedBuilder({
                 title: data.title || 'Humor Packet Intercepted',
