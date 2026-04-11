@@ -27,9 +27,6 @@ module.exports = {
 
         await interaction.deferReply({ ephemeral: true });
 
-        
-        await new Promise(resolve => setTimeout(resolve, 2000));
-
         let result = '';
         let protocol = '';
 

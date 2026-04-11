@@ -28,25 +28,25 @@ module.exports = {
         };
 
         const getHealthStatus = (ms) => {
-            if (ms < 100) return '🟢 OPTIMAL';
-            if (ms < 250) return '🟡 FAIR';
-            return '🔴 DEGRADED';
+            if (ms < 100) return 'Stable';
+            if (ms < 250) return 'Fair';
+            return 'Degraded';
         };
 
         await interaction.reply({
             embeds: [embedBuilder({
-                title: '📡 Network Operations — Uplink Check',
-                description: `**Status:** ${getHealthStatus(heartbeat)}\n**Shard:** \`#${shardId}\` / \`${totalShards}\``,
+                title: 'Nexus System Status',
+                description: `**Current Load:** ${getHealthStatus(heartbeat)}\n**Shard Node:** ${shardId + 1} of ${totalShards}`,
                 fields: [
-                    { name: '🏠 Nodes', value: `\`${guildCount}\` guilds`, inline: true },
-                    { name: '👥 Entities', value: `\`${memberCount.toLocaleString()}\` members`, inline: true },
-                    { name: '📶 Latency', value: `\`${heartbeat}ms\``, inline: true },
-                    { name: '🧠 Memory', value: `\`${memUsed} MB\``, inline: true },
-                    { name: '⏱️ Uptime', value: `\`${hrs}h ${mins}m\``, inline: true },
-                    { name: '💻 CPU Cores', value: `\`${cpuCores}\``, inline: true },
-                    { name: '🖥️ Platform', value: `\`${os.platform()} ${os.arch()}\``, inline: true },
-                    { name: '⚙️ Node.js', value: `\`${process.version}\``, inline: true },
-                    { name: '🔄 Commands', value: `\`${client.commands.size}\` loaded`, inline: true },
+                    { name: 'Servers', value: `${guildCount.toLocaleString()}`, inline: true },
+                    { name: 'Users', value: `${memberCount.toLocaleString()}`, inline: true },
+                    { name: 'Ping', value: `${heartbeat}ms`, inline: true },
+                    { name: 'RAM Usage', value: `${memUsed} MB`, inline: true },
+                    { name: 'Uptime', value: `${hrs}h ${mins}m`, inline: true },
+                    { name: 'Cores', value: `${cpuCores}`, inline: true },
+                    { name: 'Platform', value: `${os.platform()} ${os.arch()}`, inline: true },
+                    { name: 'Node.js', value: `${process.version}`, inline: true },
+                    { name: 'Commands', value: `${client.commands.size}`, inline: true },
                 ],
                 color: getHealthColor(heartbeat)
             })]
