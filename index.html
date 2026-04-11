@@ -25,8 +25,10 @@
     </nav>
 
     <main class="container">
+        <!-- HERO -->
         <section class="hero">
             <div class="section-header">
+                <p style="color: var(--accent); font-family: 'JetBrains Mono'; font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 1rem;">NEXUS PROTOCOL v9.1.0</p>
                 <h1>The Singularity Core.</h1>
                 <p>A high-performance neural framework for elite Discord communities. Secure. Scalable. Hand-crafted for total node dominion.</p>
             </div>
@@ -37,9 +39,7 @@
                     <div class="dot yellow"></div>
                     <div class="dot green"></div>
                 </div>
-                <div class="terminal-body" id="terminal">
-                    <!-- Terminal content injected via JS -->
-                </div>
+                <div class="terminal-body" id="terminal"></div>
             </div>
 
             <div class="hero-actions">
@@ -48,23 +48,29 @@
             </div>
         </section>
 
-        <section class="metrics-grid" style="margin-top: 8rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+        <!-- METRICS -->
+        <section class="metrics-grid" style="margin-top: 8rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem;">
             <div class="metric-card" style="text-align: center; background: var(--surface); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center;">
                 <span style="font-size: 2.5rem; color: var(--accent); font-weight: bold; display: block; filter: drop-shadow(0 0 10px var(--accent-glow));">99.9%</span>
-                <span class="stat-label" style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); margin-top: 0.5rem;">SLA Uptime</span>
+                <span style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); margin-top: 0.5rem;">SLA Uptime</span>
             </div>
             <div class="metric-card" style="text-align: center; background: var(--surface); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center;">
-                <span style="font-size: 2.5rem; color: var(--accent); font-weight: bold; display: block; filter: drop-shadow(0 0 10px var(--accent-glow));">1,240+</span>
-                <span class="stat-label" style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); margin-top: 0.5rem;">Active Nodes</span>
+                <span style="font-size: 2.5rem; color: var(--accent); font-weight: bold; display: block; filter: drop-shadow(0 0 10px var(--accent-glow));">55+</span>
+                <span style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); margin-top: 0.5rem;">Protocols</span>
             </div>
             <div class="metric-card" style="text-align: center; background: var(--surface); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center;">
                 <span style="font-size: 2.5rem; color: var(--accent); font-weight: bold; display: block; filter: drop-shadow(0 0 10px var(--accent-glow));">&lt;15ms</span>
-                <span class="stat-label" style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); margin-top: 0.5rem;">Packet Latency</span>
+                <span style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); margin-top: 0.5rem;">Packet Latency</span>
+            </div>
+            <div class="metric-card" style="text-align: center; background: var(--surface); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center;">
+                <span style="font-size: 2.5rem; color: var(--accent); font-weight: bold; display: block; filter: drop-shadow(0 0 10px var(--accent-glow));">v14</span>
+                <span style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); margin-top: 0.5rem;">Discord.js</span>
             </div>
         </section>
 
         <div class="divider-glow"></div>
 
+        <!-- FEATURES -->
         <section class="features-detailed">
             <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
                 <h2 style="font-size: 2rem; margin-bottom: 1rem;">Architectural Excellence.</h2>
@@ -75,31 +81,31 @@
                 <div class="artisanal-card">
                     <div style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1rem;">🛡️</div>
                     <h3>Sovereign Security</h3>
-                    <p>Full-spectrum moderation protocols with AI-assisted raid prevention and real-time infraction auditing.</p>
+                    <p>Full-spectrum moderation with real-time infraction auditing and automated raid prevention.</p>
                     <ul style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem; list-style: none;">
-                        <li>• Real-time Captcha Verification</li>
-                        <li>• Advanced Shard Logging</li>
+                        <li>• Captcha Verification Gate</li>
                         <li>• Anti-Alt Intrusion Logic</li>
+                        <li>• Immutable Audit Archives</li>
                     </ul>
                 </div>
                 <div class="artisanal-card">
                     <div style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1rem;">📈</div>
                     <h3>Neural Economy</h3>
-                    <p>A sophisticated financial system backed by persistent MongoDB sharding for global cross-server data integrity.</p>
+                    <p>A persistent financial system backed by MongoDB with atomic transaction safety.</p>
                     <ul style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem; list-style: none;">
-                        <li>• Cross-Node Syncing</li>
-                        <li>• Automated Asset Inflation</li>
-                        <li>• Secure Ledger Protection</li>
+                        <li>• Cross-Node Sync</li>
+                        <li>• Inflation-Safe Ledger</li>
+                        <li>• 12+ Economy Commands</li>
                     </ul>
                 </div>
                 <div class="artisanal-card">
-                    <div style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1rem;">🌐</div>
-                    <h3>High Fidelity Web</h3>
-                    <p>A hand-crafted informational suite providing operatives with real-time documentation and portal access.</p>
+                    <div style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1rem;">⚡</div>
+                    <h3>Worker Sharding</h3>
+                    <p>Distributed across isolated worker threads with spawn throttling and automatic reconnection.</p>
                     <ul style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem; list-style: none;">
-                        <li>• Interactive Wiki Interface</li>
-                        <li>• Real-time Protocol Search</li>
-                        <li>• Advanced Shard Telemetry</li>
+                        <li>• Auto-Scaling Shard Manager</li>
+                        <li>• 60s Spawn Timeout</li>
+                        <li>• Lifecycle Telemetry</li>
                     </ul>
                 </div>
             </div>
@@ -107,39 +113,80 @@
 
         <div class="divider-glow"></div>
 
-        <section class="roadmap-sector" style="margin: 8rem 0;">
+        <!-- TECH STACK -->
+        <section style="margin: 6rem 0;">
+            <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Built With Precision.</h2>
+                <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto;">Every layer of the stack is chosen for performance and reliability.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; text-align: center;">
+                    <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">🟢</p>
+                    <h4>Node.js 18+</h4>
+                    <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem;">LTS Runtime</p>
+                </div>
+                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; text-align: center;">
+                    <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔷</p>
+                    <h4>Discord.js v14</h4>
+                    <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem;">Interaction Framework</p>
+                </div>
+                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; text-align: center;">
+                    <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">🍃</p>
+                    <h4>MongoDB Atlas</h4>
+                    <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem;">Persistent Storage</p>
+                </div>
+                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; text-align: center;">
+                    <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">🐙</p>
+                    <h4>GitHub Pages</h4>
+                    <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem;">Static Portal Host</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider-glow"></div>
+
+        <!-- ROADMAP -->
+        <section class="roadmap-sector" style="margin: 6rem 0;">
             <div class="section-header" style="margin-bottom: 4rem;">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Project Roadmap // Ascension.</h2>
+                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Project Roadmap.</h2>
                 <p style="color: var(--text-dim);">The developmental timeline for the Singularity Core framework.</p>
             </div>
-            
-            <div class="roadmap-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                <div class="roadmap-item" style="border-left: 2px solid var(--accent); padding-left: 2rem;">
-                    <span style="color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono';">PHASE 01</span>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div style="border-left: 2px solid var(--accent); padding-left: 2rem;">
+                    <span style="color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.8rem;">PHASE 01</span>
                     <h4 style="margin: 0.5rem 0;">CORE INITIALIZATION</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-dim);">Stabilizing the sharding manager and establishing the neural communication matrix. [COMPLETED]</p>
+                    <p style="font-size: 0.85rem; color: var(--text-dim);">Stabilized sharding manager and neural communication matrix. <span style="color: #50fa7b;">[COMPLETED]</span></p>
                 </div>
-                <div class="roadmap-item" style="border-left: 2px solid var(--accent); padding-left: 2rem;">
-                    <span style="color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono';">PHASE 02</span>
+                <div style="border-left: 2px solid var(--accent); padding-left: 2rem;">
+                    <span style="color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.8rem;">PHASE 02</span>
                     <h4 style="margin: 0.5rem 0;">PORTAL ASCENSION</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-dim);">Deploying the Infinitum Informational Suite and refining visual design systems. [IN PROGRESS]</p>
+                    <p style="font-size: 0.85rem; color: var(--text-dim);">Deployed the Infinitum Informational Suite with animated starfield. <span style="color: #50fa7b;">[COMPLETED]</span></p>
                 </div>
-                <div class="roadmap-item" style="border-left: 2px solid rgba(255,255,255,0.1); padding-left: 2rem;">
-                    <span style="color: var(--text-dim); font-weight: bold; font-family: 'JetBrains Mono';">PHASE 03</span>
+                <div style="border-left: 2px solid var(--accent); padding-left: 2rem;">
+                    <span style="color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.8rem;">PHASE 03</span>
                     <h4 style="margin: 0.5rem 0;">NEURAL EXPANSION</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-dim);">Integrating AI-driven pattern recognition for advanced security and logic. [UPCOMING]</p>
+                    <p style="font-size: 0.85rem; color: var(--text-dim);">AI-driven pattern recognition for advanced security. <span style="color: #ffbd2e;">[IN PROGRESS]</span></p>
                 </div>
-                <div class="roadmap-item" style="border-left: 2px solid rgba(255,255,255,0.1); padding-left: 2rem;">
-                    <span style="color: var(--text-dim); font-weight: bold; font-family: 'JetBrains Mono';">PHASE 04</span>
+                <div style="border-left: 2px solid rgba(255,255,255,0.1); padding-left: 2rem;">
+                    <span style="color: var(--text-dim); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.8rem;">PHASE 04</span>
                     <h4 style="margin: 0.5rem 0;">GLOBAL SINGULARITY</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-dim);">Open-source public framework deployment and enterprise scaling. [PLANNED]</p>
+                    <p style="font-size: 0.85rem; color: var(--text-dim);">Open-source deployment and enterprise scaling. <span style="color: var(--text-dim);">[PLANNED]</span></p>
                 </div>
             </div>
+        </section>
+
+        <div class="divider-glow"></div>
+
+        <!-- CTA -->
+        <section style="text-align: center; padding: 6rem 0;">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Initialize?</h2>
+            <p style="color: var(--text-dim); max-width: 500px; margin: 0 auto 2rem;">Deploy the Nexus framework to your server and experience the full power of the Singularity Core.</p>
+            <a href="invite.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 3rem;">Establish Uplink</a>
         </section>
     </main>
 
     <footer>
-        <div class="footer-links" style="margin-bottom: 2rem;">
+        <div style="margin-bottom: 2rem;">
             <a href="terms.html" style="color: var(--text-dim); text-decoration: none; margin: 0 1rem;">Terms</a>
             <a href="privacy.html" style="color: var(--text-dim); text-decoration: none; margin: 0 1rem;">Privacy</a>
         </div>
@@ -149,12 +196,13 @@
     <script>
         const terminal = document.getElementById('terminal');
         const lines = [
-            'Initializing Singularity Core v9.1.0...',
+            'nexus init --version 9.1.0',
             'Connecting to global shard matrix...',
-            'Status: [OPTIMAL]',
-            'Loading neural economy modules...',
-            'Establishing security uplink...',
-            'System Ready. Awaiting directives.'
+            'Shard #0: Neural Uplink Established.',
+            'Economy Module: SYNCHRONIZED',
+            'Security Layer: ARMED',
+            'Portal Status: [ALL SECTORS OPTIMAL]',
+            'Awaiting directives. Type /help to begin.'
         ];
 
         let lineIndex = 0;
@@ -162,10 +210,12 @@
             if (lineIndex < lines.length) {
                 const p = document.createElement('p');
                 p.className = 'terminal-line active';
-                p.innerHTML = `<span style="color: var(--accent)">></span> ${lines[lineIndex]}`;
+                const prefix = lineIndex === 0 ? '$' : '>';
+                const color = lineIndex === 0 ? '#50fa7b' : 'var(--accent)';
+                p.innerHTML = `<span style="color: ${color}">${prefix}</span> ${lines[lineIndex]}`;
                 terminal.appendChild(p);
                 lineIndex++;
-                setTimeout(typeLine, 800);
+                setTimeout(typeLine, 700);
             } else {
                 const cursor = document.createElement('span');
                 cursor.className = 'cursor';

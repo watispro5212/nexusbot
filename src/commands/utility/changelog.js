@@ -10,26 +10,30 @@ module.exports = {
         await interaction.reply({
             embeds: [embedBuilder({
                 title: 'Nexus v9.1.0 // Infinitum Patch',
-                description: 'A stability-critical update that resolves portal inconsistencies and expands the command registry.',
+                description: 'A stability-critical update resolving portal inconsistencies and expanding the command registry.',
                 fields: [
                     { 
                         name: '🐛 Portal Stabilization', 
-                        value: 'Resolved duplicated navigation entries and broken HTML structure across the Wiki and Changelog sectors.' 
+                        value: 'Resolved duplicated nav entries and broken HTML structure across the Wiki and Changelog sectors.' 
                     },
                     { 
-                        name: '⚡ New Commands', 
-                        value: 'Added `/snipe`, `/afk`, `/banner`, and `/announce` to the protocol registry.' 
+                        name: '⚡ New Protocols', 
+                        value: '`/snipe` `/afk` `/banner` `/announce` — 4 new commands added to the registry.' 
                     },
                     { 
-                        name: '🔐 Permission Matrix', 
-                        value: 'Expanded the server blueprint with a granular role-by-role permission directive for all 11 operational nodes.' 
+                        name: '🔐 Permission Engine', 
+                        value: 'Expanded server blueprint with granular permissions for all 11 operational roles.' 
                     },
                     { 
-                        name: '🌌 Visual Engine', 
-                        value: 'Implemented an animated deep-space starfield background across all 9 portal sectors.' 
+                        name: '🌌 Visual Overhaul', 
+                        value: 'Animated starfield, glowing dividers, tech stack showcase, and expanded content across all 9 portal sectors.' 
+                    },
+                    {
+                        name: '📜 Full Archive',
+                        value: '[View the complete changelog →](https://shiny-giigles.pages.dev/changelog.html)'
                     }
                 ],
-                footer: 'Nexus Protocol • Infinitum Patch Archive'
+                footer: 'Nexus Protocol • Infinitum Archive'
             })]
         });
     },

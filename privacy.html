@@ -23,21 +23,29 @@
     <main class="container">
         <section class="section-header">
             <h1>Safety Protocol.</h1>
-            <p>Data handling and security measures for the Nexus framework.</p>
+            <p>Data handling and security measures for the Nexus framework. Last updated: April 2026.</p>
         </section>
 
-        <section class="content-grid">
+        <section style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
             <div class="artisanal-card">
                 <h3>01 // Data Collection</h3>
-                <p>We log guild IDs, user IDs, and sectoral balances to facilitate the core economic and administrative protocols.</p>
+                <p>We collect guild IDs, user IDs, and economy balances to facilitate the core administrative and financial protocols. Message content is never stored; only metadata required for moderation commands (e.g., audit logs, warning counts) is retained.</p>
             </div>
             <div class="artisanal-card">
-                <h3>02 // Storage Persistence</h3>
-                <p>All data is maintained in a secured neural database with strictly limited access protocols.</p>
+                <h3>02 // Storage Architecture</h3>
+                <p>All data is persisted in a secured MongoDB Atlas cluster with TLS encryption in transit and AES-256 encryption at rest. Access is restricted to authenticated Founders via environment-variable-locked connection strings.</p>
             </div>
             <div class="artisanal-card">
-                <h3>03 // Right to Erasure</h3>
-                <p>Sector administrators can request sectoral data purging via the global support hub.</p>
+                <h3>03 // Third-Party Sharing</h3>
+                <p>Your data is never sold, traded, or shared with any third party. The only external services that interact with your data are Discord's official API and the MongoDB Atlas cluster used for persistence.</p>
+            </div>
+            <div class="artisanal-card">
+                <h3>04 // Right to Erasure</h3>
+                <p>Server administrators can request complete data purging at any time via the official support hub. Upon removal of the bot from your server, all automated data collection ceases immediately. Existing data is retained for 30 days before automatic purging.</p>
+            </div>
+            <div class="artisanal-card">
+                <h3>05 // Security Incidents</h3>
+                <p>In the event of a data breach, all affected server administrators will be notified within 72 hours via the framework's announcement channels. Incident post-mortems will be published in the changelog.</p>
             </div>
         </section>
     </main>
