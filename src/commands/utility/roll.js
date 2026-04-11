@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 module.exports = {
@@ -17,7 +18,7 @@ module.exports = {
         if (!match) {
             return interaction.reply({
                 content: '❌ Invalid dice format. Use notation like `d6`, `2d20`, `3d8`.',
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 
@@ -27,7 +28,7 @@ module.exports = {
         if (count < 1 || count > 20 || sides < 2 || sides > 1000) {
             return interaction.reply({
                 content: '❌ Limits: 1-20 dice, 2-1000 sides.',
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 

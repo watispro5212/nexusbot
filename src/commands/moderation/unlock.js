@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 module.exports = {
@@ -33,7 +34,7 @@ module.exports = {
                     description: 'Could not modify channel permissions. Check bot role hierarchy.',
                     color: '#ED4245'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
     },

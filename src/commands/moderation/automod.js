@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const GuildConfig = require('../../models/GuildConfig');
 
@@ -73,7 +74,7 @@ module.exports = {
         } catch (err) {
             await interaction.reply({
                 embeds: [embedBuilder({ title: '⚠️ Error', description: 'Failed to update automod settings.', color: '#FF4444' })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
     }

@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const User = require('../../models/User');
 
@@ -30,7 +31,7 @@ module.exports = {
                     description: `Your daily is on cooldown.\n**Next Claim:** \`${hours}h ${minutes}m\``,
                     color: '#ED4245'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 

@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 module.exports = {
@@ -33,7 +34,7 @@ module.exports = {
                     description: `Your announcement has been sent to ${channel}.`,
                     color: '#00FF88'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         } catch (error) {
             await interaction.reply({
@@ -42,7 +43,7 @@ module.exports = {
                     description: 'Could not send the announcement. Verify channel permissions.',
                     color: '#FF4444'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
     },

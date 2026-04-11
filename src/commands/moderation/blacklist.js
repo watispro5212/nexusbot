@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const BlacklistEntry = require('../../models/BlacklistEntry');
 
@@ -41,7 +42,7 @@ module.exports = {
             await interaction.reply({ embeds: [blacklistEmbed] });
         } catch (error) {
             console.error('Blacklist error:', error);
-            await interaction.reply({ content: 'Failed to update global blacklist registry.', ephemeral: true });
+            await interaction.reply({ content: 'Failed to update global blacklist registry.', flags: [MessageFlags.Ephemeral] });
         }
     },
 };

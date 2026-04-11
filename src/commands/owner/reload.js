@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const logger = require('../../utils/logger');
 const path = require('path');
@@ -29,7 +30,7 @@ module.exports = {
                 
             });
             
-            return interaction.reply({ content: 'Reloading "all" is currently being optimized. Please reload specific commands for now.', ephemeral: true });
+            return interaction.reply({ content: 'Reloading "all" is currently being optimized. Please reload specific commands for now.', flags: [MessageFlags.Ephemeral] });
         }
 
         const command = client.commands.get(commandName);
@@ -41,7 +42,7 @@ module.exports = {
                     description: `Command \`${commandName}\` is not active in the protocol registry.`,
                     color: '#ED4245'
                 })], 
-                ephemeral: true 
+                flags: [MessageFlags.Ephemeral] 
             });
         }
 
@@ -64,7 +65,7 @@ module.exports = {
                         description: `\`/${command.data.name}\` has been refreshed and is ready for execution.`,
                         color: '#2ECC71'
                     })],
-                    ephemeral: true
+                    flags: [MessageFlags.Ephemeral]
                 });
             } else {
                 throw new Error('Command file missing data or execute.');
@@ -77,7 +78,7 @@ module.exports = {
                     description: `An error occurred while reloading protocol \`${commandName}\`.\n\`\`\`js\n${error.message}\n\`\`\``,
                     color: '#ED4245'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
     },

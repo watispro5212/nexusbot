@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const User = require('../../models/User');
 
@@ -41,7 +42,7 @@ module.exports = {
                     description: `You only have \`$${userData.balance.toLocaleString()}\` in your wallet.`,
                     color: '#ED4245'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 

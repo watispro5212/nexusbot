@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 module.exports = {
@@ -45,7 +46,7 @@ module.exports = {
                     description: `${description}\n**Requested:** \`${amount}\`\n**Moderator:** ${interaction.user.tag}`,
                     color: '#2ECC71'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         } catch (err) {
             await interaction.reply({
@@ -54,7 +55,7 @@ module.exports = {
                     description: 'Messages older than 14 days cannot be bulk deleted.',
                     color: '#ED4245'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
     },

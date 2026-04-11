@@ -1,4 +1,5 @@
-const { Events, Collection } = require('discord.js');
+const { Events, Collection } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const logger = require('../../utils/logger');
 const embedBuilder = require('../../utils/embedBuilder');
 const BlacklistEntry = require('../../models/BlacklistEntry');
@@ -23,7 +24,7 @@ module.exports = {
                         description: `You are blacklisted from the Nexus Protocol.\n**Reason:** ${isBlacklisted.reason}`,
                         color: '#ED4245'
                     })],
-                    ephemeral: true
+                    flags: [MessageFlags.Ephemeral]
                 });
             }
         } catch (err) {
@@ -39,7 +40,7 @@ module.exports = {
                     description: 'This command is restricted to **Nexus Protocol Architects** only.',
                     color: '#ED4245'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 
@@ -66,7 +67,7 @@ module.exports = {
                         description: `Please wait **${timeLeft}s** before using \`/${command.data.name}\` again.`,
                         color: '#F1C40F'
                     })],
-                    ephemeral: true
+                    flags: [MessageFlags.Ephemeral]
                 });
             }
         }
@@ -91,9 +92,9 @@ module.exports = {
 
             try {
                 if (interaction.replied || interaction.deferred) {
-                    await interaction.followUp({ embeds: [errEmbed], ephemeral: true });
+                    await interaction.followUp({ embeds: [errEmbed], flags: [MessageFlags.Ephemeral] });
                 } else {
-                    await interaction.reply({ embeds: [errEmbed], ephemeral: true });
+                    await interaction.reply({ embeds: [errEmbed], flags: [MessageFlags.Ephemeral] });
                 }
             } catch (replyErr) {
                 logger.error('Failed to send error response:', replyErr);

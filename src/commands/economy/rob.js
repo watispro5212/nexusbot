@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const User = require('../../models/User');
 
@@ -15,10 +16,10 @@ module.exports = {
         const target = interaction.options.getUser('target');
 
         if (target.id === interaction.user.id) {
-            return interaction.reply({ content: '❌ You can\'t rob yourself.', ephemeral: true });
+            return interaction.reply({ content: '❌ You can\'t rob yourself.', flags: [MessageFlags.Ephemeral] });
         }
         if (target.bot) {
-            return interaction.reply({ content: '❌ You can\'t rob bots.', ephemeral: true });
+            return interaction.reply({ content: '❌ You can\'t rob bots.', flags: [MessageFlags.Ephemeral] });
         }
 
         let robber = await User.findOne({ userId: interaction.user.id, guildId: interaction.guild.id });
@@ -38,7 +39,7 @@ module.exports = {
                     description: `You need to lay low. Try again in \`${mins}m\`.`,
                     color: '#ED4245'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 
@@ -62,7 +63,7 @@ module.exports = {
                     description: `${target.displayName} has less than \`$100\` in their wallet. Find a richer target.`,
                     color: '#ED4245'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 

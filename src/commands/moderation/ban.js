@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 module.exports = {
@@ -27,15 +28,15 @@ module.exports = {
         const deleteDays = interaction.options.getInteger('delete_days') || 0;
 
         if (!target) {
-            return interaction.reply({ content: '❌ That user is not in this server.', ephemeral: true });
+            return interaction.reply({ content: '❌ That user is not in this server.', flags: [MessageFlags.Ephemeral] });
         }
 
         if (!target.bannable) {
-            return interaction.reply({ content: '❌ I cannot ban this user — their role is higher than mine.', ephemeral: true });
+            return interaction.reply({ content: '❌ I cannot ban this user — their role is higher than mine.', flags: [MessageFlags.Ephemeral] });
         }
 
         if (target.id === interaction.user.id) {
-            return interaction.reply({ content: '❌ You cannot ban yourself.', ephemeral: true });
+            return interaction.reply({ content: '❌ You cannot ban yourself.', flags: [MessageFlags.Ephemeral] });
         }
 
         
@@ -61,7 +62,7 @@ module.exports = {
                 })]
             });
         } catch (err) {
-            await interaction.reply({ content: `❌ Ban failed: \`${err.message}\``, ephemeral: true });
+            await interaction.reply({ content: `❌ Ban failed: \`${err.message}\``, flags: [MessageFlags.Ephemeral] });
         }
     },
 };

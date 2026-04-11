@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 module.exports = {
@@ -27,12 +28,12 @@ module.exports = {
         const role = interaction.options.getRole('role');
 
         if (!target) {
-            return interaction.reply({ content: '❌ User not found.', ephemeral: true });
+            return interaction.reply({ content: '❌ User not found.', flags: [MessageFlags.Ephemeral] });
         }
 
         
         if (role.position >= interaction.guild.members.me.roles.highest.position) {
-            return interaction.reply({ content: '❌ That role is higher than my highest role.', ephemeral: true });
+            return interaction.reply({ content: '❌ That role is higher than my highest role.', flags: [MessageFlags.Ephemeral] });
         }
 
         try {
@@ -56,7 +57,7 @@ module.exports = {
                 });
             }
         } catch (err) {
-            await interaction.reply({ content: `❌ Failed: \`${err.message}\``, ephemeral: true });
+            await interaction.reply({ content: `❌ Failed: \`${err.message}\``, flags: [MessageFlags.Ephemeral] });
         }
     },
 };

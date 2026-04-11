@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder, ComponentType } = require('discord.js');
+const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder, ComponentType } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const fs = require('fs');
 const path = require('path');
@@ -77,7 +78,7 @@ module.exports = {
         const response = await interaction.reply({
             embeds: [buildHelpEmbed()],
             components: [row],
-            ephemeral: true
+            flags: [MessageFlags.Ephemeral]
         });
 
         const collector = response.createMessageComponentCollector({

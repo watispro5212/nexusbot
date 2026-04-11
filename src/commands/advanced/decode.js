@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 module.exports = {
@@ -25,7 +26,7 @@ module.exports = {
         const signal = interaction.options.getString('signal');
         const cipher = interaction.options.getString('cipher') || 'default';
 
-        await interaction.deferReply({ ephemeral: true });
+        await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
 
         let result = '';
         let protocol = '';

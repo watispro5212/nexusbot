@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const User = require('../../models/User');
 
@@ -29,7 +30,7 @@ module.exports = {
         const item = shopItems.find(i => i.id === itemId);
 
         if (!item) {
-            return interaction.reply({ content: '❌ Item not found. Use `/shop` to see available items.', ephemeral: true });
+            return interaction.reply({ content: '❌ Item not found. Use `/shop` to see available items.', flags: [MessageFlags.Ephemeral] });
         }
 
         let userData = await User.findOne({ userId: interaction.user.id, guildId: interaction.guild.id });
@@ -44,7 +45,7 @@ module.exports = {
                     description: `You need \`$${item.price.toLocaleString()}\` but only have \`$${userData.balance.toLocaleString()}\`.`,
                     color: '#ED4245'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 

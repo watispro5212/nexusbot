@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType } = require('discord.js');
+const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 const COLS = 7;
@@ -17,10 +18,10 @@ module.exports = {
         const opponent = interaction.options.getUser('opponent');
 
         if (opponent.bot) {
-            return interaction.reply({ content: '❌ You cannot challenge a bot.', ephemeral: true });
+            return interaction.reply({ content: '❌ You cannot challenge a bot.', flags: [MessageFlags.Ephemeral] });
         }
         if (opponent.id === interaction.user.id) {
-            return interaction.reply({ content: '❌ You cannot challenge yourself.', ephemeral: true });
+            return interaction.reply({ content: '❌ You cannot challenge yourself.', flags: [MessageFlags.Ephemeral] });
         }
 
         // Initialize empty board
@@ -124,7 +125,7 @@ module.exports = {
 
         collector.on('collect', async (btn) => {
             if (btn.user.id !== players[currentPlayer].id) {
-                return btn.reply({ content: `❌ It's not your turn!`, ephemeral: true });
+                return btn.reply({ content: `❌ It's not your turn!`, flags: [MessageFlags.Ephemeral] });
             }
 
             const col = parseInt(btn.customId.split('_')[1]);
@@ -140,7 +141,7 @@ module.exports = {
             }
 
             if (!placed) {
-                return btn.reply({ content: '❌ That column is full!', ephemeral: true });
+                return btn.reply({ content: '❌ That column is full!', flags: [MessageFlags.Ephemeral] });
             }
 
             // Check win

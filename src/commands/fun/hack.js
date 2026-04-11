@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 const hackStages = [
@@ -25,7 +26,7 @@ module.exports = {
         if (target.id === client.user.id) {
             return interaction.reply({
                 content: '`[ACCESS DENIED]` Nice try, but you can\'t hack me. 😎',
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 

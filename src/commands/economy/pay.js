@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const User = require('../../models/User');
 
@@ -21,10 +22,10 @@ module.exports = {
         const amount = interaction.options.getInteger('amount');
 
         if (target.id === interaction.user.id) {
-            return interaction.reply({ content: '❌ You can\'t pay yourself.', ephemeral: true });
+            return interaction.reply({ content: '❌ You can\'t pay yourself.', flags: [MessageFlags.Ephemeral] });
         }
         if (target.bot) {
-            return interaction.reply({ content: '❌ You can\'t pay bots.', ephemeral: true });
+            return interaction.reply({ content: '❌ You can\'t pay bots.', flags: [MessageFlags.Ephemeral] });
         }
 
         let sender = await User.findOne({ userId: interaction.user.id, guildId: interaction.guild.id });
@@ -37,7 +38,7 @@ module.exports = {
                     description: `You only have \`$${sender.balance.toLocaleString()}\` in your wallet.`,
                     color: '#ED4245'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 

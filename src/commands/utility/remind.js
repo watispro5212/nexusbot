@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 module.exports = {
@@ -26,7 +27,7 @@ module.exports = {
                 description: `I'll DM you in **${minutes} minute${minutes !== 1 ? 's' : ''}**.\n**Reminder:** ${message}`,
                 color: '#3498DB'
             })],
-            ephemeral: true
+            flags: [MessageFlags.Ephemeral]
         });
 
         setTimeout(async () => {

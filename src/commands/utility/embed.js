@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 module.exports = {
@@ -39,7 +40,7 @@ module.exports = {
         if (!colorRegex.test(color)) {
             return interaction.reply({
                 content: '❌ Invalid hex color. Use format like `#FF0000`.',
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 
@@ -53,6 +54,6 @@ module.exports = {
         });
 
         await interaction.channel.send({ embeds: [customEmbed] });
-        await interaction.reply({ content: '✅ Embed sent!', ephemeral: true });
+        await interaction.reply({ content: '✅ Embed sent!', flags: [MessageFlags.Ephemeral] });
     },
 };

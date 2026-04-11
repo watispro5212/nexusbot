@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const GuildConfig = require('../../models/GuildConfig');
 
@@ -24,7 +25,7 @@ module.exports = {
                     description: 'No suggestions channel has been set up.\nAsk an admin to use `/config` to set one.',
                     color: '#ED4245'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 
@@ -36,7 +37,7 @@ module.exports = {
                     description: 'The configured suggestions channel no longer exists.',
                     color: '#ED4245'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 
@@ -62,12 +63,12 @@ module.exports = {
                     description: `Your suggestion has been posted to ${channel}.\nThe community can now vote on it!`,
                     color: '#2ECC71'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         } catch (err) {
             await interaction.reply({
                 content: `❌ Failed to post suggestion: \`${err.message}\``,
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
     },

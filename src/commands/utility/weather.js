@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 require('dotenv').config();
 
@@ -17,7 +18,7 @@ module.exports = {
         if (!apiKey) {
             return interaction.reply({ 
                 content: '⚠️ Atmospheric sensors are offline (Missing API Key).', 
-                ephemeral: true 
+                flags: [MessageFlags.Ephemeral] 
             });
         }
 

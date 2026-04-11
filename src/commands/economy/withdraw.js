@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const User = require('../../models/User');
 
@@ -27,7 +28,7 @@ module.exports = {
         }
 
         if (isNaN(amount) || amount <= 0) {
-            return interaction.reply({ content: '❌ Enter a valid positive number or "all".', ephemeral: true });
+            return interaction.reply({ content: '❌ Enter a valid positive number or "all".', flags: [MessageFlags.Ephemeral] });
         }
 
         if (amount > userData.bank) {
@@ -37,7 +38,7 @@ module.exports = {
                     description: `You only have \`$${userData.bank.toLocaleString()}\` in your bank.`,
                     color: '#ED4245'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 

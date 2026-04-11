@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType } = require('discord.js');
+const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const User = require('../../models/User');
 
@@ -132,7 +133,7 @@ module.exports = {
 
         collector.on('collect', async (btn) => {
             if (btn.user.id !== interaction.user.id) {
-                return btn.reply({ content: '❌ This isn\'t your leaderboard.', ephemeral: true });
+                return btn.reply({ content: '❌ This isn\'t your leaderboard.', flags: [MessageFlags.Ephemeral] });
             }
 
             switch (btn.customId) {

@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const User = require('../../models/User'); 
 
@@ -36,7 +37,7 @@ module.exports = {
             await interaction.reply({ embeds: [economyEmbed] });
         } catch (error) {
             console.error('Set-credits error:', error);
-            await interaction.reply({ content: 'Failed to modify global economy registry.', ephemeral: true });
+            await interaction.reply({ content: 'Failed to modify global economy registry.', flags: [MessageFlags.Ephemeral] });
         }
     },
 };

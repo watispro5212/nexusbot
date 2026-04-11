@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, PermissionFlagsBits, ChannelType } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, ChannelType } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const GuildConfig = require('../../models/GuildConfig');
 const { guildConfigCache } = require('../../utils/cache');
@@ -84,7 +85,7 @@ module.exports = {
                         description: 'The starboard is **not configured** for this server.\nUse `/starboard setup` to enable it.',
                         color: '#F1C40F'
                     })],
-                    ephemeral: true
+                    flags: [MessageFlags.Ephemeral]
                 });
             }
 
@@ -100,7 +101,7 @@ module.exports = {
                     ].join('\n'),
                     color: '#FFD700'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
     },

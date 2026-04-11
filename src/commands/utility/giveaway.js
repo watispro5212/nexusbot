@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 module.exports = {
@@ -18,7 +19,7 @@ module.exports = {
         if (!durationMs || durationMs < 10000 || durationMs > 7 * 24 * 60 * 60 * 1000) {
             return interaction.reply({
                 embeds: [embedBuilder({ title: '⚠️ Invalid Duration', description: 'Duration must be between 10 seconds and 7 days. Use formats like `30s`, `5m`, `1h`, `1d`.', color: '#FF4444' })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 
@@ -45,10 +46,10 @@ module.exports = {
 
         collector.on('collect', async i => {
             if (entries.has(i.user.id)) {
-                return i.reply({ content: 'You have already entered this giveaway!', ephemeral: true });
+                return i.reply({ content: 'You have already entered this giveaway!', flags: [MessageFlags.Ephemeral] });
             }
             entries.add(i.user.id);
-            await i.reply({ content: '🎉 You have entered the giveaway!', ephemeral: true });
+            await i.reply({ content: '🎉 You have entered the giveaway!', flags: [MessageFlags.Ephemeral] });
 
             const updatedEmbed = embedBuilder({
                 title: '🎉 GIVEAWAY',

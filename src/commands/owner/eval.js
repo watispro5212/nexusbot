@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const util = require('util');
 
@@ -34,7 +35,7 @@ module.exports = {
                 color: '#00FF88'
             });
 
-            await interaction.reply({ embeds: [resultEmbed], ephemeral: true });
+            await interaction.reply({ embeds: [resultEmbed], flags: [MessageFlags.Ephemeral] });
         } catch (error) {
             const errEmbed = embedBuilder({
                 title: 'Code Execution Failed',
@@ -45,7 +46,7 @@ module.exports = {
                 color: '#FF4444'
             });
 
-            await interaction.reply({ embeds: [errEmbed], ephemeral: true });
+            await interaction.reply({ embeds: [errEmbed], flags: [MessageFlags.Ephemeral] });
         }
     },
 };

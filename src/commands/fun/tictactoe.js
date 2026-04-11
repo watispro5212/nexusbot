@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 module.exports = {
@@ -11,10 +12,10 @@ module.exports = {
         const opponent = interaction.options.getUser('opponent');
 
         if (opponent.id === interaction.user.id) {
-            return interaction.reply({ embeds: [embedBuilder({ title: '⚠️ Error', description: 'You cannot play against yourself!', color: '#FF4444' })], ephemeral: true });
+            return interaction.reply({ embeds: [embedBuilder({ title: '⚠️ Error', description: 'You cannot play against yourself!', color: '#FF4444' })], flags: [MessageFlags.Ephemeral] });
         }
         if (opponent.bot) {
-            return interaction.reply({ embeds: [embedBuilder({ title: '⚠️ Error', description: 'You cannot play against a bot!', color: '#FF4444' })], ephemeral: true });
+            return interaction.reply({ embeds: [embedBuilder({ title: '⚠️ Error', description: 'You cannot play against a bot!', color: '#FF4444' })], flags: [MessageFlags.Ephemeral] });
         }
 
         const board = Array(9).fill(null);
@@ -65,11 +66,11 @@ module.exports = {
 
         collector.on('collect', async i => {
             if (i.user.id !== currentPlayer) {
-                return i.reply({ content: 'It\'s not your turn!', ephemeral: true });
+                return i.reply({ content: 'It\'s not your turn!', flags: [MessageFlags.Ephemeral] });
             }
 
             const idx = parseInt(i.customId.split('_')[1]);
-            if (board[idx] !== null) return i.reply({ content: 'That cell is taken!', ephemeral: true });
+            if (board[idx] !== null) return i.reply({ content: 'That cell is taken!', flags: [MessageFlags.Ephemeral] });
 
             board[idx] = players[currentPlayer];
             const result = checkWin();

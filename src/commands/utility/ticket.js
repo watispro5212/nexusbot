@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, ChannelType, PermissionFlagsBits, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { SlashCommandBuilder, ChannelType, PermissionFlagsBits, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 module.exports = {
@@ -43,7 +44,7 @@ module.exports = {
                     description: `Your ticket has been created: ${channel}\nReason: ${reason}`,
                     color: '#00FF88'
                 })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
 
             // Ticket close handler
@@ -55,7 +56,7 @@ module.exports = {
         } catch (err) {
             await interaction.reply({
                 embeds: [embedBuilder({ title: '⚠️ Error', description: 'Failed to create ticket. Make sure I have channel management permissions.', color: '#FF4444' })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
     }

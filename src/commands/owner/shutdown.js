@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const logger = require('../../utils/logger');
 
@@ -15,7 +16,7 @@ module.exports = {
             color: '#E74C3C'
         });
 
-        await interaction.reply({ embeds: [confirmEmbed], ephemeral: true });
+        await interaction.reply({ embeds: [confirmEmbed], flags: [MessageFlags.Ephemeral] });
         
         logger.warn(`Shutdown command executed by ${interaction.user.tag}. Shutting down...`);
         

@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 const durations = {
@@ -45,13 +46,13 @@ module.exports = {
         const durationMs = parseInt(durationStr) * 1000;
 
         if (!target) {
-            return interaction.reply({ content: '❌ User not found in this server.', ephemeral: true });
+            return interaction.reply({ content: '❌ User not found in this server.', flags: [MessageFlags.Ephemeral] });
         }
         if (!target.moderatable) {
-            return interaction.reply({ content: '❌ I cannot timeout this user.', ephemeral: true });
+            return interaction.reply({ content: '❌ I cannot timeout this user.', flags: [MessageFlags.Ephemeral] });
         }
         if (target.id === interaction.user.id) {
-            return interaction.reply({ content: '❌ You cannot timeout yourself.', ephemeral: true });
+            return interaction.reply({ content: '❌ You cannot timeout yourself.', flags: [MessageFlags.Ephemeral] });
         }
 
         try {
@@ -66,7 +67,7 @@ module.exports = {
                 })]
             });
         } catch (err) {
-            await interaction.reply({ content: `❌ Timeout failed: \`${err.message}\``, ephemeral: true });
+            await interaction.reply({ content: `❌ Timeout failed: \`${err.message}\``, flags: [MessageFlags.Ephemeral] });
         }
     },
 };

@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 module.exports = {
@@ -43,7 +44,7 @@ module.exports = {
                 });
             }
         } catch (err) {
-            await interaction.reply({ content: `❌ Failed to set slowmode: \`${err.message}\``, ephemeral: true });
+            await interaction.reply({ content: `❌ Failed to set slowmode: \`${err.message}\``, flags: [MessageFlags.Ephemeral] });
         }
     },
 };

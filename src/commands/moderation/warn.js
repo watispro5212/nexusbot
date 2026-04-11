@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const Warning = require('../../models/Warning');
 
@@ -20,8 +21,8 @@ module.exports = {
         const target = interaction.options.getUser('target');
         const reason = interaction.options.getString('reason') || 'No reason provided.';
 
-        if (target.bot) return interaction.reply({ content: '❌ You cannot warn bots.', ephemeral: true });
-        if (target.id === interaction.user.id) return interaction.reply({ content: '❌ You cannot warn yourself.', ephemeral: true });
+        if (target.bot) return interaction.reply({ content: '❌ You cannot warn bots.', flags: [MessageFlags.Ephemeral] });
+        if (target.id === interaction.user.id) return interaction.reply({ content: '❌ You cannot warn yourself.', flags: [MessageFlags.Ephemeral] });
 
         const warning = new Warning({
             userId: target.id,

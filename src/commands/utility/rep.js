@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const User = require('../../models/User');
 
@@ -14,14 +15,14 @@ module.exports = {
         if (target.id === interaction.user.id) {
             return interaction.reply({
                 embeds: [embedBuilder({ title: '⚠️ Invalid Target', description: 'You cannot give reputation to yourself.', color: '#FF4444' })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 
         if (target.bot) {
             return interaction.reply({
                 embeds: [embedBuilder({ title: '⚠️ Invalid Target', description: 'You cannot give reputation to a bot.', color: '#FF4444' })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
 
@@ -43,7 +44,7 @@ module.exports = {
                         description: `You can give reputation again in **${hours}h ${minutes}m**.`,
                         color: '#F1C40F'
                     })],
-                    ephemeral: true
+                    flags: [MessageFlags.Ephemeral]
                 });
             }
 
@@ -68,7 +69,7 @@ module.exports = {
         } catch (err) {
             await interaction.reply({
                 embeds: [embedBuilder({ title: '⚠️ Error', description: 'Failed to update reputation. Database may be unavailable.', color: '#FF4444' })],
-                ephemeral: true
+                flags: [MessageFlags.Ephemeral]
             });
         }
     }

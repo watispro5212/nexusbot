@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 
 module.exports = {
@@ -20,13 +21,13 @@ module.exports = {
         const reason = interaction.options.getString('reason') || 'No reason provided.';
 
         if (!target) {
-            return interaction.reply({ content: '❌ User not found in this server.', ephemeral: true });
+            return interaction.reply({ content: '❌ User not found in this server.', flags: [MessageFlags.Ephemeral] });
         }
         if (!target.kickable) {
-            return interaction.reply({ content: '❌ I cannot kick this user — their role is higher than mine.', ephemeral: true });
+            return interaction.reply({ content: '❌ I cannot kick this user — their role is higher than mine.', flags: [MessageFlags.Ephemeral] });
         }
         if (target.id === interaction.user.id) {
-            return interaction.reply({ content: '❌ You cannot kick yourself.', ephemeral: true });
+            return interaction.reply({ content: '❌ You cannot kick yourself.', flags: [MessageFlags.Ephemeral] });
         }
 
         
@@ -52,7 +53,7 @@ module.exports = {
                 })]
             });
         } catch (err) {
-            await interaction.reply({ content: `❌ Kick failed: \`${err.message}\``, ephemeral: true });
+            await interaction.reply({ content: `❌ Kick failed: \`${err.message}\``, flags: [MessageFlags.Ephemeral] });
         }
     },
 };

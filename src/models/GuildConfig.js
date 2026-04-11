@@ -6,6 +6,7 @@ const guildConfigSchema = new mongoose.Schema({
     logChannel: { type: String, default: null },
     autoRole: { type: String, default: null },
     levelingEnabled: { type: Boolean, default: false },
+    levelChannel: { type: String, default: null },
     suggestionsChannel: { type: String, default: null },
     starboardChannel: { type: String, default: null },
     starboardThreshold: { type: Number, default: 5 },
@@ -17,8 +18,6 @@ const guildConfigSchema = new mongoose.Schema({
     },
     updatedAt: { type: Date, default: Date.now }
 });
-
-
 
 guildConfigSchema.pre('save', function(next) {
     this.updatedAt = new Date();

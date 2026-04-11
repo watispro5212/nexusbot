@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const { MessageFlags } = require('discord.js');;
 const embedBuilder = require('../../utils/embedBuilder');
 const Warning = require('../../models/Warning');
 
@@ -46,7 +47,7 @@ module.exports = {
                 color: '#F1C40F',
                 thumbnail: target.displayAvatarURL({ dynamic: true })
             })],
-            ephemeral: true
+            flags: [MessageFlags.Ephemeral]
         });
     },
 };
