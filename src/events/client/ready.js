@@ -2,11 +2,11 @@ const { Events, ActivityType } = require('discord.js');
 const logger = require('../../utils/logger');
 
 const statuses = [
-    { name: 'Nexus Protocol | /help', type: ActivityType.Watching },
-    { name: 'over {guilds} nodes', type: ActivityType.Watching },
+    { name: 'the Singularity | v8.7.0', type: ActivityType.Watching },
+    { name: '{guilds} operational nodes', type: ActivityType.Watching },
     { name: 'with {members} operatives', type: ActivityType.Playing },
-    { name: '/help | v7.1.0', type: ActivityType.Listening },
-    { name: 'Shard {shard} | {ping}ms', type: ActivityType.Competing },
+    { name: 'Neural Uplink Status: Optimal', type: ActivityType.Listening },
+    { name: 'Shard {shard} Diagnostics', type: ActivityType.Competing },
 ];
 
 module.exports = {

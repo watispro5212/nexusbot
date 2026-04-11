@@ -9,27 +9,27 @@ module.exports = {
     async execute(interaction, client) {
         await interaction.reply({
             embeds: [embedBuilder({
-                title: 'Nexus v8.5 // Singularity Core',
-                description: 'A total architectural and stylistic overhaul of the Nexus neural framework.',
+                title: 'Nexus v8.7.0 // Singularity Ascension',
+                description: 'A major stabilization and infrastructural expansion of the neural framework.',
                 fields: [
                     { 
-                        name: '🏺 Artisanal Shift', 
-                        value: 'Cleaned entire codebase of robotic AI markers. Every directive is now hand-crafted for elite quality.' 
+                        name: '🛡️ Shard Stabilization', 
+                        value: 'Rebuilt sharding orchestration with advanced lifecycle telemetry and worker thread mode for 100% uptime.' 
                     },
                     { 
-                        name: '⚡ Performance Core', 
-                        value: 'Sharding management optimized for scale. High-frequency loops refined for minimal CPU footprint.' 
+                        name: '📜 Grand Directive', 
+                        value: 'Authored an elite 10k-entity scaling blueprint in `server.md` for high-prestige community growth.' 
                     },
                     { 
-                        name: '🌐 Static Portal', 
-                        value: 'Project site transitioned to a high-speed static informational suite for secure deployment.' 
+                        name: '🔍 Neural Retrieval', 
+                        value: 'Implemented a real-time command search protocol on the web portal for immediate directive access.' 
                     },
                     { 
-                        name: '🔮 Visual Identity', 
-                        value: 'Implemented a Deep Space industrial aesthetic across all core embed responses.' 
+                        name: '✨ Portal Refinement', 
+                        value: 'Ascended the visual design system across all 9 informational sectors with glassmorphism and animations.' 
                     }
                 ],
-                footer: 'Nexus Protocol • Automated Development Log'
+                footer: 'Nexus Protocol • Singularity Ascension Archive'
             })]
         });
     },
