@@ -111,7 +111,7 @@ module.exports = {
                     `**Balance:** \`$${userData.balance.toLocaleString()}\``
                 ].join('\n'),
                 color,
-                footer: `Nexus v11.0.0 • Bet: $${bet.toLocaleString()}`
+                footer: `Nexus v11.1.0 • Bet: $${bet.toLocaleString()}`
             })]
         });
     },

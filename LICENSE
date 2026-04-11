@@ -1,36 +1,62 @@
-# NEXUS PROTOCOL // NEURAL INTEGRITY LICENSE
-> BSL-Attribution (v8.6.0)
+# NEXUS PROTOCOL — BSL-ATTRIBUTION LICENSE
 
-Copyright (c) 2026 watispro5212, watispro1. All rights reserved.
+**Version 11.1.0 — Apex**
 
-This license governs the Nexus Protocol Discord framework, the Singularity neural engine, and the associated artisanal portal network.
+Copyright © 2026 watispro5212, watispro1. All rights reserved.
 
 ---
 
-## 01 // GRANT OF AUTHORIZATION
-Permission is hereby granted, free of charge, to any person or organization obtaining a copy of this framework and associated technical directives, to use, copy, modify, and distribute the Software, subject to the conditions defined below.
+## 1. GRANT OF LICENSE
 
-## 02 // MANDATORY ATTRIBUTION
-All copies, substantial portions, or derivative architectural works must retain **prominent** credit to the original founders:
+Permission is hereby granted, free of charge, to any person or organization obtaining a copy of this software and associated documentation files (the "Software"), to use, copy, modify, merge, and distribute copies of the Software, subject to the conditions defined below.
+
+## 2. MANDATORY ATTRIBUTION
+
+All copies, forks, substantial portions, or derivative works of this Software must retain clear and prominent credit to the original creators:
 
 > **Nexus Protocol** — Created by watispro5212 and watispro1
+> https://github.com/watispro5212/shiny-giigles
 
-Attribution must remain persistent in:
-- The `README.md` (or equivalent) of any distributed copy.
-- The footer of all public-facing informational portals.
-- The `About` section of any hosted instance of the Singularity engine.
+Attribution must remain visible in:
 
-Removing or obscuring the "Nexus Protocol" brand identity is a terminal violation of this license.
+- The `README.md` (or equivalent documentation) of any distributed copy or fork.
+- The footer or about section of any public-facing web portal or dashboard.
+- The bot's `/botinfo` or equivalent status command output.
 
-## 03 // COMMERCIAL OPERATION
-- **Non-Commercial**: Freedom to host for personal or community sectors is granted.
-- **Commercial**: Any monetize-able deployment (SaaS, white-label sales, or paid-feature toggles) requires explicit written authorization from the Founders.
+**Removing, obscuring, or misrepresenting the original authorship is a violation of this license.**
 
-## 04 // NEURAL INTEGRITY
-You may not market a fork or hosted instance as the "Official Nexus Protocol" without explicit written consent. All forks must clearly state their derivation from the Singularity v8.5+ core.
+## 3. PERMITTED USE
 
-## 05 // DISCLAIMER OF FAULT
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. IN NO EVENT SHALL THE FOUNDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR LOGIC FAILURES ARISING FROM THE DEPLOYMENT OR INTEGRATION OF THE SINGULARITY CORE.
+| Use Case | Allowed |
+|---|---|
+| Personal / community hosting | ✅ Yes |
+| Modification and customization | ✅ Yes |
+| Educational use | ✅ Yes |
+| Open-source redistribution (with attribution) | ✅ Yes |
+| Commercial deployment (SaaS, white-label, paid features) | ❌ Requires written permission |
+
+## 4. COMMERCIAL USE
+
+Any monetizable deployment — including but not limited to SaaS platforms, white-label resale, paid premium tiers, or subscription-based access — requires **explicit written authorization** from the copyright holders.
+
+Contact `watispro1` or `watispro5212` on Discord, or open an issue on the GitHub repository to request commercial licensing.
+
+## 5. BRAND INTEGRITY
+
+- You may not market a fork, hosted instance, or derivative work as the "Official Nexus Protocol" without explicit written consent.
+- All forks must clearly indicate their derivation from the original Nexus Protocol codebase.
+- The Nexus Protocol name, logo, and branding remain the property of the original creators.
+
+## 6. DISCLAIMER OF WARRANTY
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## 7. TERMINATION
+
+This license is automatically terminated if you fail to comply with any of the above conditions. Upon termination, you must destroy all copies of the Software in your possession.
 
 ---
-*NEXUS PROTOCOL © 2026 // ALL SYSTEMS OPTIMAL*
+
+*NEXUS PROTOCOL © 2026 // ALL SYSTEMS APEX*

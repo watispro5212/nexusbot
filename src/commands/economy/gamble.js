@@ -80,7 +80,7 @@ module.exports = {
                     `**New Balance:** \`$${userData.balance.toLocaleString()}\``
                 ].join('\n'),
                 color,
-                footer: `Nexus v11.0.0 • Bet: $${amount.toLocaleString()}`
+                footer: `Nexus v11.1.0 • Bet: $${amount.toLocaleString()}`
             })]
         });
     },
