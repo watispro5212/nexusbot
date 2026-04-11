@@ -3,7 +3,6 @@ const path = require('path');
 const logger = require('./utils/logger');
 require('dotenv').config();
 
-
 const manager = new ShardingManager(path.join(__dirname, 'bot.js'), {
     token: process.env.TOKEN,
     totalShards: 'auto',
@@ -26,6 +25,8 @@ manager.on('shardCreate', shard => {
     });
 });
 
+// Initialize the portal server
+require('./web/server')(manager);
 
 manager.spawn().catch(error => {
     logger.error('Failed to spawn shards:', error);
