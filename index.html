@@ -29,13 +29,40 @@
                 <h1>The Singularity Core.</h1>
                 <p>A high-performance neural framework for elite Discord communities. Secure. Scalable. Hand-crafted for total node dominion.</p>
             </div>
+            
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                </div>
+                <div class="terminal-body" id="terminal">
+                    <!-- Terminal content injected via JS -->
+                </div>
+            </div>
+
             <div class="hero-actions">
                 <a href="invite.html" class="btn btn-primary">Connect Node</a>
                 <a href="commands.html" class="btn btn-outline" style="margin-left: 1rem;">View Protocols</a>
             </div>
         </section>
 
-        <section class="content-grid" style="margin-top: 8rem;">
+        <section class="metrics-grid" style="margin-top: 8rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+            <div class="metric-card" style="text-align: center; background: var(--surface); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.02);">
+                <span style="font-size: 2.5rem; color: var(--accent); font-weight: bold; display: block;">99.9%</span>
+                <span class="stat-label">Uptime</span>
+            </div>
+            <div class="metric-card" style="text-align: center; background: var(--surface); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.02);">
+                <span style="font-size: 2.5rem; color: var(--accent); font-weight: bold; display: block;">1,240+</span>
+                <span class="stat-label">Active Nodes</span>
+            </div>
+            <div class="metric-card" style="text-align: center; background: var(--surface); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.02);">
+                <span style="font-size: 2.5rem; color: var(--accent); font-weight: bold; display: block;">&lt;15ms</span>
+                <span class="stat-label">Neural Latency</span>
+            </div>
+        </section>
+
+        <section class="content-grid" style="margin-top: 5rem;">
             <div class="artisanal-card">
                 <h3>Sovereign Control</h3>
                 <p>Full-spectrum moderation tools designed for rapid response and preventative security.</p>
@@ -58,5 +85,34 @@
         </div>
         <p>NEXUS PROTOCOL © 2026 // ALL SYSTEMS OPTIMAL</p>
     </footer>
+
+    <script>
+        const terminal = document.getElementById('terminal');
+        const lines = [
+            'Initializing Singularity Core v8.6.0...',
+            'Connecting to global shard matrix...',
+            'Status: [OPTIMAL]',
+            'Loading neural economy modules...',
+            'Establishing security uplink...',
+            'System Ready. Awaiting directives.'
+        ];
+
+        let lineIndex = 0;
+        function typeLine() {
+            if (lineIndex < lines.length) {
+                const p = document.createElement('p');
+                p.className = 'terminal-line active';
+                p.innerHTML = `<span style="color: var(--accent)">></span> ${lines[lineIndex]}`;
+                terminal.appendChild(p);
+                lineIndex++;
+                setTimeout(typeLine, 800);
+            } else {
+                const cursor = document.createElement('span');
+                cursor.className = 'cursor';
+                terminal.appendChild(cursor);
+            }
+        }
+        window.onload = typeLine;
+    </script>
 </body>
 </html>

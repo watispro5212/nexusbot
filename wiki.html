@@ -21,15 +21,31 @@
     <main class="container">
         <section class="section-header">
             <h1>Neural Database.</h1>
-            <p>A glossary of the Singularity engine and its subsystems.</p>
+            <p>A comprehensive glossary of the Singularity engine and its operational subsystems.</p>
         </section>
         <div class="legal-content">
-            <h2>The Singularity Core</h2>
-            <p>The central processing unit for all Nexus administrative functions. It manages global state and shard health.</p>
-            <h2>Neural Economy</h2>
-            <p>A state-persistent currency system that tracks operatives' progress across disparate sectors.</p>
-            <h2>Founders Only</h2>
-            <p>Commands that directly manipulate the bot's internal logic, restricted to identified OWNER_IDs.</p>
+            <section style="margin-bottom: 4rem;">
+                <h2 style="color: var(--accent); margin-bottom: 1.5rem;">01 // Core Architecture</h2>
+                <p>The **Singularity Core** is a distributed neural framework designed for horizontal scalability across multiple shards. It utilizes a non-blocking event loop to manage high-frequency data streams with minimal CPU overhead.</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem; color: var(--text-dim);">
+                    <li>Shard Manager: Orchestrates cross-process communication.</li>
+                    <li>Cache Layer: In-memory state persistence for rapid retrieval.</li>
+                    <li>Audit Module: Real-time security infraction monitoring.</li>
+                </ul>
+            </section>
+
+            <section style="margin-bottom: 4rem;">
+                <h2 style="color: var(--accent); margin-bottom: 1.5rem;">02 // Neural Economy</h2>
+                <p>A state-persistent currency system that tracks operatives' progress across disparate sectors. Balances are stored in a secured MongoDB cluster with redundant data nodes.</p>
+                <div class="artisanal-card" style="margin-top: 1.5rem; padding: 1.5rem;">
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">BALANCE_PROTOCOL_STABLE = TRUE<br>GLOBAL_COMMERCE_SYNC = 99.9%</p>
+                </div>
+            </section>
+
+            <section style="margin-bottom: 4rem;">
+                <h2 style="color: var(--accent); margin-bottom: 1.5rem;">03 // Security Protocols</h2>
+                <p>Founders maintain absolute dominion over the framework through restricted OWNER_ID validation. All security logs (Audits) are immutable and archived for audit retrieval.</p>
+            </section>
         </div>
     </main>
     <footer><p>NEXUS PROTOCOL © 2026 // ALL SYSTEMS OPTIMAL</p></footer>
