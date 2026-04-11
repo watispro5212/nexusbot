@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS // Protocols</title>
+    <title>NEXUS // Protocol Index v10</title>
+    <meta name="description" content="Complete command directory for the Nexus Protocol v10 Discord bot — 65+ slash commands across moderation, economy, utility, fun, advanced, and founder categories.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,109 +19,691 @@
             <a href="wiki.html">Wiki</a>
             <a href="staff.html">Staff</a>
             <a href="changelog.html">Log</a>
+            <span class="nav-version">v10.0</span>
         </div>
+        <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');"><span></span><span></span><span></span></div>
     </nav>
     <main class="container">
         <section class="section-header">
+            <span class="section-label">PROTOCOL REGISTRY</span>
             <h1>Protocol Index.</h1>
-            <p>A comprehensive directory of Nexus operational directives.</p>
+            <p>A comprehensive directory of <span class="cmd-count-badge">65+</span> Nexus operational directives.</p>
         </section>
-        <section class="command-dashboard">
-            <div class="search-container">
-                <input type="text" id="command-search" placeholder="Search Neural Protocols..." style="width: 100%; max-width: 600px; padding: 1.2rem 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 50px; color: var(--text); font-family: inherit; font-size: 1rem; box-shadow: 0 0 20px rgba(0,0,0,0.2); transition: all 0.3s ease;">
+
+        <!-- Search -->
+        <div style="max-width: 600px; margin: 0 auto 2rem; position: relative;">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="command-search" class="search-input" placeholder="Search protocols...">
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All</button>
+            <button class="filter-tab" data-filter="security">🛡️ Security</button>
+            <button class="filter-tab" data-filter="economy">💰 Economy</button>
+            <button class="filter-tab" data-filter="utility">🔧 Utility</button>
+            <button class="filter-tab" data-filter="fun">🎮 Fun</button>
+            <button class="filter-tab" data-filter="advanced">⚡ Advanced</button>
+            <button class="filter-tab" data-filter="founder">👑 Founder</button>
+        </div>
+
+        <!-- Command Grid -->
+        <div class="content-grid" id="protocol-matrix" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+
+            <!-- ═══ SECURITY / MODERATION ═══ -->
+            <div class="artisanal-card protocol-node" data-category="security" data-name="ban">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/ban</h3>
+                <p>Permanently severs an entity's connection to the node matrix.</p>
+                <div class="cmd-syntax">/ban &lt;user&gt; [reason]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="security" data-name="kick">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/kick</h3>
+                <p>Ejects an entity from the current node with optional reasoning.</p>
+                <div class="cmd-syntax">/kick &lt;user&gt; [reason]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="security" data-name="timeout">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/timeout</h3>
+                <p>Suppresses transmission capabilities for a specified duration.</p>
+                <div class="cmd-syntax">/timeout &lt;user&gt; &lt;duration&gt; [reason]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="security" data-name="warn">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/warn</h3>
+                <p>Issues a formal warning to an operative, logged to their permanent profile.</p>
+                <div class="cmd-syntax">/warn &lt;user&gt; [reason]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="security" data-name="warnings">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/warnings</h3>
+                <p>Retrieve the complete infraction history for a specified operative.</p>
+                <div class="cmd-syntax">/warnings &lt;user&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="security" data-name="purge">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/purge</h3>
+                <p>Mass-delete messages from the current sector.</p>
+                <div class="cmd-syntax">/purge &lt;amount&gt; [user]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="security" data-name="lock">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/lock</h3>
+                <p>Locks a channel, preventing standard entities from transmitting.</p>
+                <div class="cmd-syntax">/lock [channel]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="security" data-name="unlock">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/unlock</h3>
+                <p>Restores transmission permissions to a locked sector.</p>
+                <div class="cmd-syntax">/unlock [channel]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="security" data-name="slowmode">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/slowmode</h3>
+                <p>Set transmission rate limits on a channel.</p>
+                <div class="cmd-syntax">/slowmode &lt;seconds&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="security" data-name="role">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/role</h3>
+                <p>Add or remove a role from an operative.</p>
+                <div class="cmd-syntax">/role &lt;add|remove&gt; &lt;user&gt; &lt;role&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="security" data-name="nuke">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 30s</span>
+                </div>
+                <h3>/nuke</h3>
+                <p>Recreates the current channel, wiping all message history.</p>
+                <div class="cmd-syntax">/nuke</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="security" data-name="blacklist">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/blacklist</h3>
+                <p>Add or remove users from the global exclusion registry.</p>
+                <div class="cmd-syntax">/blacklist &lt;add|remove&gt; &lt;user&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="security" data-name="announce">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 10s</span>
+                </div>
+                <h3>/announce</h3>
+                <p>Broadcast an official announcement embed to a specified channel.</p>
+                <div class="cmd-syntax">/announce &lt;channel&gt; &lt;message&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="security" data-name="automod">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/automod</h3>
+                <p>Configure the auto-moderation pipeline (anti-spam, anti-link, word filter).</p>
+                <div class="cmd-syntax">/automod &lt;setting&gt; &lt;value&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="security" data-name="massban">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-security">SECURITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 30s</span>
+                </div>
+                <h3>/massban</h3>
+                <p>Ban multiple entities simultaneously. Admin-restricted protocol.</p>
+                <div class="cmd-syntax">/massban &lt;user1&gt; &lt;user2&gt; ...</div>
             </div>
 
-            <div class="protocol-grid" id="protocol-matrix" style="margin-top: 4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-                <!-- Moderation -->
-                <div class="artisanal-card protocol-node" data-name="ban" data-desc="Permanent node exclusion. Execution: /ban [user] [reason].">
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                        <span class="protocol-tag" style="background: rgba(255, 68, 68, 0.1); color: #ff4444; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; letter-spacing: 1px; font-weight: bold;">SECURITY</span>
-                        <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-dim);">CD: 3s</span>
-                    </div>
-                    <h3>/ban</h3>
-                    <p>Permanently severs an entity's connection to the current node matrix. Required check for administrative clearance.</p>
-                    <div class="protocol-meta" style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; font-size: 0.8rem;">
-                        <p style="color: var(--accent);"><span style="color: var(--text-dim)">Node:</span> BAN_MEMBERS</p>
-                        <p style="color: var(--accent); margin-top: 0.3rem;"><span style="color: var(--text-dim)">Args:</span> &lt;entity&gt; [reason]</p>
-                    </div>
+            <!-- ═══ ECONOMY ═══ -->
+            <div class="artisanal-card protocol-node" data-category="economy" data-name="balance">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-economy">ECONOMY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 1s</span>
                 </div>
-
-                <div class="artisanal-card protocol-node" data-name="mute" data-desc="Temporary silence protocol. Execution: /mute [user] [duration].">
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                        <span class="protocol-tag" style="background: rgba(255, 184, 108, 0.1); color: #ffb86c; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; letter-spacing: 1px; font-weight: bold;">SECURITY</span>
-                        <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-dim);">CD: 5s</span>
-                    </div>
-                    <h3>/mute</h3>
-                    <p>Suppresses the transmission capabilities of a specified entity. Prevents logic interference during active sessions.</p>
-                    <div class="protocol-meta" style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; font-size: 0.8rem;">
-                        <p style="color: var(--accent);"><span style="color: var(--text-dim)">Node:</span> MODERATE_MEMBERS</p>
-                        <p style="color: var(--accent); margin-top: 0.3rem;"><span style="color: var(--text-dim)">Args:</span> &lt;entity&gt; [duration]</p>
-                    </div>
-                </div>
-
-                <!-- Economy -->
-                <div class="artisanal-card protocol-node" data-name="balance" data-desc="Standard asset telemetry. Execution: /balance.">
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                        <span class="protocol-tag" style="background: rgba(80, 250, 123, 0.1); color: #50fa7b; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; letter-spacing: 1px; font-weight: bold;">ECONOMY</span>
-                        <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-dim);">CD: 1s</span>
-                    </div>
-                    <h3>/balance</h3>
-                    <p>Retrieves the current asset count and neural credit stash for the executing operative.</p>
-                    <div class="protocol-meta" style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; font-size: 0.8rem;">
-                        <p style="color: var(--accent);"><span style="color: var(--text-dim)">Node:</span> GLOBAL_ACC</p>
-                        <p style="color: var(--accent); margin-top: 0.3rem;"><span style="color: var(--text-dim)">Args:</span> [target_entity]</p>
-                    </div>
-                </div>
-
-                <!-- Utility -->
-                <div class="artisanal-card protocol-node" data-name="status" data-desc="System health diagnostics. Execution: /status.">
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                        <span class="protocol-tag" style="background: rgba(0, 245, 255, 0.1); color: var(--accent); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; letter-spacing: 1px; font-weight: bold;">UTILITY</span>
-                        <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-dim);">CD: 10s</span>
-                    </div>
-                    <h3>/status</h3>
-                    <p>Provides a comprehensive diagnostic overview of all active shards and global core integrity.</p>
-                    <div class="protocol-meta" style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; font-size: 0.8rem;">
-                        <p style="color: var(--accent);"><span style="color: var(--text-dim)">Node:</span> EVERYONE</p>
-                        <p style="color: var(--accent); margin-top: 0.3rem;"><span style="color: var(--text-dim)">Args:</span> NONE</p>
-                    </div>
-                </div>
-
-                <!-- Owner -->
-                <div class="artisanal-card protocol-node owner-command" data-name="eval" data-desc="Logic execution. Restricted.">
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                        <span class="protocol-tag" style="background: rgba(187, 134, 252, 0.2); color: #bb86fc; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; letter-spacing: 1px; font-weight: bold;">FOUNDER</span>
-                        <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-dim);">CD: 0s</span>
-                    </div>
-                    <h3>/eval</h3>
-                    <p>Allows for direct injection of raw logic payloads into the Singularity engine. Strictly restricted to Founders.</p>
-                    <div class="protocol-meta" style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; font-size: 0.8rem;">
-                        <p style="color: #bb86fc;"><span style="color: var(--text-dim)">Node:</span> SOVEREIGN_ACCESS</p>
-                        <p style="color: #bb86fc; margin-top: 0.3rem;"><span style="color: var(--text-dim)">Args:</span> &lt;code_payload&gt;</p>
-                    </div>
-                </div>
+                <h3>/balance</h3>
+                <p>Display current neural credit reserves and bank holdings.</p>
+                <div class="cmd-syntax">/balance [user]</div>
             </div>
-        </section>
+            <div class="artisanal-card protocol-node" data-category="economy" data-name="daily">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-economy">ECONOMY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 24h</span>
+                </div>
+                <h3>/daily</h3>
+                <p>Claim daily neural credit allocation with streak bonuses.</p>
+                <div class="cmd-syntax">/daily</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="economy" data-name="work">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-economy">ECONOMY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 30m</span>
+                </div>
+                <h3>/work</h3>
+                <p>Execute a work contract to earn variable neural credits.</p>
+                <div class="cmd-syntax">/work</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="economy" data-name="crime">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-economy">ECONOMY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 1h</span>
+                </div>
+                <h3>/crime</h3>
+                <p>Attempt a high-risk operation for high-reward credit payouts.</p>
+                <div class="cmd-syntax">/crime</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="economy" data-name="rob">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-economy">ECONOMY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 2h</span>
+                </div>
+                <h3>/rob</h3>
+                <p>Attempt to extract credits from another operative's wallet.</p>
+                <div class="cmd-syntax">/rob &lt;user&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="economy" data-name="pay">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-economy">ECONOMY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/pay</h3>
+                <p>Transfer neural credits to another operative.</p>
+                <div class="cmd-syntax">/pay &lt;user&gt; &lt;amount&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="economy" data-name="deposit">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-economy">ECONOMY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/deposit</h3>
+                <p>Move credits from wallet to secure bank storage.</p>
+                <div class="cmd-syntax">/deposit &lt;amount|all&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="economy" data-name="withdraw">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-economy">ECONOMY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/withdraw</h3>
+                <p>Extract credits from bank storage to wallet.</p>
+                <div class="cmd-syntax">/withdraw &lt;amount|all&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="economy" data-name="shop">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-economy">ECONOMY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/shop</h3>
+                <p>Browse the item marketplace.</p>
+                <div class="cmd-syntax">/shop</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="economy" data-name="buy">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-economy">ECONOMY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/buy</h3>
+                <p>Purchase an item from the neural marketplace.</p>
+                <div class="cmd-syntax">/buy &lt;item&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="economy" data-name="inventory">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-economy">ECONOMY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/inventory</h3>
+                <p>View your collected items and assets.</p>
+                <div class="cmd-syntax">/inventory</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="economy" data-name="leaderboard">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-economy">ECONOMY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 10s</span>
+                </div>
+                <h3>/leaderboard</h3>
+                <p>Display the top operatives ranked by total wealth.</p>
+                <div class="cmd-syntax">/leaderboard</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="economy" data-name="set-balance">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-economy">ECONOMY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/set-balance</h3>
+                <p>Override an operative's balance. Admin restricted.</p>
+                <div class="cmd-syntax">/set-balance &lt;user&gt; &lt;amount&gt;</div>
+            </div>
+
+            <!-- ═══ UTILITY ═══ -->
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="help">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/help</h3>
+                <p>Interactive command directory with category navigation.</p>
+                <div class="cmd-syntax">/help</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="ping">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/ping</h3>
+                <p>Measure neural latency between client and Discord gateway.</p>
+                <div class="cmd-syntax">/ping</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="uptime">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/uptime</h3>
+                <p>Display engine operational duration since last initialization.</p>
+                <div class="cmd-syntax">/uptime</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="serverinfo">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/serverinfo</h3>
+                <p>Detailed intelligence report on the current server node.</p>
+                <div class="cmd-syntax">/serverinfo</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="userinfo">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/userinfo</h3>
+                <p>Retrieve comprehensive data on a specified operative.</p>
+                <div class="cmd-syntax">/userinfo [user]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="avatar">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/avatar</h3>
+                <p>Display a user's profile image at full resolution.</p>
+                <div class="cmd-syntax">/avatar [user]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="banner">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/banner</h3>
+                <p>Display a user's profile banner at full resolution.</p>
+                <div class="cmd-syntax">/banner [user]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="embed">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/embed</h3>
+                <p>Create a custom embed message with title, description, and color.</p>
+                <div class="cmd-syntax">/embed &lt;title&gt; &lt;description&gt; [color]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="poll">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 10s</span>
+                </div>
+                <h3>/poll</h3>
+                <p>Create an interactive poll with reaction-based voting.</p>
+                <div class="cmd-syntax">/poll &lt;question&gt; &lt;options&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="remind">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/remind</h3>
+                <p>Set a timed reminder with a custom message.</p>
+                <div class="cmd-syntax">/remind &lt;time&gt; &lt;message&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="snipe">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/snipe</h3>
+                <p>Retrieve the last deleted message in the current channel.</p>
+                <div class="cmd-syntax">/snipe</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="afk">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 10s</span>
+                </div>
+                <h3>/afk</h3>
+                <p>Set your AFK status with an optional message.</p>
+                <div class="cmd-syntax">/afk [reason]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="invite">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/invite</h3>
+                <p>Generate the official bot invite and support server links.</p>
+                <div class="cmd-syntax">/invite</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="changelog">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/changelog</h3>
+                <p>Display the latest version changelog and patch notes.</p>
+                <div class="cmd-syntax">/changelog</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="math">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/math</h3>
+                <p>Evaluate mathematical expressions with precision.</p>
+                <div class="cmd-syntax">/math &lt;expression&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="weather">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 10s</span>
+                </div>
+                <h3>/weather</h3>
+                <p>Retrieve atmospheric telemetry for a specified location.</p>
+                <div class="cmd-syntax">/weather &lt;location&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="ticket">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 30s</span>
+                </div>
+                <h3>/ticket</h3>
+                <p>Create a private support ticket channel with close/transcript controls.</p>
+                <div class="cmd-syntax">/ticket [reason]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="giveaway">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 30s</span>
+                </div>
+                <h3>/giveaway</h3>
+                <p>Start a timed giveaway with participants and random winner selection.</p>
+                <div class="cmd-syntax">/giveaway &lt;prize&gt; &lt;duration&gt; [winners]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="profile">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/profile</h3>
+                <p>Rich profile card showing level, balance, badges, and reputation.</p>
+                <div class="cmd-syntax">/profile [user]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="rep">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 24h</span>
+                </div>
+                <h3>/rep</h3>
+                <p>Give a reputation point to another operative. 1 per day.</p>
+                <div class="cmd-syntax">/rep &lt;user&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="botinfo">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 10s</span>
+                </div>
+                <h3>/botinfo</h3>
+                <p>Detailed diagnostics: memory, uptime, shard count, guild count, version.</p>
+                <div class="cmd-syntax">/botinfo</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="utility" data-name="roll">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-utility">UTILITY</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/roll</h3>
+                <p>Roll dice with customizable sides and count.</p>
+                <div class="cmd-syntax">/roll [sides] [count]</div>
+            </div>
+
+            <!-- ═══ FUN ═══ -->
+            <div class="artisanal-card protocol-node" data-category="fun" data-name="8ball">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-fun">FUN</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/8ball</h3>
+                <p>Ask the neural oracle a yes/no question.</p>
+                <div class="cmd-syntax">/8ball &lt;question&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="fun" data-name="coinflip">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-fun">FUN</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 1s</span>
+                </div>
+                <h3>/coinflip</h3>
+                <p>Flip a virtual credit chip — heads or tails.</p>
+                <div class="cmd-syntax">/coinflip</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="fun" data-name="rps">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-fun">FUN</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/rps</h3>
+                <p>Challenge the neural engine to Rock, Paper, Scissors.</p>
+                <div class="cmd-syntax">/rps &lt;choice&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="fun" data-name="meme">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-fun">FUN</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/meme</h3>
+                <p>Retrieve a random data packet from the meme subreddit archives.</p>
+                <div class="cmd-syntax">/meme</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="fun" data-name="quote">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-fun">FUN</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 3s</span>
+                </div>
+                <h3>/quote</h3>
+                <p>Generate a random inspirational or humorous quote.</p>
+                <div class="cmd-syntax">/quote</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="fun" data-name="hack">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-fun">FUN</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 10s</span>
+                </div>
+                <h3>/hack</h3>
+                <p>Simulate a dramatic hacking sequence on a user (cosmetic only).</p>
+                <div class="cmd-syntax">/hack &lt;user&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="fun" data-name="trivia">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-fun">FUN</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 10s</span>
+                </div>
+                <h3>/trivia</h3>
+                <p>Interactive trivia game with multiple-choice button answers.</p>
+                <div class="cmd-syntax">/trivia [category]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="fun" data-name="tictactoe">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-fun">FUN</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 15s</span>
+                </div>
+                <h3>/tictactoe</h3>
+                <p>Challenge another operative to a button-based tic-tac-toe match.</p>
+                <div class="cmd-syntax">/tictactoe &lt;user&gt;</div>
+            </div>
+
+            <!-- ═══ ADVANCED ═══ -->
+            <div class="artisanal-card protocol-node" data-category="advanced" data-name="status">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-advanced">ADVANCED</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 10s</span>
+                </div>
+                <h3>/status</h3>
+                <p>Comprehensive shard diagnostics and global core integrity report.</p>
+                <div class="cmd-syntax">/status</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="advanced" data-name="audit">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-advanced">ADVANCED</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 10s</span>
+                </div>
+                <h3>/audit</h3>
+                <p>Retrieve recent audit log entries for the current node.</p>
+                <div class="cmd-syntax">/audit [entries]</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="advanced" data-name="decode">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-advanced">ADVANCED</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/decode</h3>
+                <p>Encode/decode text in Base64, Hex, Binary, and more.</p>
+                <div class="cmd-syntax">/decode &lt;type&gt; &lt;text&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="advanced" data-name="config">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-advanced">ADVANCED</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 5s</span>
+                </div>
+                <h3>/config</h3>
+                <p>Configure guild settings: welcome channel, log channel, leveling, auto-role.</p>
+                <div class="cmd-syntax">/config &lt;setting&gt; &lt;value&gt;</div>
+            </div>
+
+            <!-- ═══ FOUNDER ═══ -->
+            <div class="artisanal-card protocol-node" data-category="founder" data-name="eval">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-founder">FOUNDER</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 0s</span>
+                </div>
+                <h3>/eval</h3>
+                <p>Direct injection of raw logic payloads into the Singularity engine.</p>
+                <div class="cmd-syntax">/eval &lt;code&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="founder" data-name="reload">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-founder">FOUNDER</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 0s</span>
+                </div>
+                <h3>/reload</h3>
+                <p>Hot-reload a specific command or event without full restart.</p>
+                <div class="cmd-syntax">/reload &lt;module&gt;</div>
+            </div>
+            <div class="artisanal-card protocol-node" data-category="founder" data-name="shutdown">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.8rem;">
+                    <span class="protocol-tag tag-founder">FOUNDER</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted);">CD: 0s</span>
+                </div>
+                <h3>/shutdown</h3>
+                <p>Gracefully terminate all shard processes and close database connections.</p>
+                <div class="cmd-syntax">/shutdown</div>
+            </div>
+        </div>
     </main>
-    <footer><p>NEXUS PROTOCOL © 2026 // ALL SYSTEMS OPTIMAL</p></footer>
+
+    <footer>
+        <div class="footer-brand">
+            <span style="font-weight: 700; letter-spacing: 2px; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">NEXUS</span>
+            <span class="footer-version">v10.0.0</span>
+        </div>
+        <div class="footer-links">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+        </div>
+        <p>NEXUS PROTOCOL © 2026 // ALL SYSTEMS OMEGA</p>
+    </footer>
 
     <script>
-        const searchInput = document.getElementById('commandSearch');
-        const cards = document.querySelectorAll('.artisanal-card');
+        /* === Search === */
+        const searchInput = document.getElementById('command-search');
+        const cards = document.querySelectorAll('.protocol-node');
 
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase();
             cards.forEach(card => {
-                const name = card.getAttribute('data-name').toLowerCase();
-                const description = card.querySelector('p').innerText.toLowerCase();
-                const isOwner = card.getAttribute('data-owner') === 'true';
-
-                if (name.includes(query) || description.includes(query)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+                const name = (card.dataset.name || '').toLowerCase();
+                const desc = card.querySelector('p')?.textContent.toLowerCase() || '';
+                card.style.display = (name.includes(query) || desc.includes(query)) ? '' : 'none';
             });
+        });
+
+        /* === Category Filters === */
+        const tabs = document.querySelectorAll('.filter-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const filter = tab.dataset.filter;
+
+                cards.forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = card.dataset.category === filter ? '' : 'none';
+                    }
+                });
+
+                searchInput.value = '';
+            });
+        });
+
+        /* === Nav scroll === */
+        window.addEventListener('scroll', () => {
+            document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        /* === Mobile nav === */
+        document.querySelector('.hamburger')?.addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('open');
         });
     </script>
 </body>

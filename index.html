@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS // Deep Space Protocol</title>
+    <title>NEXUS // Deep Space Protocol v10</title>
+    <meta name="description" content="Nexus Protocol v10 — A high-performance neural framework for elite Discord communities. 65+ commands, economy, moderation, leveling, and more.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="space-bg">
         <div class="stars"></div>
     </div>
+    <canvas id="particle-canvas"></canvas>
 
     <nav>
         <a href="index.html" class="logo">NEXUS</a>
@@ -21,6 +23,10 @@
             <a href="wiki.html">Wiki</a>
             <a href="staff.html">Staff</a>
             <a href="changelog.html">Log</a>
+            <span class="nav-version">v10.0</span>
+        </div>
+        <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');">
+            <span></span><span></span><span></span>
         </div>
     </nav>
 
@@ -28,84 +34,89 @@
         <!-- HERO -->
         <section class="hero">
             <div class="section-header">
-                <p style="color: var(--accent); font-family: 'JetBrains Mono'; font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 1rem;">NEXUS PROTOCOL v9.1.0</p>
-                <h1>The Singularity Core.</h1>
-                <p>A high-performance neural framework for elite Discord communities. Secure. Scalable. Hand-crafted for total node dominion.</p>
+                <span class="section-label">NEXUS PROTOCOL v10.0.0 — OMEGA</span>
+                <h1>The Omega Core.</h1>
+                <p>A next-generation neural framework engineered for elite Discord communities. Secure. Scalable. Unstoppable.</p>
             </div>
-            
-            <div class="terminal-container">
+
+            <div class="terminal-container reveal">
                 <div class="terminal-header">
                     <div class="dot red"></div>
                     <div class="dot yellow"></div>
                     <div class="dot green"></div>
+                    <span class="terminal-title">nexus-core@10.0.0</span>
                 </div>
                 <div class="terminal-body" id="terminal"></div>
             </div>
 
             <div class="hero-actions">
-                <a href="invite.html" class="btn btn-primary">Connect Node</a>
-                <a href="commands.html" class="btn btn-outline" style="margin-left: 1rem;">View Protocols</a>
+                <a href="invite.html" class="btn btn-primary">⚡ Deploy Node</a>
+                <a href="commands.html" class="btn btn-outline">View Protocols →</a>
             </div>
         </section>
 
-        <!-- METRICS -->
-        <section class="metrics-grid" style="margin-top: 8rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem;">
-            <div class="metric-card" style="text-align: center; background: var(--surface); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center;">
-                <span style="font-size: 2.5rem; color: var(--accent); font-weight: bold; display: block; filter: drop-shadow(0 0 10px var(--accent-glow));">99.9%</span>
-                <span style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); margin-top: 0.5rem;">SLA Uptime</span>
+        <!-- LIVE METRICS -->
+        <section class="metrics-grid reveal">
+            <div class="metric-card">
+                <span class="metric-value" data-count="99.9">0</span>
+                <span class="metric-label">% SLA Uptime</span>
             </div>
-            <div class="metric-card" style="text-align: center; background: var(--surface); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center;">
-                <span style="font-size: 2.5rem; color: var(--accent); font-weight: bold; display: block; filter: drop-shadow(0 0 10px var(--accent-glow));">55+</span>
-                <span style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); margin-top: 0.5rem;">Protocols</span>
+            <div class="metric-card">
+                <span class="metric-value" data-count="65">0</span>
+                <span class="metric-label">+ Protocols</span>
             </div>
-            <div class="metric-card" style="text-align: center; background: var(--surface); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center;">
-                <span style="font-size: 2.5rem; color: var(--accent); font-weight: bold; display: block; filter: drop-shadow(0 0 10px var(--accent-glow));">&lt;15ms</span>
-                <span style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); margin-top: 0.5rem;">Packet Latency</span>
+            <div class="metric-card">
+                <span class="metric-value" data-count="15">0</span>
+                <span class="metric-label">ms Latency</span>
             </div>
-            <div class="metric-card" style="text-align: center; background: var(--surface); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center;">
-                <span style="font-size: 2.5rem; color: var(--accent); font-weight: bold; display: block; filter: drop-shadow(0 0 10px var(--accent-glow));">v14</span>
-                <span style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); margin-top: 0.5rem;">Discord.js</span>
+            <div class="metric-card">
+                <span class="metric-value" data-count="10">0</span>
+                <span class="metric-label">.0 Engine</span>
             </div>
         </section>
 
         <div class="divider-glow"></div>
 
         <!-- FEATURES -->
-        <section class="features-detailed">
-            <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Architectural Excellence.</h2>
-                <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto;">Engineered for scalability, the Nexus framework operates on a distributed neural matrix designed for zero-latency execution.</p>
+        <section class="reveal">
+            <div class="section-header" style="margin-bottom: 3rem;">
+                <span class="section-label">CORE SYSTEMS</span>
+                <h2>Architectural Excellence.</h2>
+                <p>Engineered for scalability, the Nexus framework operates on a distributed neural matrix designed for zero-latency execution.</p>
             </div>
-            
-            <div class="content-grid">
-                <div class="artisanal-card">
-                    <div style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1rem;">🛡️</div>
+
+            <div class="content-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="artisanal-card reveal reveal-delay-1">
+                    <div class="feature-icon">🛡️</div>
                     <h3>Sovereign Security</h3>
-                    <p>Full-spectrum moderation with real-time infraction auditing and automated raid prevention.</p>
-                    <ul style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem; list-style: none;">
-                        <li>• Captcha Verification Gate</li>
-                        <li>• Anti-Alt Intrusion Logic</li>
-                        <li>• Immutable Audit Archives</li>
+                    <p>Full-spectrum moderation with real-time infraction auditing, automated raid prevention, and auto-mod pipeline.</p>
+                    <ul class="feature-list">
+                        <li>Auto-Moderation Pipeline (anti-spam, anti-link)</li>
+                        <li>Mass-ban & Nuke Protocols</li>
+                        <li>Immutable Audit Archives</li>
+                        <li>Global Blacklist Registry</li>
                     </ul>
                 </div>
-                <div class="artisanal-card">
-                    <div style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1rem;">📈</div>
+                <div class="artisanal-card reveal reveal-delay-2">
+                    <div class="feature-icon">📈</div>
                     <h3>Neural Economy</h3>
-                    <p>A persistent financial system backed by MongoDB with atomic transaction safety.</p>
-                    <ul style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem; list-style: none;">
-                        <li>• Cross-Node Sync</li>
-                        <li>• Inflation-Safe Ledger</li>
-                        <li>• 12+ Economy Commands</li>
+                    <p>A persistent financial system backed by MongoDB with atomic transaction safety and progression mechanics.</p>
+                    <ul class="feature-list">
+                        <li>13+ Economy Commands</li>
+                        <li>Cross-Shard Sync</li>
+                        <li>Leveling & XP System</li>
+                        <li>Reputation & Profiles</li>
                     </ul>
                 </div>
-                <div class="artisanal-card">
-                    <div style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1rem;">⚡</div>
+                <div class="artisanal-card reveal reveal-delay-3">
+                    <div class="feature-icon">⚡</div>
                     <h3>Worker Sharding</h3>
-                    <p>Distributed across isolated worker threads with spawn throttling and automatic reconnection.</p>
-                    <ul style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem; list-style: none;">
-                        <li>• Auto-Scaling Shard Manager</li>
-                        <li>• 60s Spawn Timeout</li>
-                        <li>• Lifecycle Telemetry</li>
+                    <p>Distributed across isolated worker threads with spawn throttling, auto-reconnection, and lifecycle telemetry.</p>
+                    <ul class="feature-list">
+                        <li>Auto-Scaling Shard Manager</li>
+                        <li>60s Spawn Timeout</li>
+                        <li>Lifecycle Telemetry</li>
+                        <li>Graceful Shutdown Protocol</li>
                     </ul>
                 </div>
             </div>
@@ -113,32 +124,106 @@
 
         <div class="divider-glow"></div>
 
+        <!-- WHY NEXUS COMPARISON TABLE -->
+        <section class="reveal">
+            <div class="section-header" style="margin-bottom: 3rem;">
+                <span class="section-label">SUPERIORITY MATRIX</span>
+                <h2>Why Nexus?</h2>
+                <p>See how the Omega Core stacks up against competitors.</p>
+            </div>
+            <div class="artisanal-card" style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th style="color: var(--accent)">Nexus v10</th>
+                            <th>Bot A</th>
+                            <th>Bot B</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Worker Thread Sharding</td>
+                            <td class="check-yes">✓</td>
+                            <td class="check-no">✗</td>
+                            <td class="check-no">✗</td>
+                        </tr>
+                        <tr>
+                            <td>Full Economy System</td>
+                            <td class="check-yes">✓</td>
+                            <td class="check-yes">✓</td>
+                            <td class="check-no">✗</td>
+                        </tr>
+                        <tr>
+                            <td>XP & Leveling</td>
+                            <td class="check-yes">✓</td>
+                            <td class="check-no">✗</td>
+                            <td class="check-yes">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Auto-Moderation</td>
+                            <td class="check-yes">✓</td>
+                            <td class="check-yes">✓</td>
+                            <td class="check-no">✗</td>
+                        </tr>
+                        <tr>
+                            <td>Ticket System</td>
+                            <td class="check-yes">✓</td>
+                            <td class="check-no">✗</td>
+                            <td class="check-yes">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Giveaway Engine</td>
+                            <td class="check-yes">✓</td>
+                            <td class="check-no">✗</td>
+                            <td class="check-no">✗</td>
+                        </tr>
+                        <tr>
+                            <td>Open Source</td>
+                            <td class="check-yes">✓</td>
+                            <td class="check-no">✗</td>
+                            <td class="check-no">✗</td>
+                        </tr>
+                        <tr>
+                            <td>Free Forever</td>
+                            <td class="check-yes">✓</td>
+                            <td class="check-no">Freemium</td>
+                            <td class="check-no">Freemium</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="divider-glow"></div>
+
         <!-- TECH STACK -->
-        <section style="margin: 6rem 0;">
-            <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Built With Precision.</h2>
-                <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto;">Every layer of the stack is chosen for performance and reliability.</p>
+        <section class="reveal">
+            <div class="section-header" style="margin-bottom: 3rem;">
+                <span class="section-label">INFRASTRUCTURE</span>
+                <h2>Built With Precision.</h2>
+                <p>Every layer of the stack is chosen for performance and reliability.</p>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; text-align: center;">
-                    <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">🟢</p>
+                <div class="artisanal-card reveal reveal-delay-1" style="text-align: center;">
+                    <p style="font-size: 1.8rem; margin-bottom: 0.8rem;">🟢</p>
                     <h4>Node.js 18+</h4>
-                    <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem;">LTS Runtime</p>
+                    <p style="font-size: 0.82rem; margin-top: 0.5rem;">LTS Runtime Engine</p>
                 </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; text-align: center;">
-                    <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔷</p>
+                <div class="artisanal-card reveal reveal-delay-2" style="text-align: center;">
+                    <p style="font-size: 1.8rem; margin-bottom: 0.8rem;">🔷</p>
                     <h4>Discord.js v14</h4>
-                    <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem;">Interaction Framework</p>
+                    <p style="font-size: 0.82rem; margin-top: 0.5rem;">Interaction Framework</p>
                 </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; text-align: center;">
-                    <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">🍃</p>
+                <div class="artisanal-card reveal reveal-delay-3" style="text-align: center;">
+                    <p style="font-size: 1.8rem; margin-bottom: 0.8rem;">🍃</p>
                     <h4>MongoDB Atlas</h4>
-                    <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem;">Persistent Storage</p>
+                    <p style="font-size: 0.82rem; margin-top: 0.5rem;">Persistent Storage</p>
                 </div>
-                <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; text-align: center;">
-                    <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">🐙</p>
+                <div class="artisanal-card reveal reveal-delay-4" style="text-align: center;">
+                    <p style="font-size: 1.8rem; margin-bottom: 0.8rem;">🐙</p>
                     <h4>GitHub Pages</h4>
-                    <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem;">Static Portal Host</p>
+                    <p style="font-size: 0.82rem; margin-top: 0.5rem;">Static Portal Host</p>
                 </div>
             </div>
         </section>
@@ -146,31 +231,42 @@
         <div class="divider-glow"></div>
 
         <!-- ROADMAP -->
-        <section class="roadmap-sector" style="margin: 6rem 0;">
-            <div class="section-header" style="margin-bottom: 4rem;">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Project Roadmap.</h2>
-                <p style="color: var(--text-dim);">The developmental timeline for the Singularity Core framework.</p>
+        <section class="reveal">
+            <div class="section-header" style="margin-bottom: 3rem;">
+                <span class="section-label">DEVELOPMENT TIMELINE</span>
+                <h2>Project Roadmap.</h2>
+                <p>The developmental timeline for the Omega Core framework.</p>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                <div style="border-left: 2px solid var(--accent); padding-left: 2rem;">
-                    <span style="color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.8rem;">PHASE 01</span>
+                <div class="artisanal-card reveal reveal-delay-1" style="border-left: 3px solid var(--accent);">
+                    <span style="color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.75rem;">PHASE 01</span>
                     <h4 style="margin: 0.5rem 0;">CORE INITIALIZATION</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-dim);">Stabilized sharding manager and neural communication matrix. <span style="color: #50fa7b;">[COMPLETED]</span></p>
+                    <p style="font-size: 0.85rem;">Stabilized sharding manager and neural communication matrix.</p>
+                    <span class="status-dot status-online"></span><span style="color: #50fa7b; font-size: 0.8rem;">COMPLETED</span>
                 </div>
-                <div style="border-left: 2px solid var(--accent); padding-left: 2rem;">
-                    <span style="color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.8rem;">PHASE 02</span>
+                <div class="artisanal-card reveal reveal-delay-2" style="border-left: 3px solid var(--accent);">
+                    <span style="color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.75rem;">PHASE 02</span>
                     <h4 style="margin: 0.5rem 0;">PORTAL ASCENSION</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-dim);">Deployed the Infinitum Informational Suite with animated starfield. <span style="color: #50fa7b;">[COMPLETED]</span></p>
+                    <p style="font-size: 0.85rem;">Deployed the Infinitum Informational Suite with animated starfield.</p>
+                    <span class="status-dot status-online"></span><span style="color: #50fa7b; font-size: 0.8rem;">COMPLETED</span>
                 </div>
-                <div style="border-left: 2px solid var(--accent); padding-left: 2rem;">
-                    <span style="color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.8rem;">PHASE 03</span>
+                <div class="artisanal-card reveal reveal-delay-3" style="border-left: 3px solid var(--accent);">
+                    <span style="color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.75rem;">PHASE 03</span>
                     <h4 style="margin: 0.5rem 0;">NEURAL EXPANSION</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-dim);">AI-driven pattern recognition for advanced security. <span style="color: #ffbd2e;">[IN PROGRESS]</span></p>
+                    <p style="font-size: 0.85rem;">Advanced auto-moderation pipeline, XP/leveling system, ticket engine.</p>
+                    <span class="status-dot status-online"></span><span style="color: #50fa7b; font-size: 0.8rem;">COMPLETED</span>
                 </div>
-                <div style="border-left: 2px solid rgba(255,255,255,0.1); padding-left: 2rem;">
-                    <span style="color: var(--text-dim); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.8rem;">PHASE 04</span>
+                <div class="artisanal-card reveal reveal-delay-4" style="border-left: 3px solid #ffbd2e;">
+                    <span style="color: #ffbd2e; font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.75rem;">PHASE 04</span>
+                    <h4 style="margin: 0.5rem 0;">OMEGA CONVERGENCE</h4>
+                    <p style="font-size: 0.85rem;">v10 — full ecosystem overhaul, profile cards, giveaway engine, reputation system.</p>
+                    <span class="status-dot status-progress"></span><span style="color: #ffbd2e; font-size: 0.8rem;">IN PROGRESS</span>
+                </div>
+                <div class="artisanal-card" style="border-left: 3px solid var(--text-muted); opacity: 0.6;">
+                    <span style="color: var(--text-muted); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.75rem;">PHASE 05</span>
                     <h4 style="margin: 0.5rem 0;">GLOBAL SINGULARITY</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-dim);">Open-source deployment and enterprise scaling. <span style="color: var(--text-dim);">[PLANNED]</span></p>
+                    <p style="font-size: 0.85rem;">Open-source deployment, REST API, dashboard portal, and enterprise scaling.</p>
+                    <span class="status-dot status-planned"></span><span style="color: var(--text-muted); font-size: 0.8rem;">PLANNED</span>
                 </div>
             </div>
         </section>
@@ -178,30 +274,94 @@
         <div class="divider-glow"></div>
 
         <!-- CTA -->
-        <section style="text-align: center; padding: 6rem 0;">
-            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Initialize?</h2>
-            <p style="color: var(--text-dim); max-width: 500px; margin: 0 auto 2rem;">Deploy the Nexus framework to your server and experience the full power of the Singularity Core.</p>
-            <a href="invite.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 3rem;">Establish Uplink</a>
+        <section class="reveal" style="text-align: center; padding: 5rem 0;">
+            <span class="section-label">READY TO INITIALIZE?</span>
+            <h2 style="font-size: 2.5rem; margin: 1rem 0; background: linear-gradient(180deg, #fff 0%, #a0a0c0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Deploy the Omega Core.</h2>
+            <p style="color: var(--text-dim); max-width: 500px; margin: 0 auto 2.5rem;">Experience the full power of the Nexus v10 framework.</p>
+            <div class="hero-actions" style="justify-content: center;">
+                <a href="invite.html" class="btn btn-primary" style="padding: 1rem 3rem;">⚡ Establish Uplink</a>
+                <a href="https://discord.gg/nexus" class="btn btn-outline">Join Support Hub</a>
+            </div>
         </section>
     </main>
 
     <footer>
-        <div style="margin-bottom: 2rem;">
-            <a href="terms.html" style="color: var(--text-dim); text-decoration: none; margin: 0 1rem;">Terms</a>
-            <a href="privacy.html" style="color: var(--text-dim); text-decoration: none; margin: 0 1rem;">Privacy</a>
+        <div class="footer-brand">
+            <span style="font-weight: 700; letter-spacing: 2px; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">NEXUS</span>
+            <span class="footer-version">v10.0.0</span>
         </div>
-        <p>NEXUS PROTOCOL © 2026 // ALL SYSTEMS OPTIMAL</p>
+        <div class="footer-links">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="changelog.html">Changelog</a>
+            <a href="https://github.com/watispro5212/shiny-giigles">GitHub</a>
+        </div>
+        <p>NEXUS PROTOCOL © 2026 // ALL SYSTEMS OMEGA</p>
     </footer>
 
     <script>
+        /* === Particle System === */
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + 10;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedY = -(Math.random() * 0.5 + 0.1);
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.4 + 0.1;
+                this.hue = Math.random() > 0.5 ? 185 : 270;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y < -10) this.reset();
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${this.hue}, 100%, 70%, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 60; i++) {
+            const p = new Particle();
+            p.y = Math.random() * canvas.height;
+            particles.push(p);
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        /* === Terminal Typewriter === */
         const terminal = document.getElementById('terminal');
         const lines = [
-            'nexus init --version 9.1.0',
+            'nexus init --version 10.0.0 --codename omega',
             'Connecting to global shard matrix...',
             'Shard #0: Neural Uplink Established.',
             'Economy Module: SYNCHRONIZED',
+            'Leveling Engine: ONLINE',
+            'Auto-Moderation: ARMED',
             'Security Layer: ARMED',
-            'Portal Status: [ALL SECTORS OPTIMAL]',
+            'Portal Status: [ALL SECTORS OMEGA]',
             'Awaiting directives. Type /help to begin.'
         ];
 
@@ -215,14 +375,56 @@
                 p.innerHTML = `<span style="color: ${color}">${prefix}</span> ${lines[lineIndex]}`;
                 terminal.appendChild(p);
                 lineIndex++;
-                setTimeout(typeLine, 700);
+                setTimeout(typeLine, 500);
             } else {
                 const cursor = document.createElement('span');
                 cursor.className = 'cursor';
                 terminal.appendChild(cursor);
             }
         }
-        window.onload = typeLine;
+        window.addEventListener('load', () => setTimeout(typeLine, 500));
+
+        /* === Scroll Reveal === */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        /* === Animated Counter === */
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseFloat(el.dataset.count);
+                    const duration = 2000;
+                    const start = performance.now();
+                    const isDecimal = target % 1 !== 0;
+
+                    function updateCount(now) {
+                        const elapsed = now - start;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const current = target * eased;
+                        el.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
+                        if (progress < 1) requestAnimationFrame(updateCount);
+                    }
+                    requestAnimationFrame(updateCount);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.metric-value').forEach(el => counterObserver.observe(el));
+
+        /* === Nav scroll effect === */
+        window.addEventListener('scroll', () => {
+            document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
     </script>
 </body>
 </html>

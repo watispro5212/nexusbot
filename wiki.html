@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS // Wiki</title>
+    <title>NEXUS // Neural Database v10</title>
+    <meta name="description" content="Technical wiki and documentation for the Nexus Protocol v10 — architecture, hosting, economy, leveling, auto-moderation, and ticket systems.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,58 +19,153 @@
             <a href="wiki.html" class="active">Wiki</a>
             <a href="staff.html">Staff</a>
             <a href="changelog.html">Log</a>
+            <span class="nav-version">v10.0</span>
         </div>
+        <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');"><span></span><span></span><span></span></div>
     </nav>
     <main class="container">
         <section class="section-header">
+            <span class="section-label">TECHNICAL DOCUMENTATION</span>
             <h1>Neural Database.</h1>
-            <p>A comprehensive glossary of the Singularity engine and its operational subsystems.</p>
+            <p>A comprehensive glossary of the Omega engine and its operational subsystems.</p>
         </section>
 
-        <section class="content-grid" style="display: grid; grid-template-columns: 1fr; gap: 3rem;">
-            <!-- Core Architecture -->
-            <div class="artisanal-card">
-                <span class="protocol-tag" style="background: rgba(0, 245, 255, 0.1); color: var(--accent); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; letter-spacing: 1px; font-weight: bold; margin-bottom: 1rem; display: inline-block;">SYSTEMS</span>
+        <!-- TABLE OF CONTENTS -->
+        <div class="artisanal-card reveal" style="margin-bottom: 3rem;">
+            <h3 style="margin-bottom: 1rem;">📑 Table of Contents</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.5rem;">
+                <a href="#architecture" style="color: var(--text-dim); text-decoration: none; padding: 0.5rem; border-radius: 8px; transition: all 0.3s;" onmouseover="this.style.color='var(--accent)'; this.style.background='var(--accent-dim)'" onmouseout="this.style.color='var(--text-dim)'; this.style.background='transparent'">01 → Core Architecture</a>
+                <a href="#hosting" style="color: var(--text-dim); text-decoration: none; padding: 0.5rem; border-radius: 8px; transition: all 0.3s;" onmouseover="this.style.color='var(--accent)'; this.style.background='var(--accent-dim)'" onmouseout="this.style.color='var(--text-dim)'; this.style.background='transparent'">02 → Infrastructure Requirements</a>
+                <a href="#economy" style="color: var(--text-dim); text-decoration: none; padding: 0.5rem; border-radius: 8px; transition: all 0.3s;" onmouseover="this.style.color='var(--accent)'; this.style.background='var(--accent-dim)'" onmouseout="this.style.color='var(--text-dim)'; this.style.background='transparent'">03 → Economy Scaling</a>
+                <a href="#security" style="color: var(--text-dim); text-decoration: none; padding: 0.5rem; border-radius: 8px; transition: all 0.3s;" onmouseover="this.style.color='var(--accent)'; this.style.background='var(--accent-dim)'" onmouseout="this.style.color='var(--text-dim)'; this.style.background='transparent'">04 → Security Protocols</a>
+                <a href="#leveling" style="color: var(--text-dim); text-decoration: none; padding: 0.5rem; border-radius: 8px; transition: all 0.3s;" onmouseover="this.style.color='var(--accent)'; this.style.background='var(--accent-dim)'" onmouseout="this.style.color='var(--text-dim)'; this.style.background='transparent'">05 → Leveling & XP System</a>
+                <a href="#automod" style="color: var(--text-dim); text-decoration: none; padding: 0.5rem; border-radius: 8px; transition: all 0.3s;" onmouseover="this.style.color='var(--accent)'; this.style.background='var(--accent-dim)'" onmouseout="this.style.color='var(--text-dim)'; this.style.background='transparent'">06 → Auto-Moderation Pipeline</a>
+                <a href="#tickets" style="color: var(--text-dim); text-decoration: none; padding: 0.5rem; border-radius: 8px; transition: all 0.3s;" onmouseover="this.style.color='var(--accent)'; this.style.background='var(--accent-dim)'" onmouseout="this.style.color='var(--text-dim)'; this.style.background='transparent'">07 → Ticket System</a>
+            </div>
+        </div>
+
+        <div class="content-grid" style="grid-template-columns: 1fr; gap: 2rem;">
+            <!-- 01 Core Architecture -->
+            <div id="architecture" class="artisanal-card reveal">
+                <span class="protocol-tag tag-utility" style="margin-bottom: 1rem; display: inline-block;">SYSTEMS</span>
                 <h3>01 // Core Architecture</h3>
-                <p>The Nexus Protocol is built on a distributed MERN-adjacent stack optimized for high-frequency Discord interactions. The Singularity Core utilizes Node.js worker threads to isolate shard processes, preventing a failure in one sector from cascading across the entire neural matrix.</p>
-                <div style="margin-top: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; font-family: 'JetBrains Mono'; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.05);">
-                    <p style="color: var(--accent)">➔ Load Balancer: Internal Shard Manager</p>
-                    <p style="color: var(--text-dim); margin-top: 0.5rem;">➔ Persistence: MongoDB Atlas cluster with global write concerns.</p>
-                    <p style="color: var(--text-dim); margin-top: 0.5rem;">➔ Runtime: Node.js 18+ (LTS) on specialized Linux kernels.</p>
+                <p>The Nexus Protocol v10 is built on a distributed MERN-adjacent stack optimized for high-frequency Discord interactions. The Omega Core utilizes Node.js worker threads to isolate shard processes, preventing a failure in one sector from cascading across the entire neural matrix.</p>
+                <div class="code-block" style="margin-top: 1.5rem;">
+                    <p><span class="keyword">➔</span> Load Balancer: Internal Shard Manager (Worker Threads)</p>
+                    <p><span class="keyword">➔</span> Persistence: MongoDB Atlas cluster with global write concerns.</p>
+                    <p><span class="keyword">➔</span> Runtime: Node.js 18+ (LTS) on optimized Linux kernels.</p>
+                    <p><span class="keyword">➔</span> Framework: Discord.js v14 with full Intent coverage.</p>
+                    <p><span class="keyword">➔</span> Models: User, Warning, BlacklistEntry, GuildConfig.</p>
                 </div>
             </div>
 
-            <!-- Hosting Requirements -->
-            <div class="artisanal-card">
-                <span class="protocol-tag" style="background: rgba(80, 250, 123, 0.1); color: #50fa7b; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; letter-spacing: 1px; font-weight: bold; margin-bottom: 1rem; display: inline-block;">HOSTING</span>
+            <!-- 02 Hosting -->
+            <div id="hosting" class="artisanal-card reveal">
+                <span class="protocol-tag tag-economy" style="margin-bottom: 1rem; display: inline-block;">HOSTING</span>
                 <h3>02 // Infrastructure Requirements</h3>
-                <p>Deploying a private Nexus node requires a high-availability environment to maintain the 99.9% uptime SLA. We recommend specialized VPS or Bare Metal solutions with low-latency uplinks to Discord core data centers.</p>
-                <ul style="margin-top: 1.5rem; color: var(--text-dim); list-style: none;">
-                    <li style="margin-bottom: 0.8rem;"><strong style="color: #fff;">Minimal:</strong> 2 vCPU, 4GB RAM, 20GB NVMe SSD.</li>
-                    <li style="margin-bottom: 0.8rem;"><strong style="color: #fff;">Optimal:</strong> 4 vCPU, 8GB RAM, 50GB NVMe SSD (Recommended for >500 guilds).</li>
-                    <li style="margin-bottom: 0.8rem;"><strong style="color: #fff;">OS:</strong> Ubuntu 22.04 LTS or Debian 11.</li>
+                <p>Deploying a private Nexus node requires a high-availability environment to maintain the 99.9% uptime SLA.</p>
+                <ul class="feature-list" style="margin-top: 1.5rem;">
+                    <li><strong style="color: #fff;">Minimal:</strong> 2 vCPU, 4GB RAM, 20GB NVMe SSD.</li>
+                    <li><strong style="color: #fff;">Optimal:</strong> 4 vCPU, 8GB RAM, 50GB NVMe SSD (Recommended for >500 guilds).</li>
+                    <li><strong style="color: #fff;">OS:</strong> Ubuntu 22.04 LTS or Debian 11+.</li>
+                    <li><strong style="color: #fff;">Node.js:</strong> v18+ LTS required.</li>
+                    <li><strong style="color: #fff;">MongoDB:</strong> Atlas M10+ cluster or self-hosted replica set.</li>
                 </ul>
             </div>
 
-            <!-- Economy Scaling -->
-            <div class="artisanal-card">
-                <span class="protocol-tag" style="background: rgba(187, 134, 252, 0.1); color: #bb86fc; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; letter-spacing: 1px; font-weight: bold; margin-bottom: 1rem; display: inline-block;">ECONOMY</span>
+            <!-- 03 Economy -->
+            <div id="economy" class="artisanal-card reveal">
+                <span class="protocol-tag tag-founder" style="margin-bottom: 1rem; display: inline-block;">ECONOMY</span>
                 <h3>03 // Economy Scaling Logic</h3>
-                <p>The neural economy utilizes a decentralized asset ledger. Each guild ID maps to a unique document in the OperativeData collection. Assets are calculated using high-precision BigInt logic to prevent numeric overflow during hyper-inflation events.</p>
-                <div style="margin-top: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; font-family: 'JetBrains Mono'; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.05);">
-                    <p style="color: var(--text-dim)">operative.balance += BigInt(reward_amount);</p>
-                    <p style="color: var(--text-dim); margin-top: 0.5rem;">await operative.save({ session }); // Atomic Commit</p>
+                <p>The neural economy utilizes a per-guild asset ledger. Each userId+guildId pair maps to a unique document in the User collection, supporting wallet and bank balances, inventory, badges, XP, and streak tracking.</p>
+                <div class="code-block" style="margin-top: 1.5rem;">
+                    <p><span class="comment">// Atomic balance update</span></p>
+                    <p><span class="keyword">const</span> user = <span class="keyword">await</span> User.findOneAndUpdate(</p>
+                    <p>&nbsp;&nbsp;{ userId, guildId },</p>
+                    <p>&nbsp;&nbsp;{ <span class="keyword">$inc</span>: { balance: reward } },</p>
+                    <p>&nbsp;&nbsp;{ upsert: <span class="string">true</span>, new: <span class="string">true</span> }</p>
+                    <p>);</p>
                 </div>
             </div>
 
-            <!-- Security Protocols -->
-            <div class="artisanal-card">
-                <span class="protocol-tag" style="background: rgba(255, 68, 68, 0.1); color: #ff4444; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; letter-spacing: 1px; font-weight: bold; margin-bottom: 1rem; display: inline-block;">SECURITY</span>
+            <!-- 04 Security -->
+            <div id="security" class="artisanal-card reveal">
+                <span class="protocol-tag tag-security" style="margin-bottom: 1rem; display: inline-block;">SECURITY</span>
                 <h3>04 // Security Protocols</h3>
-                <p>Founders maintain absolute dominion over the framework through restricted OWNER_ID validation. All security logs (Audits) are immutable and archived for audit retrieval. The interactionCreate handler serves as the primary gatekeeper, rejecting unauthorized payloads before they reach the command execution layer.</p>
+                <p>Founders maintain absolute dominion over the framework through OWNER_ID environment variable validation. The interactionCreate handler serves as the primary gatekeeper, rejecting unauthorized payloads before they reach the command execution layer. The global blacklist is persisted in MongoDB with TTL-based auto-expiration.</p>
+                <ul class="feature-list" style="margin-top: 1rem;">
+                    <li>Owner-only commands verified via <code>client.owners</code> array</li>
+                    <li>Global blacklist with automatic TTL expiration</li>
+                    <li>Per-command cooldown enforcement with owner bypass</li>
+                    <li>Error ID tracking for all execution failures</li>
+                </ul>
             </div>
-        </section>
+
+            <!-- 05 Leveling -->
+            <div id="leveling" class="artisanal-card reveal">
+                <span class="protocol-tag tag-economy" style="margin-bottom: 1rem; display: inline-block;">LEVELING</span>
+                <h3>05 // Leveling & XP System</h3>
+                <p>The v10 Omega Core introduces a comprehensive XP and leveling system. Members earn XP for each message sent (with cooldown-based rate limiting), and level up as XP accumulates. The leveling formula follows an exponential curve.</p>
+                <div class="code-block" style="margin-top: 1.5rem;">
+                    <p><span class="comment">// Level-up threshold calculation</span></p>
+                    <p><span class="keyword">const</span> xpNeeded = 5 * (level ** 2) + 50 * level + 100;</p>
+                    <p></p>
+                    <p><span class="comment">// XP per message: 15-25 random, 60s cooldown</span></p>
+                    <p><span class="keyword">const</span> xpGain = Math.floor(Math.random() * 11) + 15;</p>
+                </div>
+                <ul class="feature-list" style="margin-top: 1rem;">
+                    <li>Toggle per-guild via <code>/config leveling on/off</code></li>
+                    <li>Level-up announcements in configured channel</li>
+                    <li>View progress with <code>/profile</code></li>
+                    <li>XP stored on User model, persisted across restarts</li>
+                </ul>
+            </div>
+
+            <!-- 06 Auto-mod -->
+            <div id="automod" class="artisanal-card reveal">
+                <span class="protocol-tag tag-security" style="margin-bottom: 1rem; display: inline-block;">AUTOMOD</span>
+                <h3>06 // Auto-Moderation Pipeline</h3>
+                <p>The auto-moderation system runs in the messageCreate event, intercepting messages before they reach the community. Configurable via <code>/automod</code>, each guild can enable independent rules.</p>
+                <ul class="feature-list" style="margin-top: 1rem;">
+                    <li><strong style="color: #fff;">Anti-Spam:</strong> Detects rapid message bursts (5+ msgs in 5s)</li>
+                    <li><strong style="color: #fff;">Anti-Link:</strong> Blocks URLs/invite links with configurable whitelist</li>
+                    <li><strong style="color: #fff;">Word Filter:</strong> Custom blacklisted word list per guild</li>
+                    <li>Settings persist in GuildConfig model</li>
+                    <li>Infractions auto-logged to the configured log channel</li>
+                </ul>
+            </div>
+
+            <!-- 07 Tickets -->
+            <div id="tickets" class="artisanal-card reveal">
+                <span class="protocol-tag tag-utility" style="margin-bottom: 1rem; display: inline-block;">TICKETS</span>
+                <h3>07 // Ticket System</h3>
+                <p>The ticket system provides a zero-configuration support channel solution. Users invoke <code>/ticket [reason]</code> to create a private channel visible only to themselves and server administrators.</p>
+                <ul class="feature-list" style="margin-top: 1rem;">
+                    <li>Private channel created with restrictive permissions</li>
+                    <li>Close button embedded in the ticket channel</li>
+                    <li>Transcript generation on close (embedded in channel)</li>
+                    <li>No additional setup required — works out of the box</li>
+                    <li>Staff can manually close via button or delete channel</li>
+                </ul>
+            </div>
+        </div>
     </main>
-    <footer><p>NEXUS PROTOCOL © 2026 // ALL SYSTEMS OPTIMAL</p></footer>
+
+    <footer>
+        <div class="footer-brand">
+            <span style="font-weight: 700; letter-spacing: 2px; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">NEXUS</span>
+            <span class="footer-version">v10.0.0</span>
+        </div>
+        <div class="footer-links"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></div>
+        <p>NEXUS PROTOCOL © 2026 // ALL SYSTEMS OMEGA</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        window.addEventListener('scroll', () => document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50));
+    </script>
 </body>
 </html>

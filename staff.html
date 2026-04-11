@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS // Leadership</title>
+    <title>NEXUS // Leadership v10</title>
+    <meta name="description" content="Meet the architects and staff behind the Nexus Protocol v10 Discord bot.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,63 +19,116 @@
             <a href="wiki.html">Wiki</a>
             <a href="staff.html" class="active">Staff</a>
             <a href="changelog.html">Log</a>
+            <span class="nav-version">v10.0</span>
         </div>
+        <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');"><span></span><span></span><span></span></div>
     </nav>
     <main class="container">
         <section class="section-header">
+            <span class="section-label">COMMAND HIERARCHY</span>
             <h1>Leadership Sector.</h1>
-            <p>The architects behind the Singularity neural engine.</p>
+            <p>The architects behind the Omega neural engine.</p>
         </section>
 
-        <section class="content-grid">
+        <section class="content-grid reveal" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
             <!-- Founder -->
             <div class="artisanal-card" style="text-align: center; border: 1px solid var(--border-glow);">
-                <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #7000FF); margin: 0 auto 1.5rem; border: 4px solid rgba(255,255,255,0.1); box-shadow: 0 0 30px var(--accent-glow);"></div>
-                <span style="background: rgba(0, 245, 255, 0.1); color: var(--accent); padding: 0.2rem 0.8rem; border-radius: 4px; font-size: 0.65rem; letter-spacing: 1px; font-weight: bold;">FOUNDER</span>
+                <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #7B2FFF); margin: 0 auto 1.5rem; border: 4px solid rgba(255,255,255,0.1); box-shadow: 0 0 40px var(--accent-glow); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">👑</div>
+                <span class="protocol-tag tag-latest">FOUNDER</span>
                 <h3 style="margin-top: 1rem;">watispro</h3>
-                <p style="color: var(--text-dim); font-size: 0.9rem;">Lead architect and visionary of the Singularity Core. Sole engineer behind the v9.1.0 expansion.</p>
-                <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); margin-top: 0.8rem; opacity: 0.6;">ID: 1320058519642177668</p>
-                <div style="margin-top: 1.5rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
-                    <span style="background: rgba(255,255,255,0.05); padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.7rem; color: var(--text-dim);">JavaScript</span>
-                    <span style="background: rgba(255,255,255,0.05); padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.7rem; color: var(--text-dim);">Discord.js</span>
-                    <span style="background: rgba(255,255,255,0.05); padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.7rem; color: var(--text-dim);">MongoDB</span>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Lead architect and visionary of the Omega Core. Sole engineer behind the v10.0.0 overhaul.</p>
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); margin-top: 0.8rem;">ID: 1320058519642177668</p>
+                <div style="margin-top: 1.5rem; display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap;">
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Discord.js</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Node.js</span>
                 </div>
-                <a href="https://discord.com/api/oauth2/authorize?client_id=1480725340753101031&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.com%2Foauth2%2Fauthorize%3Fclient_id%3D1480725340753101031&integration_type=0&scope=identify+applications.commands.permissions.update+applications.commands+bot+applications.store.update+applications.builds.upload+guilds+connections" class="btn btn-outline" style="margin-top: 1.5rem; display: inline-block;">Support Sector</a>
+                <a href="https://discord.com/api/oauth2/authorize?client_id=1480725340753101031&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.com%2Foauth2%2Fauthorize%3Fclient_id%3D1480725340753101031&integration_type=0&scope=identify+applications.commands.permissions.update+applications.commands+bot+applications.store.update+applications.builds.upload+guilds+connections" class="btn btn-outline btn-sm" style="margin-top: 1.5rem;">Support Sector</a>
             </div>
 
             <!-- Developer -->
             <div class="artisanal-card" style="text-align: center;">
-                <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #bb86fc, #7000FF); margin: 0 auto 1.5rem; border: 3px solid rgba(255,255,255,0.08); box-shadow: 0 0 15px rgba(187,134,252,0.2);"></div>
-                <span style="background: rgba(187, 134, 252, 0.1); color: #bb86fc; padding: 0.2rem 0.8rem; border-radius: 4px; font-size: 0.65rem; letter-spacing: 1px; font-weight: bold;">DEVELOPER</span>
+                <div style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, #bb86fc, #7B2FFF); margin: 0 auto 1.5rem; border: 3px solid rgba(255,255,255,0.08); box-shadow: 0 0 20px rgba(123,47,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 2rem;">⚡</div>
+                <span class="protocol-tag tag-founder">DEVELOPER</span>
                 <h3 style="margin-top: 1rem;">Alpha</h3>
-                <p style="color: var(--text-dim); font-size: 0.9rem;">Systems engineer focusing on high-frequency logic and sharding protocols.</p>
-                <div style="margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
-                    <span style="background: rgba(255,255,255,0.05); padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.7rem; color: var(--text-dim);">Node.js</span>
-                    <span style="background: rgba(255,255,255,0.05); padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.7rem; color: var(--text-dim);">API Design</span>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Systems engineer focusing on high-frequency logic and sharding protocols.</p>
+                <div style="margin-top: 1.2rem; display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap;">
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">API Design</span>
                 </div>
             </div>
 
             <!-- Moderator -->
             <div class="artisanal-card" style="text-align: center;">
-                <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #ffbd2e, #ff8c00); margin: 0 auto 1.5rem; border: 3px solid rgba(255,255,255,0.08); box-shadow: 0 0 15px rgba(255,189,46,0.2);"></div>
-                <span style="background: rgba(255, 184, 108, 0.1); color: #ffb86c; padding: 0.2rem 0.8rem; border-radius: 4px; font-size: 0.65rem; letter-spacing: 1px; font-weight: bold;">MODERATOR</span>
+                <div style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, #ffbd2e, #ff8c00); margin: 0 auto 1.5rem; border: 3px solid rgba(255,255,255,0.08); box-shadow: 0 0 20px rgba(255,189,46,0.2); display: flex; align-items: center; justify-content: center; font-size: 2rem;">🛡️</div>
+                <span class="protocol-tag tag-stability">MODERATOR</span>
                 <h3 style="margin-top: 1rem;">Zenith</h3>
-                <p style="color: var(--text-dim); font-size: 0.9rem;">Chief safety operative managing global audit logs and infraction protocols.</p>
-                <div style="margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
-                    <span style="background: rgba(255,255,255,0.05); padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.7rem; color: var(--text-dim);">Security</span>
-                    <span style="background: rgba(255,255,255,0.05); padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.7rem; color: var(--text-dim);">Community</span>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Chief safety operative managing global audit logs and infraction protocols.</p>
+                <div style="margin-top: 1.2rem; display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap;">
+                    <span class="skill-tag">Security</span>
+                    <span class="skill-tag">Community</span>
                 </div>
             </div>
         </section>
 
         <div class="divider-glow"></div>
 
-        <section style="text-align: center; padding: 4rem 0;">
-            <h3 style="margin-bottom: 1rem;">Interested in joining the team?</h3>
-            <p style="color: var(--text-dim); max-width: 500px; margin: 0 auto 2rem;">We're always looking for dedicated operatives to help scale the Singularity.</p>
-            <a href="https://discord.gg/nexus" class="btn btn-outline">Apply via Support Hub</a>
+        <!-- Contribution Stats -->
+        <section class="reveal">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <span class="section-label">CONTRIBUTION METRICS</span>
+                <h2>Team Statistics.</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                <div class="artisanal-card" style="text-align: center;">
+                    <span class="metric-value" style="font-size: 2rem;">10+</span>
+                    <span class="metric-label">Major Releases</span>
+                </div>
+                <div class="artisanal-card" style="text-align: center;">
+                    <span class="metric-value" style="font-size: 2rem;">65+</span>
+                    <span class="metric-label">Commands Built</span>
+                </div>
+                <div class="artisanal-card" style="text-align: center;">
+                    <span class="metric-value" style="font-size: 2rem;">9</span>
+                    <span class="metric-label">Portal Pages</span>
+                </div>
+                <div class="artisanal-card" style="text-align: center;">
+                    <span class="metric-value" style="font-size: 2rem;">100+</span>
+                    <span class="metric-label">Source Files</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider-glow"></div>
+
+        <!-- Join Team -->
+        <section class="reveal" style="text-align: center; padding: 4rem 0;">
+            <span class="section-label">RECRUITMENT</span>
+            <h3 style="margin: 1rem 0;">Interested in joining the team?</h3>
+            <p style="color: var(--text-dim); max-width: 500px; margin: 0 auto 2rem;">We're always looking for dedicated operatives to help scale the Omega Core. Developers, designers, and moderators are welcome.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://discord.gg/nexus" class="btn btn-primary">Apply via Support Hub</a>
+                <a href="https://github.com/watispro5212/shiny-giigles" class="btn btn-outline">View GitHub</a>
+            </div>
         </section>
     </main>
-    <footer><p>NEXUS PROTOCOL © 2026 // ALL SYSTEMS OPTIMAL</p></footer>
+
+    <footer>
+        <div class="footer-brand">
+            <span style="font-weight: 700; letter-spacing: 2px; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">NEXUS</span>
+            <span class="footer-version">v10.0.0</span>
+        </div>
+        <div class="footer-links"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></div>
+        <p>NEXUS PROTOCOL © 2026 // ALL SYSTEMS OMEGA</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        window.addEventListener('scroll', () => document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50));
+    </script>
 </body>
 </html>

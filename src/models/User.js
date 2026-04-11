@@ -11,10 +11,14 @@ const userSchema = new mongoose.Schema({
     badges: { type: [String], default: [] },
     streak: { type: Number, default: 0 },
     totalEarned: { type: Number, default: 0 },
+    reputation: { type: Number, default: 0 },
+    bio: { type: String, default: '' },
+    profileColor: { type: String, default: '#00F5FF' },
     lastDaily: { type: Date, default: null },
     lastWork: { type: Date, default: null },
     lastRob: { type: Date, default: null },
     lastCrime: { type: Date, default: null },
+    lastRepGiven: { type: Date, default: null },
     createdAt: { type: Date, default: Date.now }
 });
 

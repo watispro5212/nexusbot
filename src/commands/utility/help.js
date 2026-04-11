@@ -39,7 +39,7 @@ module.exports = {
                     fields: [
                         { name: 'Support', value: '[Portal](https://discord.gg/nexus)', inline: true }
                     ],
-                    footer: `Nexus v8.5 • Status: Optimal`
+                    footer: `Nexus v10.0.0 • Status: Omega`
                 });
             }
 
@@ -53,7 +53,7 @@ module.exports = {
             return embedBuilder({
                 title: `${category.toUpperCase()} Module`,
                 description: `${categoryDescriptions[category] || 'Commands for this system.'}\n\n${commands}`,
-                footer: `Nexus v8.5 • Total: ${cmdFiles.length}`
+                footer: `Nexus v10.0.0 • Total: ${cmdFiles.length}`
             });
         };
 

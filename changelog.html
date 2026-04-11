@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS // Changelog</title>
+    <title>NEXUS // Development Archive v10</title>
+    <meta name="description" content="Complete changelog and development timeline for the Nexus Protocol Discord bot — from v1.0 Genesis to v10.0 Omega.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,93 +19,140 @@
             <a href="wiki.html">Wiki</a>
             <a href="staff.html">Staff</a>
             <a href="changelog.html" class="active">Log</a>
+            <span class="nav-version">v10.0</span>
         </div>
+        <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');"><span></span><span></span><span></span></div>
     </nav>
     <main class="container">
         <section class="section-header">
-            <h1>Development Archive.</h1>
+            <span class="section-label">DEVELOPMENT ARCHIVE</span>
+            <h1>Version Timeline.</h1>
             <p>A comprehensive timeline of every milestone, patch, and architectural shift in the Nexus neural framework.</p>
         </section>
 
-        <div class="divider-glow"></div>
-
-        <!-- v9.1.0 -->
-        <div class="artisanal-card" style="margin-bottom: 3rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                <span style="background: rgba(0, 245, 255, 0.1); color: var(--accent); padding: 0.3rem 1rem; border-radius: 4px; font-size: 0.75rem; letter-spacing: 1px; font-weight: bold;">LATEST</span>
-                <span style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-dim);">2026-04-10</span>
+        <div class="timeline">
+            <!-- v10.0.0 -->
+            <div class="timeline-entry latest reveal">
+                <div class="artisanal-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <span class="protocol-tag tag-latest">LATEST</span>
+                        <span style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-muted);">2026-04-11</span>
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">v10.0.0 — The Omega Overhaul</h3>
+                    <p style="margin-bottom: 1.5rem;">The most comprehensive update in Nexus history — complete ecosystem rebuild with 10 new commands, new systems, and a total portal redesign.</p>
+                    <ul style="list-style: none; font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Added <code>/ticket</code>, <code>/giveaway</code>, <code>/profile</code>, <code>/rep</code>, <code>/botinfo</code> to utility.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Added <code>/trivia</code> and <code>/tictactoe</code> to fun category.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Added <code>/automod</code> and <code>/massban</code> to moderation.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Added <code>/config</code> for per-guild configuration management.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Implemented XP/Leveling system with level-up announcements.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Implemented reputation system with daily rep giving.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Welcome/leave message system with auto-role assignment.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> GuildConfig model for per-server settings persistence.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Complete portal redesign with particle system and glassmorphism.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Full command index showing all 65+ protocols with category filters.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Accordion FAQ, timeline changelog, mobile-first responsive nav.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> "Why Nexus?" comparison table, quick setup guide, permission breakdown.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #ffbd2e;">~</span> Scroll-reveal animations across all pages.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #ffbd2e;">~</span> Updated User model with reputation, bio, profile color fields.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #ffbd2e;">~</span> Bumped version across all files: v9.1.0 → v10.0.0.</li>
+                    </ul>
+                </div>
             </div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">v9.1.0 — Infinitum Patch</h3>
-            <p style="color: var(--text-dim); margin-bottom: 1.5rem;">A stability-critical update resolving portal inconsistencies and expanding the command registry.</p>
-            <ul style="list-style: none; color: var(--text-dim); font-size: 0.9rem;">
-                <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Added <code>/snipe</code>, <code>/afk</code>, <code>/banner</code>, and <code>/announce</code> to the registry.</li>
-                <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Implemented animated deep-space starfield background across all 9 sectors.</li>
-                <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Expanded the server blueprint with a granular role-by-role permission matrix.</li>
-                <li style="margin-bottom: 0.6rem;"><span style="color: #ff4444;">×</span> Fixed duplicated "Log" navigation entry in changelog sector.</li>
-                <li style="margin-bottom: 0.6rem;"><span style="color: #ff4444;">×</span> Rebuilt wiki.html to resolve broken HTML structure and missing nav links.</li>
-                <li style="margin-bottom: 0.6rem;"><span style="color: #ffbd2e;">~</span> Bumped embed footer version from v8.5 to v9.1.0 globally.</li>
-            </ul>
-        </div>
 
-        <!-- v9.0.0 -->
-        <div class="artisanal-card" style="margin-bottom: 3rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                <span style="background: rgba(187, 134, 252, 0.1); color: #bb86fc; padding: 0.3rem 1rem; border-radius: 4px; font-size: 0.75rem; letter-spacing: 1px; font-weight: bold;">MAJOR</span>
-                <span style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-dim);">2026-04-09</span>
+            <!-- v9.1.0 -->
+            <div class="timeline-entry reveal">
+                <div class="artisanal-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <span class="protocol-tag tag-major">MAJOR</span>
+                        <span style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-muted);">2026-04-10</span>
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">v9.1.0 — Infinitum Patch</h3>
+                    <p style="margin-bottom: 1.5rem;">Stability-critical update resolving portal inconsistencies and expanding the command registry.</p>
+                    <ul style="list-style: none; font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Added <code>/snipe</code>, <code>/afk</code>, <code>/banner</code>, <code>/announce</code>.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Animated deep-space starfield background across all sectors.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #ff4444;">×</span> Fixed duplicated "Log" navigation entry.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #ff4444;">×</span> Rebuilt wiki.html to resolve broken HTML structure.</li>
+                    </ul>
+                </div>
             </div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">v9.0.0 — The Infinitum Overhaul</h3>
-            <p style="color: var(--text-dim); margin-bottom: 1.5rem;">A total portal restructuring with massive content infusions across all informational sectors.</p>
-            <ul style="list-style: none; color: var(--text-dim); font-size: 0.9rem;">
-                <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Expanded FAQ from 3 to 10+ detailed technical inquiries.</li>
-                <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Added Project Roadmap (4-phase timeline) to index.html.</li>
-                <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Added Architecture, Hosting, and Economy Scaling guides to the Wiki.</li>
-                <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Command cards now display cooldowns, permissions, and argument types.</li>
-                <li style="margin-bottom: 0.6rem;"><span style="color: #ffbd2e;">~</span> Added glowing animated dividers between all portfolio sections.</li>
-            </ul>
-        </div>
 
-        <!-- v8.7.0 -->
-        <div class="artisanal-card" style="margin-bottom: 3rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                <span style="background: rgba(255, 184, 108, 0.1); color: #ffb86c; padding: 0.3rem 1rem; border-radius: 4px; font-size: 0.75rem; letter-spacing: 1px; font-weight: bold;">STABILITY</span>
-                <span style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-dim);">2026-04-08</span>
+            <!-- v9.0.0 -->
+            <div class="timeline-entry reveal">
+                <div class="artisanal-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <span class="protocol-tag tag-major">MAJOR</span>
+                        <span style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-muted);">2026-04-09</span>
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">v9.0.0 — The Infinitum Overhaul</h3>
+                    <p style="margin-bottom: 1.5rem;">Total portal restructuring with massive content infusions across all sectors.</p>
+                    <ul style="list-style: none; font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Expanded FAQ from 3 to 10+ detailed technical inquiries.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Added Project Roadmap to index.html.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Added Architecture, Hosting, and Economy Scaling to Wiki.</li>
+                    </ul>
+                </div>
             </div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">v8.7.0 — Singularity Ascension</h3>
-            <p style="color: var(--text-dim); margin-bottom: 1.5rem;">Shard stabilization and enterprise-grade server architecture documentation.</p>
-            <ul style="list-style: none; color: var(--text-dim); font-size: 0.9rem;">
-                <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Rebuilt sharding orchestration with worker thread mode and 5.5s spawn throttling.</li>
-                <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Created server.md with 30+ channels, 11 roles, and Wick verification setup.</li>
-                <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Added real-time command search protocol to commands.html.</li>
-                <li style="margin-bottom: 0.6rem;"><span style="color: #ffbd2e;">~</span> Updated bot presence statuses to reflect artisanal branding.</li>
-            </ul>
-        </div>
 
-        <!-- v8.5.0 -->
-        <div class="artisanal-card" style="margin-bottom: 3rem; opacity: 0.7;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                <span style="background: rgba(255,255,255,0.05); color: var(--text-dim); padding: 0.3rem 1rem; border-radius: 4px; font-size: 0.75rem; letter-spacing: 1px; font-weight: bold;">LEGACY</span>
-                <span style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-dim);">2026-04-06</span>
+            <!-- v8.7.0 -->
+            <div class="timeline-entry reveal" style="opacity: 0.8;">
+                <div class="artisanal-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <span class="protocol-tag tag-stability">STABILITY</span>
+                        <span style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-muted);">2026-04-08</span>
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">v8.7.0 — Singularity Ascension</h3>
+                    <p style="margin-bottom: 1.5rem;">Shard stabilization and enterprise-grade server architecture.</p>
+                    <ul style="list-style: none; font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Rebuilt sharding with worker thread mode and 5.5s throttling.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Created server.md with 30+ channels and 11 roles.</li>
+                        <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Real-time command search on commands page.</li>
+                    </ul>
+                </div>
             </div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">v8.5.0 — Singularity Core</h3>
-            <p style="color: var(--text-dim); margin-bottom: 1.5rem;">The foundational overhaul that established the current design language and artisanal codebase.</p>
-            <ul style="list-style: none; color: var(--text-dim); font-size: 0.9rem;">
-                <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Complete codebase humanization. Stripped all robotic AI markers.</li>
-                <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Transitioned web tier to a static informational suite.</li>
-                <li style="margin-bottom: 0.6rem;"><span style="color: #50fa7b;">+</span> Implemented Deep Space industrial aesthetic across all embeds.</li>
-            </ul>
-        </div>
 
-        <!-- v1.0.0 -->
-        <div class="artisanal-card" style="opacity: 0.5;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                <span style="background: rgba(255,255,255,0.05); color: var(--text-dim); padding: 0.3rem 1rem; border-radius: 4px; font-size: 0.75rem; letter-spacing: 1px; font-weight: bold;">GENESIS</span>
-                <span style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-dim);">2026-03-01</span>
+            <!-- v8.5.0 -->
+            <div class="timeline-entry reveal" style="opacity: 0.6;">
+                <div class="artisanal-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <span class="protocol-tag tag-legacy">LEGACY</span>
+                        <span style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-muted);">2026-04-06</span>
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">v8.5.0 — Singularity Core</h3>
+                    <p>The foundational overhaul that established the current design language and artisanal codebase. Complete humanization and static informational suite.</p>
+                </div>
             </div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">v1.0.0 — Initial Breach</h3>
-            <p style="color: var(--text-dim);">Deployment of the core neural economy and administrative directive modules. Initial integration of persistent MongoDB storage protocols and Discord.js v14 framework.</p>
-        </div>
 
+            <!-- v1.0.0 -->
+            <div class="timeline-entry reveal" style="opacity: 0.4;">
+                <div class="artisanal-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <span class="protocol-tag tag-legacy">GENESIS</span>
+                        <span style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-muted);">2026-03-01</span>
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">v1.0.0 — Initial Breach</h3>
+                    <p>Core neural economy and administrative modules. Initial MongoDB integration and Discord.js v14 framework deployment.</p>
+                </div>
+            </div>
+        </div>
     </main>
-    <footer><p>NEXUS PROTOCOL © 2026 // ALL SYSTEMS OPTIMAL</p></footer>
+
+    <footer>
+        <div class="footer-brand">
+            <span style="font-weight: 700; letter-spacing: 2px; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">NEXUS</span>
+            <span class="footer-version">v10.0.0</span>
+        </div>
+        <div class="footer-links"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></div>
+        <p>NEXUS PROTOCOL © 2026 // ALL SYSTEMS OMEGA</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        window.addEventListener('scroll', () => document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50));
+    </script>
 </body>
 </html>
