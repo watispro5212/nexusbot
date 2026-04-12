@@ -1,0 +1,130 @@
+/* ═══════════════════════════════════════════
+   NEXUS PROTOCOL - V12 GLOBAL COMPONENT STYLES
+   ═══════════════════════════════════════════ */
+
+/* Live Status HUD */
+#nexus-status-hud {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: var(--surface-dense, rgba(5, 5, 15, 0.85));
+    border: 1px solid var(--border-glow, rgba(255, 183, 0, 0.12));
+    padding: 10px 16px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-dim, #8a8aa0);
+    transition: var(--transition, all 0.3s ease);
+    cursor: default;
+}
+
+#nexus-status-hud:hover {
+    border-color: var(--accent, #FFB700);
+    box-shadow: 0 0 15px var(--accent-glow, rgba(255, 183, 0, 0.35));
+    transform: translateY(-2px);
+    color: #fff;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00FF88;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00FF88;
+    animation: statusPulse 2s infinite;
+}
+
+/* Back to Top FAB */
+#nexus-back-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--gradient-accent, linear-gradient(135deg, #FFB700, #FF8C00));
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: var(--transition, all 0.3s ease);
+    box-shadow: 0 4px 15px rgba(255, 183, 0, 0.3);
+    border: none;
+}
+
+#nexus-back-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+#nexus-back-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 183, 0, 0.5);
+}
+
+/* Custom Context Menu */
+#nexus-context-menu {
+    position: fixed;
+    background: var(--surface-dense, rgba(5, 5, 15, 0.95));
+    border: 1px solid var(--border-glow, rgba(255, 183, 0, 0.2));
+    border-radius: var(--radius-sm, 8px);
+    padding: 8px 0;
+    min-width: 200px;
+    z-index: 10000;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: none;
+    flex-direction: column;
+    opacity: 0;
+    transform: scale(0.95);
+    transform-origin: top left;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+#nexus-context-menu.active {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.context-item {
+    padding: 10px 20px;
+    color: var(--text, #fff);
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s ease;
+    text-decoration: none;
+}
+
+.context-item:hover {
+    background: var(--surface-glass, rgba(15, 15, 35, 0.6));
+    color: var(--accent, #FFB700);
+}
+
+.context-item i {
+    font-size: 1.1rem;
+    color: var(--accent, #FFB700);
+}
+
+.context-divider {
+    height: 1px;
+    background: var(--border, rgba(255, 255, 255, 0.06));
+    margin: 5px 0;
+}
